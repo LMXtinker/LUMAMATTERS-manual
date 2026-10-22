@@ -1,0 +1,42 @@
+# Publishes the wiki/ folder to this repo's Wiki tab on every push to main that changes it.
+# wiki/ is a copy of docs/wiki in the private app repo (pages + images, page links in file form `Page.md`).
+# Pages are never edited in the wiki web editor: each run makes the wiki an exact copy of wiki/.
+name: Publish wiki
+
+on:
+  push:
+    branches: [main]
+    paths: ['wiki/**', '.github/workflows/publish-wiki.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-wiki
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy wiki/ into the wiki repo and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git clone "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" wiki-repo
+          # mirror: remove everything but .git, then copy the folder in
+          find wiki-repo -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r wiki/. wiki-repo/
+          # wiki links have no .md: [Install](Install.md#part) -> [Install](Install#part)
+          find wiki-repo -maxdepth 1 -name '*.md' -exec sed -E -i 's/\]\(([A-Za-z0-9_-]+)\.md(#[^)]*)?\)/](\1\2)/g' {} +
+          cd wiki-repo
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then echo 'Wiki already up to date.'; exit 0; fi
+          git commit -m "Publish manual from ${GITHUB_SHA::7}"
+          git push origin HEAD

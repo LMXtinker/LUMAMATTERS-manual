@@ -1,0 +1,53 @@
+# Physics model and limits
+
+> **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (lux, pixel size, throw distance, overlap) come from maker data and simplified models and can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
+
+LUMAMATTERS calculates simple, exact geometry and light. It is made for desk planning, not for predicting how a real room looks. This page says what the numbers mean and what they leave out.
+
+## What it calculates
+
+**Throw and image size.** The maker's throw ratio is distance divided by image width. The app turns the maker's number into a distance from the projection centre (the optical centre of the lens), using the maker's formula or table where the database has one. Image width and height follow from distance and ratio. Lens shift moves the image; it does not resize it.
+
+**Zoom.** Only optical zoom, between the lens's wide and tele ratio. A value outside the range is still calculated, but flagged **Zoom out of range**. It is never clamped silently.
+
+**Lens shift.** The shift limits come from the database, in percent of image size. A shift outside the range is calculated and flagged **Shift out of range**. The shift range is treated as a rectangle, which can be a little generous at the corners (flag **Shift shape approximate**).
+
+**Lux.** Light arriving on a surface, in lux. It comes from the projector's lumens, the distance and the angle between the light and the surface. On a flat wall facing the projector this equals lumens divided by image area. At an angle, light spreads over a larger area and lux drops. Light blocked by geometry is removed.
+
+**Pixel size.** The size of one projected pixel on a surface, from native resolution, distance and angle. Angled surfaces stretch pixels. A glancing angle (over 75 degrees from the surface normal by default) is flagged **grazing**.
+
+**Overlap and blend.** Every point counts how many projector images reach it. A blend zone between two projectors is their **full overlap**, as if you had typed that overlap width into a media server. It is worked out from the images as if nothing were blocking them, because a media server does not know about a balcony in the way. Blended lux uses a light-linear ramp, so two projectors in a blend add up to about the single-projector value.
+
+**Shadows.** Meshes with the role target or occluder block light. Other projectors' bodies also block light while **Projector bodies cast shadows** is on (one switch for the whole project, on by default; find it in the Summary). Bodies use the projector 3D models; the projection centre and lens numbers still come from the database. Blockers are fully opaque. A gauze or glass blocks all light unless you give the mesh the role helper.
+
+**Surfaces.** All surfaces are double-sided: light arrives on whichever side faces the projector.
+
+**Precision.** The calculation runs in a background worker in 64-bit floating point (float64). The 3D view uses the same formulas on the GPU for display.
+
+## Assumptions
+
+- Brightness ratings are taken as ANSI lumens. Maker figures in ISO 21118 are treated the same.
+- Rated lumens are used as given. Each projector has a **Light output (%)** field in Properties (1 to 100) for dimming or ageing. A project-wide derate exists in the core, default none (owner: check whether the UI exposes it).
+- The image is evenly bright across the panel. There is no edge falloff.
+- A lens is treated as an ideal pinhole at the projection centre. Real shadows have soft edges; the model draws hard ones.
+- Lens transmission is fixed at 1. Some lenses lose brightness (a few Epson lenses cap output at 80 to 91 %). The model ignores that.
+
+## What it does not do
+
+- **No surface reflectance.** Lux is light arriving, not how bright a surface looks.
+- **No contrast or black level.** There is no ambient light, no contrast ratio and no "washed-out" prediction. (Ambient light is not a setting in the app.)
+- No colour, gamut or gamma modelling. Shaded view colours are not physical.
+- No digital zoom, no keystone correction, no warping.
+- No uniformity or vignetting of real lenses.
+- No glass, translucent or perforated surfaces.
+- No lens-flare, haze or scattering.
+- No live output and no on-site calibration.
+- The tolerance of the maker data is not modelled (Panasonic notes up to about 5 % on listed distances).
+
+## Testing
+
+The core is checked against hand-worked examples and against maker throw tables. The checks compare the app with the maker's published numbers, not with a physical projector.
+
+## See also
+
+[View modes](View-Modes.md) | [Analysis](Analysis.md) | [Projector database](Projector-Database.md) | [Glossary](Glossary.md)
