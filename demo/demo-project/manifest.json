@@ -1,10 +1,10 @@
 {
-  "project": "facade-demo",
+  "project": "paywalls-demo",
   "files": [
     ".gitignore",
     "lumamatters-workspace.json",
-    "projects/facade-demo/facade-demo.luma",
-    "projects/facade-demo/models/facade.glb",
-    "projects/facade-demo/snapshots/models/2aab964f6a2c1a8f21b87101e8bfe584.glb"
+    "projects/paywalls-demo/models/paywalls.glb",
+    "projects/paywalls-demo/paywalls-demo.luma",
+    "projects/paywalls-demo/snapshots/models/5dd542137bb7d1049230a35355a5b728.glb"
   ]
 }

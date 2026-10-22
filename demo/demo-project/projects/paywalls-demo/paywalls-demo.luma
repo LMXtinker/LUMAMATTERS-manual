@@ -1,15 +1,15 @@
 {
   "format": "lumamatters/project",
   "formatVersion": "4.0",
-  "name": "Facade demo",
-  "created": "2026-10-22T13:30:50.274Z",
-  "modified": "2026-10-22T13:31:13.673Z",
+  "name": "PAYWALLS demo",
+  "created": "2026-10-22T19:38:36.543Z",
+  "modified": "2026-10-22T19:39:07.607Z",
   "basedOnVersion": null,
   "venue": {
     "models": [
       {
-        "id": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-        "path": "models/facade.glb",
+        "id": "a046da36-8771-461a-b400-fec17ed67b47",
+        "path": "models/paywalls.glb",
         "format": "gltf",
         "unitScale": 1,
         "upAxis": "y",
@@ -19,79 +19,13 @@
         },
         "hierarchy": "tree",
         "fingerprint": {
-          "size": 275420,
-          "mtime": 1792675852340,
-          "sha256": "2aab964f6a2c1a8f21b87101e8bfe5847d146aac350687f607317c5fcada5395"
+          "size": 2228852,
+          "mtime": 1792697918806,
+          "sha256": "5dd542137bb7d1049230a35355a5b728958174787c182941c86dfca64fc4c6b9"
         },
-        "importedAt": "2026-10-22T13:30:52.268Z",
+        "importedAt": "2026-10-22T19:38:38.730Z",
         "baseline": {
-          "PRJ_01": {
-            "kind": "projector",
-            "parentKey": null,
-            "local": {
-              "t": [
-                -6,
-                1.5,
-                25
-              ],
-              "r": [
-                0.08892886938170809,
-                0,
-                0,
-                0.9960379792911971
-              ],
-              "s": [
-                1,
-                1,
-                1
-              ]
-            }
-          },
-          "PRJ_02": {
-            "kind": "projector",
-            "parentKey": null,
-            "local": {
-              "t": [
-                0,
-                1.5,
-                25
-              ],
-              "r": [
-                0.08892886938170809,
-                0,
-                0,
-                0.9960379792911971
-              ],
-              "s": [
-                1,
-                1,
-                1
-              ]
-            }
-          },
-          "PRJ_03": {
-            "kind": "projector",
-            "parentKey": null,
-            "local": {
-              "t": [
-                6,
-                1.5,
-                25
-              ],
-              "r": [
-                0.08892886938170809,
-                0,
-                0,
-                0.9960379792911971
-              ],
-              "s": [
-                1,
-                1,
-                1
-              ]
-            }
-          },
-          "SRF_Balcony": {
+          "mesh_0_1792679161749_1.001": {
             "kind": "mesh",
             "parentKey": null,
             "local": {
@@ -113,232 +47,75 @@
               ]
             },
             "mesh": {
-              "triangleCount": 12,
+              "triangleCount": 26954,
               "localBox": {
                 "min": [
-                  -3,
-                  4,
-                  0
+                  -82.15804290771484,
+                  -0.059634897857904434,
+                  -28.948593139648438
                 ],
                 "max": [
-                  3,
-                  4.25,
-                  1.5
+                  81.53973388671875,
+                  141.5699920654297,
+                  33.96876907348633
                 ]
               },
               "worldBox": {
                 "min": [
-                  -3,
-                  4,
-                  0
+                  -82.15804290771484,
+                  -0.059634897857904434,
+                  -28.948593139648438
                 ],
                 "max": [
-                  3,
-                  4.25,
-                  1.5
+                  81.53973388671875,
+                  141.5699920654297,
+                  33.96876907348633
                 ]
               },
-              "geometryHash": "122a37c95c161a",
-              "hasUVs": true,
-              "seeThrough": false
-            }
-          },
-          "SRF_Facade": {
-            "kind": "mesh",
-            "parentKey": null,
-            "local": {
-              "t": [
-                0,
-                0,
-                0
-              ],
-              "r": [
-                0,
-                0,
-                0,
-                1
-              ],
-              "s": [
-                1,
-                1,
-                1
-              ]
-            },
-            "mesh": {
-              "triangleCount": 12000,
-              "localBox": {
-                "min": [
-                  -10,
-                  0,
-                  0
-                ],
-                "max": [
-                  10,
-                  12,
-                  0
-                ]
-              },
-              "worldBox": {
-                "min": [
-                  -10,
-                  0,
-                  0
-                ],
-                "max": [
-                  10,
-                  12,
-                  0
-                ]
-              },
-              "geometryHash": "162fdaa8e1ecb1",
-              "hasUVs": true,
-              "seeThrough": false
-            }
-          },
-          "SRF_Ground": {
-            "kind": "mesh",
-            "parentKey": null,
-            "local": {
-              "t": [
-                0,
-                0,
-                0
-              ],
-              "r": [
-                0,
-                0,
-                0,
-                1
-              ],
-              "s": [
-                1,
-                1,
-                1
-              ]
-            },
-            "mesh": {
-              "triangleCount": 2,
-              "localBox": {
-                "min": [
-                  -15,
-                  0,
-                  0
-                ],
-                "max": [
-                  15,
-                  0,
-                  30
-                ]
-              },
-              "worldBox": {
-                "min": [
-                  -15,
-                  0,
-                  0
-                ],
-                "max": [
-                  15,
-                  0,
-                  30
-                ]
-              },
-              "geometryHash": "0448b058a65747",
-              "hasUVs": true,
-              "seeThrough": false
-            }
-          },
-          "SRF_Railing": {
-            "kind": "mesh",
-            "parentKey": null,
-            "local": {
-              "t": [
-                0,
-                0,
-                0
-              ],
-              "r": [
-                0,
-                0,
-                0,
-                1
-              ],
-              "s": [
-                1,
-                1,
-                1
-              ]
-            },
-            "mesh": {
-              "triangleCount": 12,
-              "localBox": {
-                "min": [
-                  -3,
-                  4.25,
-                  1.4500000476837158
-                ],
-                "max": [
-                  3,
-                  5.25,
-                  1.5
-                ]
-              },
-              "worldBox": {
-                "min": [
-                  -3,
-                  4.25,
-                  1.4500000476837158
-                ],
-                "max": [
-                  3,
-                  5.25,
-                  1.5
-                ]
-              },
-              "geometryHash": "1fa587abfaba91",
+              "geometryHash": "0eda523ae92255",
               "hasUVs": true,
               "seeThrough": false
             }
           }
         },
         "lastReport": {
-          "at": "2026-10-22T13:30:52.268Z",
-          "surfaceCount": 4,
-          "triangleTotal": 12026,
-          "projectorsFound": [
-            "PRJ_01",
-            "PRJ_02",
-            "PRJ_03"
-          ],
+          "at": "2026-10-22T19:38:38.730Z",
+          "surfaceCount": 1,
+          "triangleTotal": 26954,
+          "projectorsFound": [],
           "viewpointsFound": [],
           "ignored": [],
           "rejected": [],
           "added": [
-            "PRJ_01",
-            "PRJ_02",
-            "PRJ_03",
-            "SRF_Balcony",
-            "SRF_Facade",
-            "SRF_Ground",
-            "SRF_Railing"
+            "mesh_0_1792679161749_1.001"
           ],
           "removed": [],
           "changed": [],
           "orphaned": [],
-          "warnings": []
+          "warnings": [
+            {
+              "code": "degenerateTriangles",
+              "message": "3 zero-area triangles are skipped by the analysis."
+            },
+            {
+              "code": "noCameras",
+              "message": "No PRJ_ cameras found. If the Blender scene has them, re-export with Include → Cameras on."
+            }
+          ]
         },
         "origin": {
-          "fileName": "facade.glb"
+          "fileName": "paywalls.glb"
         },
         "sidecars": {}
       }
     ],
     "nodes": [
       {
-        "id": "e585f612-90cf-4b6a-a98a-dd645cf1e98d",
-        "name": "SRF_Balcony",
+        "id": "945a7d12-df9f-4eb7-82af-ef408b2f89a3",
+        "name": "Sculpture",
         "kind": "mesh",
         "parent": null,
-        "order": 3,
+        "order": 0,
         "local": {
           "t": [
             0,
@@ -352,112 +129,16 @@
             1
           ],
           "s": [
-            1,
-            1,
-            1
+            0.1,
+            0.1,
+            0.1
           ]
         },
         "hidden": false,
         "locked": false,
         "source": {
-          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-          "key": "SRF_Balcony"
-        },
-        "role": "target"
-      },
-      {
-        "id": "7928d8ed-19d8-48dd-852f-715c8634f94d",
-        "name": "SRF_Facade",
-        "kind": "mesh",
-        "parent": null,
-        "order": 4,
-        "local": {
-          "t": [
-            0,
-            0,
-            0
-          ],
-          "r": [
-            0,
-            0,
-            0,
-            1
-          ],
-          "s": [
-            1,
-            1,
-            1
-          ]
-        },
-        "hidden": false,
-        "locked": false,
-        "source": {
-          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-          "key": "SRF_Facade"
-        },
-        "role": "target"
-      },
-      {
-        "id": "fbc1289c-053b-4688-82a1-5b94d5a370a5",
-        "name": "SRF_Ground",
-        "kind": "mesh",
-        "parent": null,
-        "order": 5,
-        "local": {
-          "t": [
-            0,
-            0,
-            0
-          ],
-          "r": [
-            0,
-            0,
-            0,
-            1
-          ],
-          "s": [
-            1,
-            1,
-            1
-          ]
-        },
-        "hidden": false,
-        "locked": false,
-        "source": {
-          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-          "key": "SRF_Ground"
-        },
-        "role": "target"
-      },
-      {
-        "id": "426b2173-3ffb-40aa-9123-17804e81b7bc",
-        "name": "SRF_Railing",
-        "kind": "mesh",
-        "parent": null,
-        "order": 6,
-        "local": {
-          "t": [
-            0,
-            0,
-            0
-          ],
-          "r": [
-            0,
-            0,
-            0,
-            1
-          ],
-          "s": [
-            1,
-            1,
-            1
-          ]
-        },
-        "hidden": false,
-        "locked": false,
-        "source": {
-          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-          "key": "SRF_Railing"
+          "model": "a046da36-8771-461a-b400-fec17ed67b47",
+          "key": "mesh_0_1792679161749_1.001"
         },
         "role": "target"
       }
@@ -470,74 +151,35 @@
   },
   "variations": [
     {
-      "id": "0c04732e-1b61-42b9-b179-1da55d8739a2",
+      "id": "95e6c981-7249-43ea-8416-523aeab8f5c8",
       "name": "Main",
-      "created": "2026-10-22T13:30:50.274Z",
+      "created": "2026-10-22T19:38:36.543Z",
       "projectors": [
         {
-          "id": "def09418-ddeb-49b1-a774-96d75aa58380",
-          "name": "PRJ_01",
-          "parent": null,
-          "order": 0,
-          "local": {
-            "t": [
-              -6,
-              1.5,
-              25
-            ],
-            "r": [
-              0.08892886938170809,
-              0,
-              0,
-              0.9960379792911971
-            ]
-          },
-          "hidden": false,
-          "locked": false,
-          "source": {
-            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-            "key": "PRJ_01"
-          },
-          "mount": "floor",
-          "colour": "#e6194b",
-          "modelId": "panasonic-pt-rz24k",
-          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.8298228420246425,
-          "shiftH": 0,
-          "shiftV": 0,
-          "lightOutputPct": 100,
-          "stack": 1,
-          "cage": true
-        },
-        {
-          "id": "13779bac-9948-45d7-b5cf-9389bbfb704b",
-          "name": "PRJ_02",
+          "id": "599b6d25-7e4a-4a25-a9a3-468f8d581252",
+          "name": "P01",
           "parent": null,
           "order": 1,
           "local": {
             "t": [
-              0,
-              1.5,
-              25
+              -6,
+              1,
+              30
             ],
             "r": [
-              0.08892886938170809,
+              0.09845136223889182,
               0,
               0,
-              0.9960379792911971
+              0.9951418638934384
             ]
           },
           "hidden": false,
           "locked": false,
-          "source": {
-            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-            "key": "PRJ_02"
-          },
           "mount": "floor",
-          "colour": "#3cb44b",
+          "colour": "#e6194b",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.8298228420246425,
+          "throwRatio": 1.5829041091949474,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -545,34 +187,61 @@
           "cage": true
         },
         {
-          "id": "070e8592-4a1d-47f6-ab76-de4fb453e978",
-          "name": "PRJ_03",
+          "id": "8a37fea3-b984-45ed-964f-9d4a525daa11",
+          "name": "P02",
           "parent": null,
           "order": 2,
           "local": {
             "t": [
-              6,
-              1.5,
-              25
+              0,
+              1,
+              30
             ],
             "r": [
-              0.08892886938170809,
+              0.09845136223889182,
               0,
               0,
-              0.9960379792911971
+              0.9951418638934384
             ]
           },
           "hidden": false,
           "locked": false,
-          "source": {
-            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-            "key": "PRJ_03"
+          "mount": "floor",
+          "colour": "#3cb44b",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.5829041091949474,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "c0ec1914-e9ad-44a6-923c-85bec36c0411",
+          "name": "P03",
+          "parent": null,
+          "order": 3,
+          "local": {
+            "t": [
+              6,
+              1,
+              30
+            ],
+            "r": [
+              0.09845136223889182,
+              0,
+              0,
+              0.9951418638934384
+            ]
           },
+          "hidden": false,
+          "locked": false,
           "mount": "floor",
           "colour": "#4363d8",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.8298228420246425,
+          "throwRatio": 1.5829041091949474,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -583,74 +252,35 @@
       "nulls": []
     },
     {
-      "id": "46631063-db9a-47ee-9431-887d0de37eb9",
+      "id": "379bca68-8e66-43aa-9c03-81b593505bbf",
       "name": "Main 2",
-      "created": "2026-10-22T13:31:09.807Z",
+      "created": "2026-10-22T19:39:04.966Z",
       "projectors": [
         {
-          "id": "def09418-ddeb-49b1-a774-96d75aa58380",
-          "name": "PRJ_01",
-          "parent": null,
-          "order": 0,
-          "local": {
-            "t": [
-              -6,
-              1.5,
-              25
-            ],
-            "r": [
-              0.08892886938170809,
-              0,
-              0,
-              0.9960379792911971
-            ]
-          },
-          "hidden": false,
-          "locked": false,
-          "source": {
-            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-            "key": "PRJ_01"
-          },
-          "mount": "floor",
-          "colour": "#e6194b",
-          "modelId": "panasonic-pt-rz24k",
-          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.675498634006083,
-          "shiftH": 0,
-          "shiftV": 0,
-          "lightOutputPct": 100,
-          "stack": 1,
-          "cage": true
-        },
-        {
-          "id": "13779bac-9948-45d7-b5cf-9389bbfb704b",
-          "name": "PRJ_02",
+          "id": "599b6d25-7e4a-4a25-a9a3-468f8d581252",
+          "name": "P01",
           "parent": null,
           "order": 1,
           "local": {
             "t": [
-              0,
-              1.5,
-              25
+              -6,
+              1,
+              30
             ],
             "r": [
-              0.08892886938170809,
-              0,
-              0,
-              0.9960379792911971
+              0.09831643806857855,
+              0.05208170104424855,
+              -0.0051525461861928554,
+              0.9937780565547039
             ]
           },
           "hidden": false,
           "locked": false,
-          "source": {
-            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-            "key": "PRJ_02"
-          },
           "mount": "floor",
-          "colour": "#3cb44b",
+          "colour": "#e6194b",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.8298228420246425,
+          "throwRatio": 1.5829041091949474,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -658,34 +288,61 @@
           "cage": true
         },
         {
-          "id": "070e8592-4a1d-47f6-ab76-de4fb453e978",
-          "name": "PRJ_03",
+          "id": "8a37fea3-b984-45ed-964f-9d4a525daa11",
+          "name": "P02",
           "parent": null,
           "order": 2,
           "local": {
             "t": [
-              6,
-              1.5,
-              25
+              0,
+              1,
+              30
             ],
             "r": [
-              0.08892886938170809,
+              0.09845136223889182,
               0,
               0,
-              0.9960379792911971
+              0.9951418638934384
             ]
           },
           "hidden": false,
           "locked": false,
-          "source": {
-            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
-            "key": "PRJ_03"
+          "mount": "floor",
+          "colour": "#3cb44b",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.5829041091949474,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "c0ec1914-e9ad-44a6-923c-85bec36c0411",
+          "name": "P03",
+          "parent": null,
+          "order": 3,
+          "local": {
+            "t": [
+              6,
+              1,
+              30
+            ],
+            "r": [
+              0.09831643806857855,
+              -0.05208170104424855,
+              0.0051525461861928554,
+              0.9937780565547039
+            ]
           },
+          "hidden": false,
+          "locked": false,
           "mount": "floor",
           "colour": "#4363d8",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.8298228420246425,
+          "throwRatio": 1.5829041091949474,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -696,10 +353,10 @@
       "nulls": []
     }
   ],
-  "activeVariationId": "46631063-db9a-47ee-9431-887d0de37eb9",
+  "activeVariationId": "379bca68-8e66-43aa-9c03-81b593505bbf",
   "abSlots": {
-    "A": "0c04732e-1b61-42b9-b179-1da55d8739a2",
-    "B": "46631063-db9a-47ee-9431-887d0de37eb9"
+    "A": "95e6c981-7249-43ea-8416-523aeab8f5c8",
+    "B": "379bca68-8e66-43aa-9c03-81b593505bbf"
   },
   "contentItems": [],
   "analysisSettings": {
@@ -879,14 +536,14 @@
   "viewState": {
     "camera": {
       "position": [
-        0,
-        6.000000000000003,
-        57
+        -0.030915451049804865,
+        7.075517858378593,
+        39.31100046424152
       ],
       "target": [
-        0,
-        6,
-        15
+        -0.030915451049804865,
+        7.07551785837859,
+        0.2510087966918946
       ]
     },
     "viewMode": "shaded"
