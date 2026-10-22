@@ -1,0 +1,1 @@
+import{c as e}from"./window-BAc-lQkS.js";export{e as getCurrentWindow};

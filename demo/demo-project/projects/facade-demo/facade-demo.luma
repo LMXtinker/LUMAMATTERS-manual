@@ -1,0 +1,895 @@
+{
+  "format": "lumamatters/project",
+  "formatVersion": "4.0",
+  "name": "Facade demo",
+  "created": "2026-10-22T13:30:50.274Z",
+  "modified": "2026-10-22T13:31:13.673Z",
+  "basedOnVersion": null,
+  "venue": {
+    "models": [
+      {
+        "id": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+        "path": "models/facade.glb",
+        "format": "gltf",
+        "unitScale": 1,
+        "upAxis": "y",
+        "detected": {
+          "unitScale": 1,
+          "upAxis": "y"
+        },
+        "hierarchy": "tree",
+        "fingerprint": {
+          "size": 275420,
+          "mtime": 1792675852340,
+          "sha256": "2aab964f6a2c1a8f21b87101e8bfe5847d146aac350687f607317c5fcada5395"
+        },
+        "importedAt": "2026-10-22T13:30:52.268Z",
+        "baseline": {
+          "PRJ_01": {
+            "kind": "projector",
+            "parentKey": null,
+            "local": {
+              "t": [
+                -6,
+                1.5,
+                25
+              ],
+              "r": [
+                0.08892886938170809,
+                0,
+                0,
+                0.9960379792911971
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            }
+          },
+          "PRJ_02": {
+            "kind": "projector",
+            "parentKey": null,
+            "local": {
+              "t": [
+                0,
+                1.5,
+                25
+              ],
+              "r": [
+                0.08892886938170809,
+                0,
+                0,
+                0.9960379792911971
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            }
+          },
+          "PRJ_03": {
+            "kind": "projector",
+            "parentKey": null,
+            "local": {
+              "t": [
+                6,
+                1.5,
+                25
+              ],
+              "r": [
+                0.08892886938170809,
+                0,
+                0,
+                0.9960379792911971
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            }
+          },
+          "SRF_Balcony": {
+            "kind": "mesh",
+            "parentKey": null,
+            "local": {
+              "t": [
+                0,
+                0,
+                0
+              ],
+              "r": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            },
+            "mesh": {
+              "triangleCount": 12,
+              "localBox": {
+                "min": [
+                  -3,
+                  4,
+                  0
+                ],
+                "max": [
+                  3,
+                  4.25,
+                  1.5
+                ]
+              },
+              "worldBox": {
+                "min": [
+                  -3,
+                  4,
+                  0
+                ],
+                "max": [
+                  3,
+                  4.25,
+                  1.5
+                ]
+              },
+              "geometryHash": "122a37c95c161a",
+              "hasUVs": true,
+              "seeThrough": false
+            }
+          },
+          "SRF_Facade": {
+            "kind": "mesh",
+            "parentKey": null,
+            "local": {
+              "t": [
+                0,
+                0,
+                0
+              ],
+              "r": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            },
+            "mesh": {
+              "triangleCount": 12000,
+              "localBox": {
+                "min": [
+                  -10,
+                  0,
+                  0
+                ],
+                "max": [
+                  10,
+                  12,
+                  0
+                ]
+              },
+              "worldBox": {
+                "min": [
+                  -10,
+                  0,
+                  0
+                ],
+                "max": [
+                  10,
+                  12,
+                  0
+                ]
+              },
+              "geometryHash": "162fdaa8e1ecb1",
+              "hasUVs": true,
+              "seeThrough": false
+            }
+          },
+          "SRF_Ground": {
+            "kind": "mesh",
+            "parentKey": null,
+            "local": {
+              "t": [
+                0,
+                0,
+                0
+              ],
+              "r": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            },
+            "mesh": {
+              "triangleCount": 2,
+              "localBox": {
+                "min": [
+                  -15,
+                  0,
+                  0
+                ],
+                "max": [
+                  15,
+                  0,
+                  30
+                ]
+              },
+              "worldBox": {
+                "min": [
+                  -15,
+                  0,
+                  0
+                ],
+                "max": [
+                  15,
+                  0,
+                  30
+                ]
+              },
+              "geometryHash": "0448b058a65747",
+              "hasUVs": true,
+              "seeThrough": false
+            }
+          },
+          "SRF_Railing": {
+            "kind": "mesh",
+            "parentKey": null,
+            "local": {
+              "t": [
+                0,
+                0,
+                0
+              ],
+              "r": [
+                0,
+                0,
+                0,
+                1
+              ],
+              "s": [
+                1,
+                1,
+                1
+              ]
+            },
+            "mesh": {
+              "triangleCount": 12,
+              "localBox": {
+                "min": [
+                  -3,
+                  4.25,
+                  1.4500000476837158
+                ],
+                "max": [
+                  3,
+                  5.25,
+                  1.5
+                ]
+              },
+              "worldBox": {
+                "min": [
+                  -3,
+                  4.25,
+                  1.4500000476837158
+                ],
+                "max": [
+                  3,
+                  5.25,
+                  1.5
+                ]
+              },
+              "geometryHash": "1fa587abfaba91",
+              "hasUVs": true,
+              "seeThrough": false
+            }
+          }
+        },
+        "lastReport": {
+          "at": "2026-10-22T13:30:52.268Z",
+          "surfaceCount": 4,
+          "triangleTotal": 12026,
+          "projectorsFound": [
+            "PRJ_01",
+            "PRJ_02",
+            "PRJ_03"
+          ],
+          "viewpointsFound": [],
+          "ignored": [],
+          "rejected": [],
+          "added": [
+            "PRJ_01",
+            "PRJ_02",
+            "PRJ_03",
+            "SRF_Balcony",
+            "SRF_Facade",
+            "SRF_Ground",
+            "SRF_Railing"
+          ],
+          "removed": [],
+          "changed": [],
+          "orphaned": [],
+          "warnings": []
+        },
+        "origin": {
+          "fileName": "facade.glb"
+        },
+        "sidecars": {}
+      }
+    ],
+    "nodes": [
+      {
+        "id": "e585f612-90cf-4b6a-a98a-dd645cf1e98d",
+        "name": "SRF_Balcony",
+        "kind": "mesh",
+        "parent": null,
+        "order": 3,
+        "local": {
+          "t": [
+            0,
+            0,
+            0
+          ],
+          "r": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "s": [
+            1,
+            1,
+            1
+          ]
+        },
+        "hidden": false,
+        "locked": false,
+        "source": {
+          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+          "key": "SRF_Balcony"
+        },
+        "role": "target"
+      },
+      {
+        "id": "7928d8ed-19d8-48dd-852f-715c8634f94d",
+        "name": "SRF_Facade",
+        "kind": "mesh",
+        "parent": null,
+        "order": 4,
+        "local": {
+          "t": [
+            0,
+            0,
+            0
+          ],
+          "r": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "s": [
+            1,
+            1,
+            1
+          ]
+        },
+        "hidden": false,
+        "locked": false,
+        "source": {
+          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+          "key": "SRF_Facade"
+        },
+        "role": "target"
+      },
+      {
+        "id": "fbc1289c-053b-4688-82a1-5b94d5a370a5",
+        "name": "SRF_Ground",
+        "kind": "mesh",
+        "parent": null,
+        "order": 5,
+        "local": {
+          "t": [
+            0,
+            0,
+            0
+          ],
+          "r": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "s": [
+            1,
+            1,
+            1
+          ]
+        },
+        "hidden": false,
+        "locked": false,
+        "source": {
+          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+          "key": "SRF_Ground"
+        },
+        "role": "target"
+      },
+      {
+        "id": "426b2173-3ffb-40aa-9123-17804e81b7bc",
+        "name": "SRF_Railing",
+        "kind": "mesh",
+        "parent": null,
+        "order": 6,
+        "local": {
+          "t": [
+            0,
+            0,
+            0
+          ],
+          "r": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "s": [
+            1,
+            1,
+            1
+          ]
+        },
+        "hidden": false,
+        "locked": false,
+        "source": {
+          "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+          "key": "SRF_Railing"
+        },
+        "role": "target"
+      }
+    ],
+    "originOffset": [
+      0,
+      0,
+      0
+    ]
+  },
+  "variations": [
+    {
+      "id": "0c04732e-1b61-42b9-b179-1da55d8739a2",
+      "name": "Main",
+      "created": "2026-10-22T13:30:50.274Z",
+      "projectors": [
+        {
+          "id": "def09418-ddeb-49b1-a774-96d75aa58380",
+          "name": "PRJ_01",
+          "parent": null,
+          "order": 0,
+          "local": {
+            "t": [
+              -6,
+              1.5,
+              25
+            ],
+            "r": [
+              0.08892886938170809,
+              0,
+              0,
+              0.9960379792911971
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "source": {
+            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+            "key": "PRJ_01"
+          },
+          "mount": "floor",
+          "colour": "#e6194b",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.8298228420246425,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "13779bac-9948-45d7-b5cf-9389bbfb704b",
+          "name": "PRJ_02",
+          "parent": null,
+          "order": 1,
+          "local": {
+            "t": [
+              0,
+              1.5,
+              25
+            ],
+            "r": [
+              0.08892886938170809,
+              0,
+              0,
+              0.9960379792911971
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "source": {
+            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+            "key": "PRJ_02"
+          },
+          "mount": "floor",
+          "colour": "#3cb44b",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.8298228420246425,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "070e8592-4a1d-47f6-ab76-de4fb453e978",
+          "name": "PRJ_03",
+          "parent": null,
+          "order": 2,
+          "local": {
+            "t": [
+              6,
+              1.5,
+              25
+            ],
+            "r": [
+              0.08892886938170809,
+              0,
+              0,
+              0.9960379792911971
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "source": {
+            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+            "key": "PRJ_03"
+          },
+          "mount": "floor",
+          "colour": "#4363d8",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.8298228420246425,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        }
+      ],
+      "nulls": []
+    },
+    {
+      "id": "46631063-db9a-47ee-9431-887d0de37eb9",
+      "name": "Main 2",
+      "created": "2026-10-22T13:31:09.807Z",
+      "projectors": [
+        {
+          "id": "def09418-ddeb-49b1-a774-96d75aa58380",
+          "name": "PRJ_01",
+          "parent": null,
+          "order": 0,
+          "local": {
+            "t": [
+              -6,
+              1.5,
+              25
+            ],
+            "r": [
+              0.08892886938170809,
+              0,
+              0,
+              0.9960379792911971
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "source": {
+            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+            "key": "PRJ_01"
+          },
+          "mount": "floor",
+          "colour": "#e6194b",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.675498634006083,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "13779bac-9948-45d7-b5cf-9389bbfb704b",
+          "name": "PRJ_02",
+          "parent": null,
+          "order": 1,
+          "local": {
+            "t": [
+              0,
+              1.5,
+              25
+            ],
+            "r": [
+              0.08892886938170809,
+              0,
+              0,
+              0.9960379792911971
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "source": {
+            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+            "key": "PRJ_02"
+          },
+          "mount": "floor",
+          "colour": "#3cb44b",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.8298228420246425,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "070e8592-4a1d-47f6-ab76-de4fb453e978",
+          "name": "PRJ_03",
+          "parent": null,
+          "order": 2,
+          "local": {
+            "t": [
+              6,
+              1.5,
+              25
+            ],
+            "r": [
+              0.08892886938170809,
+              0,
+              0,
+              0.9960379792911971
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "source": {
+            "model": "34a91bed-c7b0-4f74-8a7d-0ab0547c9da9",
+            "key": "PRJ_03"
+          },
+          "mount": "floor",
+          "colour": "#4363d8",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.8298228420246425,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        }
+      ],
+      "nulls": []
+    }
+  ],
+  "activeVariationId": "46631063-db9a-47ee-9431-887d0de37eb9",
+  "abSlots": {
+    "A": "0c04732e-1b61-42b9-b179-1da55d8739a2",
+    "B": "46631063-db9a-47ee-9431-887d0de37eb9"
+  },
+  "contentItems": [],
+  "analysisSettings": {
+    "minLux": 150,
+    "targetLux": 300,
+    "maxLux": 1000,
+    "ambientLux": 0,
+    "globalDeratePct": 100,
+    "maxPixelSizeMm": 10,
+    "minOverlapPct": 10,
+    "grazingWarnDeg": 75,
+    "heatmapScale": "log",
+    "bodiesCastShadows": true,
+    "sampleBudget": "auto"
+  },
+  "testPatternSettings": {
+    "gridSpacingPx": 100
+  },
+  "reportSettings": {
+    "paper": "a4-landscape"
+  },
+  "measurements": [],
+  "dbSnapshot": {
+    "models": {
+      "panasonic-pt-rz24k": {
+        "id": "panasonic-pt-rz24k",
+        "brand": "Panasonic",
+        "series": "PT-RQ25K Series",
+        "model": "PT-RZ24K",
+        "status": "current",
+        "brightnessLm": 20000,
+        "brightnessStandard": "ISO/IEC 21118:2020",
+        "brightnessNote": "20,000 lm rated / 21,000 lm center brightness, NORMAL mode (average of all shipped units, measured at center of screen).",
+        "brightnessStandardCode": "iso21118-2020",
+        "nativeW": 1920,
+        "nativeH": 1200,
+        "aspect": "16:10",
+        "lensType": "interchangeable",
+        "fixedLens": null,
+        "standardLensPartNumber": null,
+        "weightKg": 35,
+        "weightIncludesLens": false,
+        "dimensionsMm": {
+          "w": 550,
+          "h": 220,
+          "d": 570
+        },
+        "dimensionsNote": "W×D excluding protrusions; H=220mm excludes feet AND protrusions. With feet at shortest position, H=269mm. Per official spec sheet.",
+        "displayTech": "3-chip DLP, 0.8in diagonal DMD panel, 16:10",
+        "lightSource": "Laser diode",
+        "contrast": "25,000:1 (Full On/Full Off, Dynamic Contrast [3])",
+        "powerW": 1470,
+        "noiseDb": 46,
+        "orientation360": true,
+        "portrait": true,
+        "edgeBlending": true,
+        "releaseYear": null,
+        "shiftBasisVerified": true,
+        "sources": [
+          {
+            "title": "PT-RZ24K official spec PDF (RZ24KG_STW_04, Feb 2025) — read in full",
+            "url": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rz24kg_spec_en_0.pdf"
+          },
+          {
+            "title": "PT-RZ24K product page, Panasonic Connect EU",
+            "url": "https://eu.connect.panasonic.com/pt/en/projectors/pt-rq25k-series/pt-rz24k"
+          }
+        ],
+        "notes": "Sibling of 4K PT-RQ25K (same series/chassis; smaller siblings PT-RQ18K/PT-RZ17K/PT-RZ14K share the same 0.8in panel/lens-shift class per Panasonic's Lens Quick Reference Guide 'Group C'). Spec sheet 'RZ24KG_STW_04_10/02/2025' (as of February 2025), read in full from the official PDF. Power: max 1,470W (AC200-240V) / 1,060W (AC100-120V, light output capped ≤15,000lm on 100-120V); NORMAL 1,310W; ECO 1,020W; QUIET 1,010W; standby NORMAL 12W / ECO 0.4W. Noise: NORMAL 46dB, ECO 46dB, QUIET 43dB. BTU max 5,023. Screen size range 1.78–25.40m (70–1000in), narrower with certain lenses (see lensFits). IP5X dust protection (optical engine + light source module only). Laser Class 1 (IEC/EN 60825-1:2014), Risk Group 3. Exact original market-launch year not stated in spec sheet.",
+        "verification": {
+          "status": "verified",
+          "fields": {
+            "aspect": "confirmed",
+            "brightnessLm": "confirmed",
+            "brightnessNote": "confirmed",
+            "brightnessStandard": "confirmed",
+            "contrast": "confirmed",
+            "dimensionsMm": "confirmed",
+            "dimensionsNote": "confirmed",
+            "displayTech": "confirmed",
+            "edgeBlending": "unverified",
+            "fixedLens": "confirmed",
+            "lightSource": "confirmed",
+            "nativeH": "confirmed",
+            "nativeW": "confirmed",
+            "noiseDb": "confirmed",
+            "orientation360": "confirmed",
+            "portrait": "confirmed",
+            "powerW": "confirmed",
+            "releaseYear": "unverified",
+            "standardLensPartNumber": "confirmed",
+            "status": "confirmed",
+            "weightIncludesLens": "confirmed",
+            "weightKg": "confirmed"
+          }
+        },
+        "crossCheckUrl": null,
+        "specSheetUrl": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rz24kg_spec_en_0.pdf",
+        "incomplete": []
+      }
+    },
+    "lensFits": {
+      "panasonic-pt-rz-current:ET-D75LE10:2": {
+        "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+        "seriesFile": "panasonic-pt-rz-current",
+        "lensPartNumber": "ET-D75LE10",
+        "occurrence": 2,
+        "lensName": "",
+        "fitsModels": [
+          "panasonic-pt-rz24k"
+        ],
+        "throwMin": 1.56,
+        "throwMax": 2.01,
+        "shiftUpPct": 66,
+        "shiftDownPct": 66,
+        "shiftLeftPct": 24,
+        "shiftRightPct": 24,
+        "shiftConvention": "panasonic-home",
+        "shiftBasis": 1,
+        "shiftHome": [
+          0,
+          0
+        ],
+        "shiftFigureMount": "unknown",
+        "shiftRangeShape": "rectangle",
+        "lensGeometry": "rectilinear",
+        "shiftDefinition": "Percent of projected image height (V) / width (H), measured from the optical axis center of the projector body — official PT-RZ24K wording.",
+        "throwFormula": {
+          "sizeBasis": "diagonal",
+          "sizeUnit": "m",
+          "distanceUnit": "m",
+          "aspect": [
+            16,
+            10
+          ],
+          "wide": {
+            "a": 1.3423,
+            "b": -0.0857
+          },
+          "tele": {
+            "a": 1.7349,
+            "b": -0.1085
+          },
+          "source": {
+            "title": "PT-RZ24K Specifications, RZ24KG_STW_04 (February 2025), Calculation of the projection distance",
+            "url": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rz24kg_spec_en_0.pdf",
+            "page": "p.18"
+          }
+        },
+        "lensWeightKg": null,
+        "sources": [
+          {
+            "title": "PT-RZ24K official spec PDF",
+            "url": "https://eu.connect.panasonic.com/sites/default/files/media/document/2024-04/rz24kg_spec_en_0.pdf"
+          }
+        ],
+        "notes": "Legacy-generation zoom lens, listed separately from ET-D3LEW10 with its own (different) throw ratio.",
+        "verification": {
+          "status": "verified",
+          "fields": {
+            "lensWeightKg": "unverified",
+            "shiftDownPct": "confirmed",
+            "shiftLeftPct": "confirmed",
+            "shiftRightPct": "confirmed",
+            "shiftUpPct": "confirmed",
+            "throwFormula": "second agent 2026-10-20: confirmed, PT-RZ24K spec RZ24KG_STW_04 p.18-19; 16:10 row, line matches lens by throw-ratio column AND by distance-table column header; formula reproduces 120/200/300/400 in rows to the cm (maxdev 0.005, rounding of printed coefficients); a*1.1792/DB within +0.7..3.6 %; 16:10 native for all fitsModels (1920x1200)",
+            "throwMax": "confirmed",
+            "throwMin": "confirmed"
+          }
+        },
+        "specSheetUrl": null,
+        "specSheetNote": "no lens-specific PDF in sources; lens data from projector spec sheet",
+        "incomplete": []
+      }
+    }
+  },
+  "viewState": {
+    "camera": {
+      "position": [
+        0,
+        6.000000000000003,
+        57
+      ],
+      "target": [
+        0,
+        6,
+        15
+      ]
+    },
+    "viewMode": "shaded"
+  },
+  "bodyLibraryVersion": "2.0.0"
+}

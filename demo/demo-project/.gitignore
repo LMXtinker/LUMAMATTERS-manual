@@ -1,0 +1,7 @@
+# >>> LUMAMATTERS (managed by the app; edit outside this block) >>>
+projects/*/content/
+projects/*/exports/
+projects/*/.recovery/
+*.crswap
+*.blend1
+# <<< LUMAMATTERS <<<

@@ -1,0 +1,10 @@
+{
+  "project": "facade-demo",
+  "files": [
+    ".gitignore",
+    "lumamatters-workspace.json",
+    "projects/facade-demo/facade-demo.luma",
+    "projects/facade-demo/models/facade.glb",
+    "projects/facade-demo/snapshots/models/2aab964f6a2c1a8f21b87101e8bfe584.glb"
+  ]
+}
