@@ -3,8 +3,8 @@
   "formatVersion": "4.0",
   "name": "PAYWALLS demo",
   "created": "2026-10-22T19:38:36.543Z",
-  "modified": "2026-10-22T19:39:07.607Z",
-  "basedOnVersion": null,
+  "modified": "2026-10-22T22:45:22.321Z",
+  "basedOnVersion": 3,
   "venue": {
     "models": [
       {
@@ -129,9 +129,9 @@
             1
           ],
           "s": [
-            0.1,
-            0.1,
-            0.1
+            0.17298904957678307,
+            0.17298904957678307,
+            0.17298904957678307
           ]
         },
         "hidden": false,
@@ -263,15 +263,15 @@
           "order": 1,
           "local": {
             "t": [
-              -6,
+              -22.01096092822218,
               1,
               30
             ],
             "r": [
-              0.09831643806857855,
-              0.05208170104424855,
-              -0.0051525461861928554,
-              0.9937780565547039
+              0.05677903749950885,
+              -0.2683853748604155,
+              0.015848740897581023,
+              0.9615062396436255
             ]
           },
           "hidden": false,
@@ -280,7 +280,7 @@
           "colour": "#e6194b",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.5829041091949474,
+          "throwRatio": 1.6724121498457118,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -294,15 +294,15 @@
           "order": 2,
           "local": {
             "t": [
-              0,
-              1,
+              -20.30399125229367,
+              0.6282416954437178,
               30
             ],
             "r": [
-              0.09845136223889182,
-              0,
-              0,
-              0.9951418638934384
+              0.2285608180650739,
+              -0.2401757896695471,
+              0.05829728036949296,
+              0.9416352635726608
             ]
           },
           "hidden": false,
@@ -311,7 +311,7 @@
           "colour": "#3cb44b",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.5829041091949474,
+          "throwRatio": 1.6724121498457118,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -325,15 +325,15 @@
           "order": 3,
           "local": {
             "t": [
-              6,
-              1,
+              32.63790981131862,
+              -1.1048557606721392,
               30
             ],
             "r": [
-              0.09831643806857855,
-              -0.05208170104424855,
-              0.0051525461861928554,
-              0.9937780565547039
+              0.07257510619058422,
+              0.36482375790932736,
+              -0.028537379390252627,
+              0.9278049889949281
             ]
           },
           "hidden": false,
@@ -342,7 +342,38 @@
           "colour": "#4363d8",
           "modelId": "panasonic-pt-rz24k",
           "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
-          "throwRatio": 1.5829041091949474,
+          "throwRatio": 1.6724121498457118,
+          "shiftH": 0,
+          "shiftV": 0,
+          "lightOutputPct": 100,
+          "stack": 1,
+          "cage": true
+        },
+        {
+          "id": "8914bea2-f2cc-4ef1-a07a-7bbb31872209",
+          "name": "P04",
+          "parent": null,
+          "order": 4,
+          "local": {
+            "t": [
+              31.382424399630693,
+              -1.6683594397339228,
+              29.6594435939682
+            ],
+            "r": [
+              0.170368380773187,
+              0.4010708345632402,
+              -0.07618997543614395,
+              0.8968343705158206
+            ]
+          },
+          "hidden": false,
+          "locked": false,
+          "mount": "floor",
+          "colour": "#ffe119",
+          "modelId": "panasonic-pt-rz24k",
+          "lensFitId": "panasonic-pt-rz-current:ET-D75LE10:2",
+          "throwRatio": 1.6724121498457118,
           "shiftH": 0,
           "shiftV": 0,
           "lightOutputPct": 100,
@@ -360,9 +391,9 @@
   },
   "contentItems": [],
   "analysisSettings": {
-    "minLux": 150,
-    "targetLux": 300,
-    "maxLux": 1000,
+    "minLux": 20,
+    "targetLux": 84,
+    "maxLux": 156,
     "ambientLux": 0,
     "globalDeratePct": 100,
     "maxPixelSizeMm": 10,
@@ -373,7 +404,8 @@
     "sampleBudget": "auto"
   },
   "testPatternSettings": {
-    "gridSpacingPx": 100
+    "gridSpacingPx": 100,
+    "kind": "gradientGrid"
   },
   "reportSettings": {
     "paper": "a4-landscape"
@@ -536,17 +568,24 @@
   "viewState": {
     "camera": {
       "position": [
-        -0.030915451049804865,
-        7.075517858378593,
-        39.31100046424152
+        7.027143482564813,
+        33.555019460196554,
+        92.23758387616392
       ],
       "target": [
-        -0.030915451049804865,
-        7.07551785837859,
-        0.2510087966918946
+        -3.9989384020804364,
+        2.3538447483379383,
+        9.890935273993435
       ]
     },
-    "viewMode": "shaded"
+    "viewMode": "lux",
+    "lighting": {
+      "azimuthDeg": 135,
+      "elevationDeg": 45,
+      "mode": "headlight",
+      "pattern": 0.48,
+      "sceneLight": 0.72
+    }
   },
   "bodyLibraryVersion": "2.0.0"
 }
