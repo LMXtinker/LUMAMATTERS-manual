@@ -4,12 +4,14 @@
 
 ## Rules
 
+![The Keyboard shortcuts dialog](images/help-keyboard-shortcuts.png)
+
 - Keys marked "anywhere" work in the whole project window.
-- Keys marked "panels" work only when the focus is in the 3D view or the Outliner.
-- Nothing acts while you type in a text field, or while a menu, list, popover or dialog is open. Text fields keep their own keys, undo included.
-- Letter and number keys use the physical key position, so they work on other keyboard layouts too. `Ctrl+Z` and the file keys use the key's label.
-- `Cmd` works like `Ctrl` on a Mac keyboard for the file, undo and group/duplicate keys.
-- `Ctrl+Numpad` works in the installed app window. A normal Chrome tab may use it for tab switching.
+- Keys marked "panels" work only with the focus in the 3D view or the Outliner.
+- No key acts while you type in a text field or while a menu, list, popover or dialog is open. Text fields keep their own keys, undo included.
+- Letter and number keys use the physical key position, so they work on other keyboard layouts. `Ctrl+Z` and the file keys use the key's label.
+- On a Mac keyboard, `Cmd` works like `Ctrl` for the file, undo and group/duplicate keys.
+- `Ctrl+Numpad` works in the installed app window. A normal Chrome tab may use it to switch tabs.
 
 ## Anywhere in the window
 
@@ -53,7 +55,7 @@
 
 ## Esc order
 
-`Esc` cancels one thing at a time, in this order: a drag, a rename, a placement click, a dialog, the pinned probe, the Outliner's search field.
+Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click, a dialog, the pinned probe, the Outliner's search field.
 
 ## Mouse and number fields
 

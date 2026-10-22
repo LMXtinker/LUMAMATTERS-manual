@@ -1,6 +1,6 @@
 # Glossary
 
-**ANSI lumens.** A standard way to rate projector brightness. LUMAMATTERS treats every brightness rating as ANSI lumens. See [Physics model and limits](Physics-Model.md).
+**ANSI lumens.** A standard projector brightness rating. LUMAMATTERS treats every brightness rating as ANSI lumens. See [Physics model and limits](Physics-Model.md).
 
 **Blend / overlap.** The area where two projector images cover the same surface. In **Overlap** view the blend zone of a pair is their full overlap. See [View modes](View-Modes.md) and [Analysis](Analysis.md).
 
@@ -10,7 +10,7 @@
 
 **Image shift.** See lens shift.
 
-**Lens shift.** Moving the image up, down, left or right without moving the projector, by sliding the lens. The limits come from the [Projector database](Projector-Database.md).
+**Lens shift.** Moving the image up, down, left or right by sliding the lens, without moving the projector. The limits come from the [Projector database](Projector-Database.md).
 
 **Lux.** Light arriving on a surface, in lumens per square metre. It is not how bright a surface looks. See [View modes](View-Modes.md).
 
@@ -20,13 +20,13 @@
 
 **Null.** An empty object in the scene tree. It has a position but no shape. Projectors can be parented to nulls so a group moves together. See [Outliner](Outliner.md).
 
-**Pixel density / pixel size.** How many projected pixels fit per metre on a surface, or the size of one pixel in millimetres. See [View modes](View-Modes.md).
+**Pixel density / pixel size.** Projected pixels per metre on a surface, or the size of one pixel in millimetres. See [View modes](View-Modes.md).
 
-**Planning aid.** What this app is: numbers for planning, to be checked against maker sheets and on site.
+**Planning aid.** What this app is: numbers for planning, to check against maker sheets and on site.
 
-**Probe.** A reading pinned on a surface. **Alt+click** a point in the 3D view to pin one; its numbers appear in the Summary. See [Measure tools](Measure-Tools.md).
+**Probe.** A reading pinned on a surface. **Alt+click** a point in the 3D view to pin one. Its numbers appear in the Summary. See [Measure tools](Measure-Tools.md).
 
-**Projection centre.** The optical centre of the lens, where the light rays start in the model. Distances in the physics are measured from here. The maker's distances are usually measured from the lens front.
+**Projection centre.** The optical centre of the lens, where the light rays start in the model. The physics measures distances from here. Makers usually measure from the lens front.
 
 **Project format.** The version number inside a `.luma` file. See [Project files](Project-Files.md).
 

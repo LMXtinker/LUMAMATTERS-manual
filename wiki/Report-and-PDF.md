@@ -2,7 +2,7 @@
 
 > **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (lux, pixel size, throw distance, overlap) come from maker data and simplified models and can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
 
-The Report tab is a small page editor. You build A4 landscape pages with text, 3D-view pictures, tables and shapes, then save them as a PDF through Chrome's print dialog. The app has no PDF engine of its own.
+The Report tab is a small page editor. Build A4 landscape pages with text, 3D-view pictures, tables and shapes. Save them as a PDF through Chrome's print dialog. The app has no PDF engine of its own.
 
 ![The Report tab with the page list on the left and the properties on the right](images/report-tab.png)
 
@@ -13,7 +13,7 @@ The Report tab is a small page editor. You build A4 landscape pages with text, 3
 
 Both open and focus the **Report** tab next to the 3D view. With no project open it says "Open a project to set up its report." The report reads the open project as it is now. You do not need to save first. It also works in a read-only window.
 
-The first time you open it, the tab shows the built-in **Dark lab** starter: near-black pages, IBM Plex fonts, a cover, a Lux page, an Overlap page, a Projectors page and a Settings and notes page. Opening the tab writes nothing to your project. Your first edit stores the layout in the project file.
+The first time, the tab shows the built-in **Dark lab** starter: near-black pages, IBM Plex fonts, a cover, a Lux page, an Overlap page, a Projectors page and a Settings and notes page. Opening the tab writes nothing to your project. Your first edit stores the layout in the project file.
 
 ## The disclaimer
 
@@ -25,25 +25,35 @@ It is a field in a text block. If you delete it from your layout, the report no 
 
 ## Layout of the tab
 
+![The Report toolbar](images/report-toolbar.png)
+
 - **Toolbar** (top): zoom, **View**, align, **Insert**, **Check** and **Print / Save as PDF**.
-- **Pages** (left): thumbnails of the **Master** and of every page, with **Add page**, **Duplicate** and **Delete**. Drag a thumbnail to reorder pages. `Alt+Up` and `Alt+Down` move the selected page. Delete asks "Delete this page and its blocks?".
+- **Pages** (left): thumbnails of the **Master** and every page, with **Add page**, **Duplicate** and **Delete**. Drag a thumbnail to reorder pages. `Alt+Up` and `Alt+Down` move the selected page. Delete asks "Delete this page and its blocks?".
 - **Canvas** (middle): the pages, with rulers in millimetres.
 - **Properties** (right): **Report setup**, then the fields of the selected page or block.
 
 ### Master page
 
+![The page list with Master and Show master tick boxes](images/report-thumbnails.png)
+
 The **Master** holds what repeats on every page: header, footer, page numbers and, if you want, a logo. Click **Master** in the page list to edit it. A page can switch it off with **Show master** in its page properties.
 
 ### Report setup
 
+![The Report setup panel](images/report-setup-panel.png)
+
 At the top of the properties panel:
 
-- **Variation**: which variation the report is about. Shown only when the project has more than one variation. One report covers one variation.
+- **Variation**: which variation the report covers. Shown only when the project has more than one variation. One report covers one variation.
 - **Prepared by** and **Prepared for**: optional one-line fields for the cover.
 - **Show people**: draws the people from the [People](People.md) page in report pictures. Their shadows stay in the numbers either way.
 - **Template**: **Save as template…**, **Apply template…**, **Reset to starter**.
 
 ## Blocks
+
+![A table block just inserted, with its column picker](images/report-block-inserted.png)
+
+![The properties of a selected text block](images/report-properties-text.png)
 
 Add blocks with the **Insert** buttons. They go on the current page, or on the master while you edit it.
 
@@ -58,7 +68,7 @@ Add blocks with the **Insert** buttons. They go on the current page, or on the m
 | **SVG** | Your own SVG artwork. |
 | **Image** | A picture file, for example your logo. |
 
-You can also drag SVG and picture files onto the Report tab. Model files are refused there.
+Drag SVG and picture files onto the Report tab. Model files are refused there.
 
 ### Render block
 
@@ -73,18 +83,22 @@ Every number in the report equals the matching number in the app panels.
 
 ### Moving and arranging
 
+![The View menu of the Report toolbar: Rulers, Guides, Margins, Snap](images/report-view-menu.png)
+
 - Drag, resize and rotate with the handles. Shift-click adds to the selection.
 - Type exact **X**, **Y**, **W**, **H** (mm) and **Rotation** in **Transform**.
 - **Aspect lock** (checkbox "Keep aspect ratio") keeps the shape when you resize. **Lock** freezes a block.
 - Align buttons: **Align left**, **Align centre**, **Align right**, **Align top**, **Align middle**, **Align bottom**. **Distribute horizontally** and **Distribute vertically** space the selected blocks evenly. **Align to** chooses what to align against.
-- Snapping to guides, page edges and other blocks. Drag guides out of the rulers. The **View** button toggles **Rulers**, **Guides**, **Margins**, **Snap** and **Lock guides**.
+- Blocks snap to guides, page edges and other blocks. Drag guides out of the rulers. The **View** button toggles **Rulers**, **Guides**, **Margins**, **Snap** and **Lock guides**.
 - Keys when the canvas has focus: arrows nudge 1 mm (`Shift` + arrow 10 mm), `Ctrl+D` duplicates, `Delete` removes, `Ctrl+C`, `Ctrl+X` and `Ctrl+V` copy, cut and paste, `Ctrl+L` locks. Every edit is one undo step, with the app's normal undo.
 
 ### Crop
 
-Select a picture or Render block, then in **Picture** press **Crop on page** (or double-click the picture). Drag to pan, use **Zoom**, **Pan X** and **Pan Y**, then press **Done** (or `Enter`). **Reset crop** goes back to the full picture.
+Select a picture or Render block. In **Picture**, press **Crop on page** (or double-click the picture). Drag to pan, use **Zoom**, **Pan X** and **Pan Y**, then press **Done** (or `Enter`). **Reset crop** goes back to the full picture.
 
 ## Templates
+
+![The Template menu](images/report-template-menu.png)
 
 **Template** in Report setup:
 
@@ -95,6 +109,8 @@ Select a picture or Render block, then in **Picture** press **Crop on page** (or
 Built-in templates: **Dark lab**, **White lab** and **Lab sheet**. Lab sheet is white paper with dark ink, IBM Plex Mono throughout, one orange accent and a measuring-sheet frame.
 
 ## Check
+
+![The Check list](images/report-check-menu.png)
 
 **Check** counts the problems in your report and lists them. Click an entry to jump to its block. It finds, for example:
 
@@ -108,7 +124,7 @@ Built-in templates: **Dark lab**, **White lab** and **Lab sheet**. Lab sheet is 
 1. Press **Print / Save as PDF** (or `Ctrl+P`).
 2. If Check found warnings or errors, a dialog lists them and asks "Print anyway?".
 3. The app waits for the final numbers, loads the fonts and draws every Render block at print size. A progress card with **Cancel** shows meanwhile.
-4. Chrome's print dialog opens. Choose **Save as PDF**.
+4. In Chrome's print dialog, choose **Save as PDF**.
 
 Chrome suggests the file name `<project> – <variation> – <date>`. If you change the project while the report is being prepared, printing stops and asks you to try again.
 

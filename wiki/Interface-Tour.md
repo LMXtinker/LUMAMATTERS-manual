@@ -1,57 +1,59 @@
 # Interface Tour
 
-This page shows you where everything is in the project window. Each area has its own page with the details.
+Each area of the project window has its own page with details.
 
 ![The project window with all panels open](images/interface-overview.png)
 
 ## The layout
 
-The project window is split into panels. By default:
+The project window is split into panels. Default layout:
 
 - The **3D view** fills the left half.
 - On the right, at the top, you see tabs: **Outliner**, **Summary**, **History** and **Variations**. The Outliner is the tab in front.
 - On the right, below those tabs, is **Properties**.
 
-You can drag a tab to another place, drag the borders between panels to resize them, and close a panel with its tab button. The layout is kept on this machine and comes back the next time you open the app.
+Drag a tab to move it, drag panel borders to resize, and close a panel with its tab button. The layout is kept on this machine.
 
-The **Report** tab is not part of the default layout. It opens from **File > Export > Report…**, **View > Report** or `Ctrl+P`. When the Report tab is in front, it fills the whole window. See [Report and PDF](Report-and-PDF.md).
+The **Report** tab is not in the default layout. Open it with **File > Export > Report…**, **View > Report** or `Ctrl+P`. It fills the whole window when in front. See [Report and PDF](Report-and-PDF.md).
 
 ### Panels menu and Reset layout
 
-- **View > Panels** lists the six panels (**3D view**, **Outliner**, **Summary**, **History**, **Variations**, **Properties**). A tick means the panel is open. Click an entry to open or close that panel. A panel you bring back returns to its usual place.
-- **View > Reset layout** puts all panels back where they were at the start.
+- **View > Panels** lists the six panels (**3D view**, **Outliner**, **Summary**, **History**, **Variations**, **Properties**). A tick means the panel is open. Click an entry to open or close it. A reopened panel returns to its usual place.
+- **View > Reset layout** puts all panels back in the default places.
 
 ## The header bar
 
-The thin bar at the top holds, from left to right:
+![The variation selector and the A / B switch in the header](images/header-variations.png)
+
+The thin bar at the top holds, left to right:
 
 - The app name **LUMAMATTERS**.
 - The menus **File**, **Edit**, **View** and **Help**. See [Menus](Menus.md).
-- The variation selector: a list button, the name of the active variation (click to rename), and buttons to duplicate or delete it. A button for the A/B switch is there too. A variation is one rig of projectors on the shared venue. See [Variations and Compare](Setups-and-Compare.md).
+- The variation selector: a list button, the name of the active variation (click to rename), and buttons to duplicate or delete it. An A/B switch button sits beside it. A variation is one rig of projectors on the shared venue. See [Variations and Compare](Setups-and-Compare.md).
 - **Snapshot**, **Undo** and **Redo** buttons. **Snapshot** does the same as `Ctrl+S`. Undo and Redo are greyed out when there is nothing to undo or redo.
-- The status line, for example `My project · Saved`. It can also say `Saving…`, `Paused: changed on disk` or `Not saved: <reason>`, and it shows the snapshot your work is based on (`· snapshot 0012`). See [Projects and Snapshots](Projects-and-Snapshots.md).
+- The status line, for example `My project · Saved`. It can also say `Saving…`, `Paused: changed on disk` or `Not saved: <reason>`. It shows the snapshot your work is based on (`· snapshot 0012`). See [Projects and Snapshots](Projects-and-Snapshots.md).
 - **Analysing…** with a small bar while the numbers are recomputed, and a bar while textures load.
 
-Under the header, banners can appear: a warning that the live view may be slow when 9 to 16 projectors are in the analysis, a notice that a file changed on disk, and an error banner if the analysis failed.
+Banners can appear under the header: a slow-view warning when 9 to 16 projectors are in the analysis, a notice that a file changed on disk, and an error banner if the analysis failed.
 
 ## The 3D view
 
-The 3D view shows the venue, projectors, people and cameras. It has controls drawn on top of it:
+The 3D view shows the venue, projectors, people and cameras. Controls sit on top of it:
 
 - **Left edge:** the transform tools (Select, Move, Rotate, Scale), World or Local space, and the pivot (Origin or Box centre).
 - **Top right:** Light **Blended** or **Raw**, the view-mode buttons **Shaded**, **Lux**, **Overlap**, **Pixel**, **Lighting** and a **?** help button.
 - **Right edge:** **View** (viewpoints and cameras), Perspective or Orthographic, then the toggles **Labels**, **Tex**, **Grid** and **Wire**. A **Lock** button appears while you look through a camera.
 - **Bottom left:** the legend of the current view mode.
 
-Details are on [3D View](3D-View.md) and [View Modes](View-Modes.md).
+Details: [3D View](3D-View.md) and [View Modes](View-Modes.md).
 
 ## The Outliner
 
-The Outliner lists everything in the project as a tree: model files, venue objects, projectors, nulls, people and cameras. At the top is a toolbar (**+ Proj**, **+ Person**, **+ Null**, **Group**, **Parent**, **Unparent**, **Import**) and a search field. See [Outliner](Outliner.md).
+The Outliner lists the whole project as a tree: model files, venue objects, projectors, nulls, people and cameras. At the top is a toolbar (**+ Proj**, **+ Person**, **+ Null**, **Group**, **Parent**, **Unparent**, **Import**) and a search field. See [Outliner](Outliner.md).
 
 ## Properties
 
-Properties shows the settings of what you selected: transform, projector lens and zoom, surface role, texture, person, camera. See [Properties](Properties.md).
+Properties shows the settings of the selection: transform, projector lens and zoom, surface role, texture, person, camera. See [Properties](Properties.md).
 
 ## Summary and History
 
@@ -65,11 +67,11 @@ The **Variations** tab lists the variations of the project and compares two of t
 
 - A greyed-out menu entry or button shows a tooltip that says why it is not available, for example "Open a project first." or "Nothing to undo."
 - Short messages appear as toasts.
-- While a drag or a file operation is running, the menus and header buttons are inactive on purpose.
+- Menus and header buttons are inactive on purpose during a drag or file operation.
 - If the same project is open in another window, this window is read-only. The header shows `Read-only: open in another window`.
 
 ## Look and feel
 
-The look follows Blender's conventions (dark theme, foldable panel sections, number fields you can drag) but uses its own code and icons. The Outliner works like Maya's. Number fields have a TouchDesigner-style Value Ladder. See [Properties](Properties.md).
+The look follows Blender (dark theme, foldable panel sections, draggable number fields) but uses its own code and icons. The Outliner works like Maya's. Number fields have a TouchDesigner-style Value Ladder. See [Properties](Properties.md).
 
 See also: [Menus](Menus.md), [3D View](3D-View.md), [Outliner](Outliner.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md)

@@ -1,49 +1,66 @@
 # Properties
 
-Properties shows the settings of what you have selected. It sits at the bottom right. With nothing selected it says "Select an object in the 3D view or the Outliner."
+Properties shows the settings of the selection, at the bottom right. With nothing selected it says "Select an object in the 3D view or the Outliner."
 
 ![Properties of a selected projector](images/properties-projector.png)
 
 ## Top of the panel
 
-A heading shows the type icon, the name and `type · file` (or "created in the app"). With several objects selected it shows "N objects". Below it, badges repeat the Outliner's (why a projector is not analysed, hidden, orphan, not in file).
+A heading shows the type icon, the name and `type · file` (or "created in the app"). With several objects selected it shows "N objects". Badges below repeat the Outliner's (why a projector is not analysed, hidden, orphan, not in file).
 
 Sections fold and unfold. Only sections that every selected object has are shown. A field that differs between objects shows a dash.
 
-A locked object shows a note and its fields are disabled.
+A locked object shows a note, and its fields are disabled.
 
 ## Number fields
 
-All number fields work the same way.
+![The Value Ladder open on a number field](images/value-ladder.png)
 
-- **Click** a field and type. `Enter` or leaving the field commits it. `Esc` drops what you typed.
-- **Drag left or right** with the left mouse button to change the value. Right is up. Hold `Shift` for a tenth of the step, `Ctrl` to snap the change.
-- **Middle mouse button: Value Ladder** (like TouchDesigner). Press the middle button on a field. A column of steps appears: 100, 10, 1, 0.1, 0.01 (integer fields: 100, 10, 1). Move the mouse up or down to pick a step, then move sideways to change the value by that step. Once you have moved a little sideways, the step stays fixed. Release to commit. `Esc` cancels.
-- On the label of a multi-value row (Position, Shift) the ladder changes all components together.
+- **Click** a field and type. `Enter` or leaving the field commits. `Esc` drops the typed text.
+- **Drag left or right** with the left mouse button to change the value. Right is up. Hold `Shift` for a tenth of the step, `Ctrl` to snap.
+- **Middle mouse button: Value Ladder** (like TouchDesigner). Press the middle button on a field. A column of steps appears: 100, 10, 1, 0.1, 0.01 (integer fields: 100, 10, 1). Move up or down to pick a step, then move sideways to change the value by that step. After a little sideways movement, the step stays fixed. Release to commit. `Esc` cancels.
+- On the label of a multi-value row (Position, Shift), the ladder changes all components together.
 - One drag is one undo step. The 3D view follows live while you drag.
 - A drag stops at the allowed range of the field.
-- With several objects selected, dragging a transform field adds the same change to each object.
+- With several objects selected, dragging a transform field applies the same change to each.
 
 ## Transform (all objects)
 
-**Name**, **Parent**, **Position**, **Rotation** (with **Yaw / Pitch / Roll** and a Blender Euler row), **Scale**. A **World** group shows world position and angles. Values are in metres and degrees. Axes follow Blender's convention. For projectors, **Aim at…** lets you click a surface point to aim at.
+![Properties of a null: only the Transform section](images/properties-null.png)
+
+**Name**, **Parent**, **Position**, **Rotation** (with **Yaw / Pitch / Roll** and a Blender Euler row), **Scale**. A **World** group shows world position and angles. Values are in metres and degrees. Axes follow Blender's convention. For projectors, **Aim at…** aims at a surface point you click.
 
 ## Projector
 
-- **Lens**: **Colour**, **Test pattern**, **Model** (with **Change model…**), **Lens** (for interchangeable lenses; unusable lenses carry the reason), a **Spec sheet** button, **Throw ratio** (the maker's number), **Wanted width (m)** with **Fit** (sets the zoom so the image has that width at the aim distance), **Lens range**, **Shift H (%)**, **Shift V (%)**, **Mount** (**Floor** or **Ceiling**), **Light output (%)** and **Look through**. With two or more projectors a **Copy** row opens **Copy specs**: tick what to copy and choose "Same TR" or "Same image width" for the zoom.
-- **Body**: the **Flight frame** checkbox and a note on which body model is used. See [Physics Model](Physics-Model.md).
+- **Lens**: **Colour**, **Test pattern**, **Model** (with **Change model…**), **Lens** (for interchangeable lenses; unusable lenses carry the reason), a **Spec sheet** button, **Throw ratio** (the maker's number), **Wanted width (m)** with **Fit** (sets the zoom so the image has that width at the aim distance), **Lens range**, **Shift H (%)**, **Shift V (%)**, **Mount** (**Floor** or **Ceiling**), **Light output (%)** and **Look through**. With two or more projectors, a **Copy** row opens **Copy specs**: tick what to copy and choose "Same TR" or "Same image width" for the zoom.
+
+![Model and Lens rows of a projector](images/props-projector-model-lens.png)
+
+![The Colour popover with the 16-colour palette](images/props-colour-popover.png)
+
+![The Test pattern list](images/props-pattern-list.png)
+
+- **Body**: the **Flight frame** checkbox and a note on the body model in use. See [Physics Model](Physics-Model.md).
 - **Readouts** (one projector): Aim distance, Aims at, Throw distance (maker), Throw ratio (centre), Image W x H, Centre lux, Pixel, effective lumens, and **flag chips** that explain caveats. Click a chip for its explanation.
+
+![The Readouts section](images/props-projector-readouts.png)
+
+![The Readouts section with the notes open](images/props-readouts-notes.png)
 
 Zoom is optical zoom only. Throw and shift come from the projector database. See [Projector Database](Projector-Database.md) and [Placing Projectors](Placing-Projectors.md).
 
 ## Surface (venue meshes)
+
+![Properties of a surface](images/properties-surface.png)
 
 - **Role**: **Target** (should be lit and counted), **Occluder** (blocks light) or **Helper**.
 - **Triangles** and **UVs** (yes / no).
 
 ## Texture (venue meshes)
 
-**Source**, **Size**, and **Load…** to put a picture on the selected surfaces. **Clear** goes back to the model file's texture. A model's own textures are listed when you select the model's root row. See [Textures](Textures.md).
+![The Texture section with Load and Clear](images/props-surface-texture.png)
+
+**Source**, **Size**, and **Load…** to put a picture on the selected surfaces. **Clear** returns to the model file's texture. Select the model's root row to list its own textures. See [Textures](Textures.md).
 
 ## Person
 
@@ -51,9 +68,13 @@ Zoom is optical zoom only. Throw and shift come from the projector database. See
 
 ## Camera
 
+![Properties of a camera](images/properties-camera.png)
+
 **Projection** (**Perspective** or **Orthographic**), **Field of view** (or **Ortho height**), **Position** and **Target**, **Look through** and **Update from view** (stores the current 3D view in this camera).
 
 ## File
+
+![The File section](images/props-projector-file.png)
 
 For objects that come from a model file: **File**, **Key** and **Reset to file** when the placement differs from the file.
 

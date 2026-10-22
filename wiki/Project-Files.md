@@ -1,6 +1,6 @@
 # Project files
 
-Everything you make is saved as plain files in a workspace folder you choose. There is no cloud and no account. This page shows what is in a project folder and what you can safely copy, back up or delete.
+Everything you make is saved as plain files in a workspace folder you choose. There is no cloud and no account. This page shows what is in a project folder and what is safe to copy, back up or delete.
 
 ## The workspace
 
@@ -28,7 +28,7 @@ The **slug** is the project's folder name, a short file-safe version of the proj
 - One text file (JSON) with the whole scene: venue, projectors, variations, view settings, report layout.
 - The app rewrites it after every committed edit. You do not press Save.
 - A crash while writing leaves the previous file whole.
-- The app never makes a second copy of your edits in the background. Snapshots are the history.
+- The app makes no second background copy of your edits. Snapshots are the history.
 
 ## Snapshots
 
@@ -37,7 +37,7 @@ The **slug** is the project's folder name, a short file-safe version of the proj
 - **Automatic:** before steps that replace your data (import, reload, change file, remove from project), when you leave a project, when you load an older snapshot, and when the app finds your last session's state was not snapshotted.
 - File name: `<slug>.<tag>.<n>.luma`. The tag is four letters that identify the machine, so two computers never write the same file name.
 - The **History** tab lists them. See [Projects and snapshots](Projects-and-Snapshots.md).
-- Thinning: the app removes only automatic snapshots, keeping all of today and yesterday, then one per day for 30 days, then one per week. Manual, named and safety snapshots are never removed.
+- Thinning removes only automatic snapshots. It keeps all of today and yesterday, then one per day for 30 days, then one per week. Manual, named and safety snapshots are never removed.
 
 ## Model files
 

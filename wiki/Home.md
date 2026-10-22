@@ -1,6 +1,6 @@
 # LUMAMATTERS
 
-LUMAMATTERS is a desk planner for projection mapping. You load a 3D model of the venue, place projectors from a maker database, and see where the light lands, how bright it is, where images overlap and how big the pixels are. It runs on your own Windows PC, offline. It has no accounts, no cloud and no telemetry. Your projects are plain files in a folder you choose.
+LUMAMATTERS is a desk planner for projection mapping. Load a 3D model of the venue, place projectors from a maker database, and see where the light lands, how bright it is, where images overlap and how big the pixels are. It runs offline on your own Windows PC. No accounts, no cloud, no telemetry. Your projects are plain files in a folder you choose.
 
 > **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (lux, pixel size, throw distance, overlap) come from maker data and simplified models and can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
 
@@ -8,19 +8,19 @@ LUMAMATTERS is a desk planner for projection mapping. You load a 3D model of the
 
 ## Who it is for
 
-Projection-mapping, LED and AV people who plan shows at the desk: choosing projectors and lenses, finding positions, checking brightness and blends, and handing a report to a client or crew.
+Projection-mapping, LED and AV people who plan shows at the desk: pick projectors and lenses, find positions, check brightness and blends, hand a report to a client or crew.
 
 ## What it is
 
 - A planner for 1 to 8 projectors at full speed, up to 16 with a slow-performance warning.
-- A 3D view of your venue model (from Blender or any tool that exports glTF / GLB, FBX or OBJ), venue meshes up to about 500,000 triangles.
+- A 3D view of your venue model (from Blender or any tool that exports glTF / GLB, FBX or OBJ), up to about 500,000 triangles.
 - Throw, lens shift, lux, overlap and pixel-density views based on Panasonic and Epson spec data.
 - Variations (versions of the projector rig in one venue) with a side-by-side Compare.
 - A report editor that prints to PDF.
 
 ## What it is not
 
-- Not a media server. It sends no video to projectors and has no live output.
+- Not a media server. No video goes to projectors; no live output.
 - Not an on-site calibration or warping tool.
 - Not a light-physics renderer: no surface reflectance, no contrast or black level. See [Physics model and limits](Physics-Model.md).
 - Not an LED planner yet.
