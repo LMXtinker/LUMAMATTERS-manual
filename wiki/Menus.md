@@ -45,7 +45,7 @@ Notes:
 | **Aim at point** | Click mode: aims the selected projectors at the surface point you click. | |
 | **Copy specs from active** | Opens the Copy specs popover in Properties: copies chosen specs from the active projector to the other selected projectors. | |
 
-**Duplicate** and **Delete** act on the Outliner selection. A tooltip gives the reason when they do not apply. With the Report tab in front, Undo and Redo act on report steps.
+**Duplicate** and **Delete** act on the Outliner selection, measurements included. A tooltip gives the reason when they do not apply. With the Report tab in front, Undo and Redo act on report steps.
 
 ## View
 
@@ -69,6 +69,7 @@ Notes:
 | **Orthographic** | Switches between perspective and orthographic. | `Numpad 5` |
 | **Lock camera to view** | While you look through a camera, orbit, pan and zoom move that camera. Greyed out with a reason when unusable. | |
 | **Frame selected** | Frames the selection (everything when nothing is selected). Needs an open project. | `F` |
+| **Measure** | Ticks while the Measure tool is on; turns it on (Distance mode) or off (back to Select). Needs an open project. | `M` |
 | **Viewpoint** | Submenu, see below. | |
 | **Report** | Opens the Report tab. | `Ctrl+P` |
 | **Panels** | Submenu with a tick per panel: **3D view**, **Outliner**, **Summary**, **History**, **Variations**, **Properties**. | |
@@ -98,4 +99,4 @@ The **View** button in the 3D view opens the same list.
 | **Blender export…** | Shows the object-name prefixes and the export checklist for Blender. See [Blender Export and Import](Blender-Export-and-Import.md). |
 | **About LUMAMATTERS** | Shows the version, the workspace folder, and a note that everything stays on this machine. |
 
-See also: [Interface Tour](Interface-Tour.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Projects and Snapshots](Projects-and-Snapshots.md), [3D View](3D-View.md)
+See also: [Interface Tour](Interface-Tour.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Projects and Snapshots](Projects-and-Snapshots.md), [3D View](3D-View.md), [Measure Tools](Measure-Tools.md)

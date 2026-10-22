@@ -51,7 +51,7 @@ Select the projector and open **Properties**.
 - **Shift H (%)** and **Shift V (%)** are lens shift. The lens limits the range (owner: check how the field reacts to a value outside it).
 - **Mount** is **Floor** or **Ceiling**.
 - **Light output (%)** dims the projector.
-- **Flight frame** toggles the flight-frame model on the projector body (owner: check).
+- **Flight frame** toggles the flight-frame model on the projector body.
 - **Look through** shows the 3D view as the projector sees it. Press it again to leave. It changes only the view.
 
 Below the fields, readouts show **Aim distance**, **Aims at** (which surface), **Throw distance (maker)**, **Throw ratio (centre)**, **Image W × H**, **Centre** (lux at the image centre), **Pixel** and **Φ_eff** (effective lumens). If a projector is not analysed, the reason shows here.

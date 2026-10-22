@@ -87,14 +87,19 @@ Every number in the report equals the matching number in the app panels.
 
 - Drag, resize and rotate with the handles. Shift-click adds to the selection.
 - Type exact **X**, **Y**, **W**, **H** (mm) and **Rotation** in **Transform**.
-- **Aspect lock** (checkbox "Keep aspect ratio") keeps the shape when you resize. **Lock** freezes a block.
+- **Aspect lock** (checkbox "Keep aspect ratio") keeps the shape when you resize. With it off, dragging a side stretches or squashes a picture. **Lock** freezes a block.
 - Align buttons: **Align left**, **Align centre**, **Align right**, **Align top**, **Align middle**, **Align bottom**. **Distribute horizontally** and **Distribute vertically** space the selected blocks evenly. **Align to** chooses what to align against.
 - Blocks snap to guides, page edges and other blocks. Drag guides out of the rulers. The **View** button toggles **Rulers**, **Guides**, **Margins**, **Snap** and **Lock guides**.
 - Keys when the canvas has focus: arrows nudge 1 mm (`Shift` + arrow 10 mm), `Ctrl+D` duplicates, `Delete` removes, `Ctrl+C`, `Ctrl+X` and `Ctrl+V` copy, cut and paste, `Ctrl+L` locks. Every edit is one undo step, with the app's normal undo.
 
 ### Crop
 
-Select a picture or Render block. In **Picture**, press **Crop on page** (or double-click the picture). Drag to pan, use **Zoom**, **Pan X** and **Pan Y**, then press **Done** (or `Enter`). **Reset crop** goes back to the full picture.
+Select a picture or Render block. In **Picture**, press **Crop on page** (or double-click the picture). The block's handles turn into crop handles:
+
+- Drag an edge or corner to cut that side. The picture stays where it is.
+- Drag inside the frame to pan the picture.
+- Use **Zoom**, **Pan X** and **Pan Y** for exact values. A stretched picture crops at its edges too, and Zoom moves both directions by the same factor.
+- Press **Done** (or `Enter`) to keep the crop, `Esc` to cancel. **Reset crop** goes back to the full picture.
 
 ## Templates
 

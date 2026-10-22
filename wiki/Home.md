@@ -48,7 +48,7 @@ Projection-mapping, LED and AV people who plan shows at the desk: pick projector
 - [Placing projectors](Placing-Projectors.md)
 - [Analysis: lux, overlap, pixels](Analysis.md)
 - [Variations and Compare](Setups-and-Compare.md)
-- [Measure tools](Measure-Tools.md) (coming: not in this build yet)
+- [Measure tools](Measure-Tools.md)
 - [Textures](Textures.md)
 - [People](People.md)
 - [Report and PDF](Report-and-PDF.md)
@@ -62,3 +62,5 @@ Projection-mapping, LED and AV people who plan shows at the desk: pick projector
 - [Glossary](Glossary.md)
 
 New here? Start with [Install](Install.md), then run **Help > Tutorial** in the app.
+
+See also: [Install](Install.md), [Interface Tour](Interface-Tour.md), [FAQ](FAQ.md), [Glossary](Glossary.md)

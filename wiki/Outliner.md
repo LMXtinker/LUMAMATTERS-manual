@@ -13,6 +13,7 @@ Each row has a type icon, a name and a short second text.
 - **Projector**: second text is the maker and model, or `unassigned`. The icon takes the projector's colour.
 - **Camera** (a saved view).
 - **Person**: second text is the height, for example `1.75 m`.
+- **Measurements** (a group after the scene rows, when the project has any): one row per measurement or note. See [Measure Tools](Measure-Tools.md).
 
 A thin strip at the left edge of a row shows the layer. Hover it: **Venue: shared by all variations** or **Rig: this variation only**. Venue objects (models, venue nulls) are the same in every variation. Projectors and rig nulls belong to one variation. See [Variations and Compare](Setups-and-Compare.md).
 
@@ -109,8 +110,14 @@ The collapsible **Files** section at the top lists the model files of the projec
 
 An empty project shows a hint: use **File > Import**, drop a model file on the Outliner, or add projectors with **+ Proj**. See [Blender Export and Import](Blender-Export-and-Import.md).
 
+## Measurements group
+
+![The Measurements group](images/outliner-measurements.png)
+
+When the project holds measurements, a **Measurements** group with a count ends the list. Click its header to fold it. Each row has a ruler or note icon, the name, the value (for example `11.600 m · Z`) and an eye and a lock. A locked measurement refuses the eye, edits and deletion. An amber **check** badge means the position needs a look after a reload. Search filters these rows too. Selecting a measurement in the 3D view opens the group.
+
 ## Keys
 
 `Ctrl+G` group, `P` parent, `Shift+P` unparent, `Delete` delete, `Ctrl+D` duplicate, `F2` rename. They work when the focus is in the Outliner or 3D view. See [Keyboard Shortcuts](Keyboard-Shortcuts.md).
 
-See also: [Properties](Properties.md), [Placing Projectors](Placing-Projectors.md), [Blender Export and Import](Blender-Export-and-Import.md), [3D View](3D-View.md)
+See also: [Measure Tools](Measure-Tools.md), [Properties](Properties.md), [Placing Projectors](Placing-Projectors.md), [Blender Export and Import](Blender-Export-and-Import.md), [3D View](3D-View.md)

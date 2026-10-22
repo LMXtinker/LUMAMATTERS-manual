@@ -10,7 +10,7 @@ The mouse works like Blender.
 
 | Action | How |
 |---|---|
-| Orbit | Hold the **middle mouse button** and drag. With the Move, Rotate or Scale tool, the left button orbits too. |
+| Orbit | Hold the **middle mouse button** and drag (in every tool). With the Move, Rotate or Scale tool, the left button orbits too. |
 | Pan | Hold the **right mouse button** and drag. |
 | Zoom | Mouse wheel. |
 | Select | Click an object. `Shift+click` adds, `Ctrl+click` toggles. |
@@ -19,7 +19,7 @@ The mouse works like Blender.
 
 The view has no camera smoothing: it stops when you stop.
 
-Box select picks objects whose centre is inside the box. It skips hidden and locked objects. It picks a camera only while **Labels** is on.
+Box select picks objects whose centre is inside the box, and measurements whose label centre is inside. It skips hidden and locked objects. It picks a camera only while **Labels** is on.
 
 ### Viewpoints and the numpad
 
@@ -53,6 +53,8 @@ The **Persp / Ortho** button, **View > Orthographic** or `Numpad 5` switches the
 - Do the same on a **projector** to see what it sees. This is a view action, not an edit, so it works on a locked projector.
 - **Lock camera to view** (**View** menu, or the **Lock** button that appears while you look through a camera): orbit, pan and zoom move the camera itself. It is greyed out with a reason when the camera is locked or the window is read-only.
 - Properties > Camera has **Update from view** to store the current view in the camera. **File > Export > Camera images (PNG)…** writes images from the cameras.
+
+The right-hand button column moves left while the **Measure** sidebar (`N`) is open, so it never sits on top of it. The sidebar is a tab on the right edge of the 3D view; **Measure** also appears there.
 
 ## Display toggles (right edge)
 
@@ -88,7 +90,7 @@ The **Lighting** button (or **View > Lighting…**) opens a popover for how the 
 
 ![Box select with the Select tool](images/3d-box-select.png)
 
-**Select** (`Q`), **Move** (`W`), **Rotate** (`E`), **Scale** (`R`) put a gizmo on the selection. **World** or **Local** sets the gizmo axes. **Origin** or **Box ctr** sets the pivot. With mixed objects the pivot may be forced to the box centre; the view says so. These keys work with the focus in the 3D view or the Outliner.
+**Select** (`Q`), **Move** (`W`), **Rotate** (`E`), **Scale** (`R`) put a gizmo on the selection. **Measure** (`M`), set apart by a divider, draws dimension lines and notes: see [Measure Tools](Measure-Tools.md). **World** or **Local** sets the gizmo axes. **Origin** or **Box ctr** sets the pivot. With mixed objects the pivot may be forced to the box centre; the view says so. These keys work with the focus in the 3D view or the Outliner.
 
 ## Mode buttons (top right)
 

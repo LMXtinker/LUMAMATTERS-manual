@@ -72,10 +72,16 @@ Zoom is optical zoom only. Throw and shift come from the projector database. See
 
 **Projection** (**Perspective** or **Orthographic**), **Field of view** (or **Ortho height**), **Position** and **Target**, **Look through** and **Update from view** (stores the current 3D view in this camera).
 
+## Measurement
+
+![Properties of a selected measurement](images/measure-properties.png)
+
+With only measurements selected, Properties shows **Name**, the ends **A** and **B**, **Value**, **Axis**, **Show in**, **Text** and the full **Style**. With objects and measurements selected, the object sections stay and a note counts the measurements. See [Measure Tools](Measure-Tools.md).
+
 ## File
 
 ![The File section](images/props-projector-file.png)
 
 For objects that come from a model file: **File**, **Key** and **Reset to file** when the placement differs from the file.
 
-See also: [Outliner](Outliner.md), [Placing Projectors](Placing-Projectors.md), [Textures](Textures.md), [Summary and History](Summary-and-History.md)
+See also: [Measure Tools](Measure-Tools.md), [Outliner](Outliner.md), [Placing Projectors](Placing-Projectors.md), [Textures](Textures.md), [Summary and History](Summary-and-History.md)

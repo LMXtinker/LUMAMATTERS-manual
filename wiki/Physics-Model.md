@@ -27,7 +27,7 @@ LUMAMATTERS calculates simple, exact geometry and light. It is made for desk pla
 ## Assumptions
 
 - Brightness ratings are taken as ANSI lumens. Maker figures in ISO 21118 are treated the same.
-- Rated lumens are used as given. Each projector has a **Light output (%)** field in Properties (1 to 100) for dimming or ageing. A project-wide derate exists in the core, default none (owner: check whether the UI exposes it).
+- Rated lumens are used as given. Each projector has a **Light output (%)** field in Properties (1 to 100) for dimming or ageing. The app has no project-wide derate field: dimming is per projector.
 - The image is evenly bright across the panel. There is no edge falloff.
 - A lens is an ideal pinhole at the projection centre. Real shadows have soft edges. The model draws hard ones.
 - Lens transmission is fixed at 1. Some lenses lose brightness (a few Epson lenses cap output at 80 to 91 %). The model ignores that.

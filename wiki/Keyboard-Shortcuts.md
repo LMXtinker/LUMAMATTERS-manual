@@ -36,7 +36,7 @@
 | `Ctrl+Numpad 7` | Bottom viewpoint |
 | `Numpad 5` | Switch Perspective / Orthographic |
 | `F` | Frame selected (everything when nothing is selected) |
-| `Esc` | Cancel a drag, a rename, a placement click or a dialog; release the pinned probe |
+| `Esc` | Cancel a drag, a rename, a placement click, a measurement in progress or a dialog; release the pinned probe; leave the Measure tool |
 
 ## With focus in the 3D view or the Outliner
 
@@ -46,6 +46,11 @@
 | `W` | Move tool |
 | `E` | Rotate tool |
 | `R` | Scale tool |
+| `M` | Measure tool (Distance) |
+| `Shift+M` | Measure tool (Annotate) |
+| `N` | Show or hide the Measure sidebar |
+| `X`, `Y`, `Z` | Measure: lock to the X, Y or Z axis while placing point B (again: unlock) |
+| `Shift+X`, `Shift+Y`, `Shift+Z` | Measure: lock to the YZ, XZ or XY plane (again: unlock) |
 | `Ctrl+G` | Group |
 | `Ctrl+D` | Duplicate |
 | `P` | Parent (the last selected becomes the parent) |
@@ -55,7 +60,7 @@
 
 ## Esc order
 
-Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click, a dialog, the pinned probe, the Outliner's search field.
+Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click (also point A of a measurement), a dialog, the pinned probe, the Outliner's search field, and last the Measure tool (back to Select).
 
 ## Mouse and number fields
 
@@ -69,4 +74,6 @@ Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click
 - `Ctrl+N` is not used: the browser engine keeps it.
 - In the History panel, arrow keys, `Home` and `End` move between snapshot rows.
 
-See also: [Menus](Menus.md), [3D View](3D-View.md), [Outliner](Outliner.md), [Interface Tour](Interface-Tour.md)
+The measure keys are explained in [Measure Tools](Measure-Tools.md). The lock keys match the key's label, so they follow your keyboard layout (on a German keyboard Z is the key labelled Z).
+
+See also: [Menus](Menus.md), [Measure Tools](Measure-Tools.md), [3D View](3D-View.md), [Outliner](Outliner.md), [Interface Tour](Interface-Tour.md)

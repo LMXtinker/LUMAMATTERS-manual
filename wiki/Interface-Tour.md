@@ -40,16 +40,17 @@ Banners can appear under the header: a slow-view warning when 9 to 16 projectors
 
 The 3D view shows the venue, projectors, people and cameras. Controls sit on top of it:
 
-- **Left edge:** the transform tools (Select, Move, Rotate, Scale), World or Local space, and the pivot (Origin or Box centre).
+- **Left edge:** the transform tools (Select, Move, Rotate, Scale), the **Measure** tool below a divider, World or Local space, and the pivot (Origin or Box centre).
 - **Top right:** Light **Blended** or **Raw**, the view-mode buttons **Shaded**, **Lux**, **Overlap**, **Pixel**, **Lighting** and a **?** help button.
 - **Right edge:** **View** (viewpoints and cameras), Perspective or Orthographic, then the toggles **Labels**, **Tex**, **Grid** and **Wire**. A **Lock** button appears while you look through a camera.
+- **Right edge, far side:** the **Measure** tab. It unfolds the Measure sidebar (`N`); the button column moves left of it. See [Measure Tools](Measure-Tools.md).
 - **Bottom left:** the legend of the current view mode.
 
 Details: [3D View](3D-View.md) and [View Modes](View-Modes.md).
 
 ## The Outliner
 
-The Outliner lists the whole project as a tree: model files, venue objects, projectors, nulls, people and cameras. At the top is a toolbar (**+ Proj**, **+ Person**, **+ Null**, **Group**, **Parent**, **Unparent**, **Import**) and a search field. See [Outliner](Outliner.md).
+The Outliner lists the whole project as a tree: model files, venue objects, projectors, nulls, people and cameras, and at the end the **Measurements** group. At the top is a toolbar (**+ Proj**, **+ Person**, **+ Null**, **Group**, **Parent**, **Unparent**, **Import**) and a search field. See [Outliner](Outliner.md).
 
 ## Properties
 
@@ -74,4 +75,4 @@ The **Variations** tab lists the variations of the project and compares two of t
 
 The look follows Blender (dark theme, foldable panel sections, draggable number fields) but uses its own code and icons. The Outliner works like Maya's. Number fields have a TouchDesigner-style Value Ladder. See [Properties](Properties.md).
 
-See also: [Menus](Menus.md), [3D View](3D-View.md), [Outliner](Outliner.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md)
+See also: [Menus](Menus.md), [3D View](3D-View.md), [Outliner](Outliner.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Measure Tools](Measure-Tools.md)

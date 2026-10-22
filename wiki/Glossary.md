@@ -16,6 +16,8 @@
 
 **Maker throw data.** The maker's throw-distance formula or table for a lens. See [Projector database](Projector-Database.md).
 
+**Measurement.** A dimension line between two points in the 3D view, with its value in metres. A note with a leader line is an annotation. Both are made with the Measure tool. See [Measure Tools](Measure-Tools.md).
+
 **Native resolution.** The pixel grid of the projector's panel.
 
 **Null.** An empty object in the scene tree. It has a position but no shape. Projectors can be parented to nulls so a group moves together. See [Outliner](Outliner.md).
@@ -24,13 +26,15 @@
 
 **Planning aid.** What this app is: numbers for planning, to check against maker sheets and on site.
 
-**Probe.** A reading pinned on a surface. **Alt+click** a point in the 3D view to pin one. Its numbers appear in the Summary. See [Measure tools](Measure-Tools.md).
+**Probe.** A reading pinned on a surface. **Alt+click** a point in the 3D view to pin one. Its numbers appear in the Summary. See [Analysis](Analysis.md).
 
 **Projection centre.** The optical centre of the lens, where the light rays start in the model. The physics measures distances from here. Makers usually measure from the lens front.
 
 **Project format.** The version number inside a `.luma` file. See [Project files](Project-Files.md).
 
 **Setup / variation.** One version of the projector rig in the same venue. The venue is shared, the rig differs. The panel is called **Variations**. See [Variations and Compare](Setups-and-Compare.md).
+
+**Snap.** The Measure tool jumps to a vertex, an edge end or middle, a lens centre, a bounding-box point or a surface point near the cursor. `Ctrl` turns it off for one click. See [Measure Tools](Measure-Tools.md).
 
 **Slug.** The file-safe short name of a project, used as its folder and file name.
 

@@ -52,6 +52,14 @@ The app works in metres. One Blender unit is one metre. Export from Blender with
 
 The app uses maker data and a simplified model. See [Physics model and limits](Physics-Model.md) and [Projector database](Projector-Database.md). Check the maker's spec sheet with the **Spec sheet** button.
 
+## The Measure tool does not place a point, or a dimension is missing
+
+- The tool needs an open project and the focus in the 3D view. Press `M` there, or click **Measure** in the tool column.
+- Nothing snaps to hidden objects. Switch **Surface** snap on in the Measure sidebar (`N`) to hit any visible surface.
+- A measurement with an amber **check** badge sits on geometry that changed in a reload. Check it, then **Mark checked**.
+- **Hide all** in the sidebar hides every measurement in the 3D view. It is not saved with the project.
+- Dimensions are not on report pictures and not in the PDF in this build. See [Measure Tools](Measure-Tools.md).
+
 ## I lost an edit
 
 Open the **History** tab and find an automatic snapshot from before the step. **Load as current state** restores it and first saves your current state as another snapshot. See [Projects and snapshots](Projects-and-Snapshots.md).
