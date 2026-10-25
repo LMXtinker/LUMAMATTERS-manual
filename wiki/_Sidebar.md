@@ -1,5 +1,7 @@
 **[Home](Home.md)**
 
+**[What's new](Whats-New.md)**
+
 **Getting started**
 - [Install](Install.md)
 - [First start and workspace](First-Start-and-Workspace.md)

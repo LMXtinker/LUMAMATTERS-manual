@@ -1,6 +1,8 @@
 # LUMAMATTERS
 
-LUMAMATTERS is a desk planner for projection mapping. Load a 3D model of the venue, place projectors from a maker database, and see where the light lands, how bright it is, where images overlap and how big the pixels are. It runs offline on your own Windows PC. No accounts, no cloud, no telemetry. Your projects are plain files in a folder you choose.
+LUMAMATTERS is a desk planner for projection mapping. Load a 3D model of the venue, place projectors from a maker database, and see where the light lands, how bright it is, where images overlap and how big the pixels are. It is a Windows desktop program that runs offline on your own PC. No accounts, no cloud, no telemetry. Your projects are plain files in a folder you choose.
+
+This manual describes version 1.0.2, a free beta. See [What's new](Whats-New.md) for the changes since 1.0.0.
 
 > **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (lux, pixel size, throw distance, overlap) come from maker data and simplified models and can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
 
@@ -12,6 +14,7 @@ Projection-mapping, LED and AV people who plan shows at the desk: pick projector
 
 ## What it is
 
+- A Windows desktop app (installer or portable exe). No browser, no server, no network needed once installed.
 - A planner for 1 to 8 projectors at full speed, up to 16 with a slow-performance warning.
 - A 3D view of your venue model (from Blender or any tool that exports glTF / GLB, FBX or OBJ), up to about 500,000 triangles.
 - Throw, lens shift, lux, overlap and pixel-density views based on Panasonic and Epson spec data.
@@ -28,6 +31,7 @@ Projection-mapping, LED and AV people who plan shows at the desk: pick projector
 ## Pages
 
 **Getting started**
+- [What's new](Whats-New.md)
 - [Install](Install.md)
 - [First start and workspace](First-Start-and-Workspace.md)
 - [Projects and snapshots](Projects-and-Snapshots.md)
@@ -63,4 +67,15 @@ Projection-mapping, LED and AV people who plan shows at the desk: pick projector
 
 New here? Start with [Install](Install.md), then run **Help > Tutorial** in the app.
 
+Something wrong or missing? Choose **Help > Send feedback…** in the app. It builds a short report you can read, copy or open in your mail program. See [Menus](Menus.md#send-feedback).
+
 See also: [Install](Install.md), [Interface Tour](Interface-Tour.md), [FAQ](FAQ.md), [Glossary](Glossary.md)
+
+---
+
+© 2026 LumaLux. Free to use during the beta; see [Install](Install.md#licence) for the licence summary.
+
+Panasonic, Epson and other product names are trademarks of their owners, used only to identify compatible products. LUMAMATTERS is not affiliated with or endorsed by them. Projector data comes from public spec sheets and may contain errors.
+
+<!-- owner: add the Impressum (legal notice) and privacy notice links here once they exist -->
+

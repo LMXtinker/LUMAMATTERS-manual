@@ -27,7 +27,10 @@ The **Report** tab is not in the default layout. Open it with **File > Export > 
 
 The thin bar at the top holds, left to right:
 
-- The app name **LUMAMATTERS**.
+- The app name **LUMAMATTERS**, followed by a small **BETA** pill while the app is a beta build. The pill is only a label: you cannot click it. The same pill sits next to the name on every report page. See [What's new](Whats-New.md).
+
+![The BETA pill next to the app name](images/header-beta.png)
+
 - The menus **File**, **Edit**, **View** and **Help**. See [Menus](Menus.md).
 - The variation selector: a list button, the name of the active variation (click to rename), and buttons to duplicate or delete it. An A/B switch button sits beside it. A variation is one rig of projectors on the shared venue. See [Variations and Compare](Setups-and-Compare.md).
 - **Snapshot**, **Undo** and **Redo** buttons. **Snapshot** does the same as `Ctrl+S`. Undo and Redo are greyed out when there is nothing to undo or redo.
@@ -40,7 +43,7 @@ Banners can appear under the header: a slow-view warning when 9 to 16 projectors
 
 The 3D view shows the venue, projectors, people and cameras. Controls sit on top of it:
 
-- **Left edge:** the transform tools (Select, Move, Rotate, Scale), the **Measure** tool below a divider, World or Local space, and the pivot (Origin or Box centre).
+- **Left edge:** the transform tools (Select, Move, Rotate, Scale), the **Measure** tool below a divider, World or Local space, and the pivot (**Origin** or **Box ctr**, the centre of the bounding box).
 - **Top right:** Light **Blended** or **Raw**, the view-mode buttons **Shaded**, **Lux**, **Overlap**, **Pixel**, **Lighting** and a **?** help button.
 - **Right edge:** **View** (viewpoints and cameras), Perspective or Orthographic, then the toggles **Labels**, **Tex**, **Grid** and **Wire**. A **Lock** button appears while you look through a camera.
 - **Right edge, far side:** the **Measure** tab. It unfolds the Measure sidebar (`N`); the button column moves left of it. See [Measure Tools](Measure-Tools.md).
@@ -50,7 +53,7 @@ Details: [3D View](3D-View.md) and [View Modes](View-Modes.md).
 
 ## The Outliner
 
-The Outliner lists the whole project as a tree: model files, venue objects, projectors, nulls, people and cameras, and at the end the **Measurements** group. At the top is a toolbar (**+ Proj**, **+ Person**, **+ Null**, **Group**, **Parent**, **Unparent**, **Import**) and a search field. See [Outliner](Outliner.md).
+The Outliner lists the whole project as a tree: model files, venue objects, projectors, nulls, people and cameras, and at the end the **Measurements** group. At the top is a toolbar (**+ Proj**, **+ Person**, **+ Null** with a small arrow beside it for a venue null, **Group**, **Parent**, **Unparent**, **Import**) and a search field. See [Outliner](Outliner.md).
 
 ## Properties
 
@@ -68,6 +71,7 @@ The **Variations** tab lists the variations of the project and compares two of t
 
 - A greyed-out menu entry or button shows a tooltip that says why it is not available, for example "Open a project first." or "Nothing to undo."
 - Short messages appear as toasts.
+- The **Help** menu opens its dialogs over the window: **View modes…**, **Keyboard shortcuts**, **Blender export…**, **Send feedback…** and **About LUMAMATTERS**. See [Menus](Menus.md#help).
 - Menus and header buttons are inactive on purpose during a drag or file operation.
 - If the same project is open in another window, this window is read-only. The header shows `Read-only: open in another window`.
 

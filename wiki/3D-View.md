@@ -30,7 +30,7 @@ Use the numpad (Blender's keys) or the **View** button on the right edge.
 - `Numpad 7` Top, `Ctrl+Numpad 7` Bottom
 - `Numpad 5` switches Perspective and Orthographic
 
-A viewpoint keeps your target and distance. `Ctrl+Numpad` keys work in the installed app window; a normal Chrome tab may use them to switch tabs.
+A viewpoint keeps your target and distance. `Ctrl+Numpad` keys work in the app window.
 
 ### Orthographic
 

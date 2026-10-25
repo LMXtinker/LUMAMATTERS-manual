@@ -2,7 +2,7 @@
 
 > **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (lux, pixel size, throw distance, overlap) come from maker data and simplified models and can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
 
-The Report tab is a small page editor. Build A4 landscape pages with text, 3D-view pictures, tables and shapes. Save them as a PDF through Chrome's print dialog. The app has no PDF engine of its own.
+The Report tab is a small page editor. Build A4 landscape pages with text, 3D-view pictures, tables and shapes. Save them as a PDF through the app's print dialog. The app has no PDF engine of its own.
 
 ![The Report tab with the page list on the left and the properties on the right](images/report-tab.png)
 
@@ -45,7 +45,7 @@ The **Master** holds what repeats on every page: header, footer, page numbers an
 At the top of the properties panel:
 
 - **Variation**: which variation the report covers. Shown only when the project has more than one variation. One report covers one variation.
-- **Prepared by** and **Prepared for**: optional one-line fields for the cover.
+- **Prepared by** and **Prepared for**: optional one-line fields for the cover. While one is empty, the Report tab shows its field name dimmed in its place, for example `‹report.preparedBy›`. The thumbnails and the PDF show nothing there.
 - **Show people**: draws the people from the [People](People.md) page in report pictures. Their shadows stay in the numbers either way.
 - **Template**: **Save as template…**, **Apply template…**, **Reset to starter**.
 
@@ -61,7 +61,7 @@ Add blocks with the **Insert** buttons. They go on the current page, or on the m
 |---|---|
 | **Text** | Rich text: font, size, bold, italic, underline, lists, alignment, paragraph styles, and **Insert field** for live values. Double-click to edit. |
 | **Render** | A picture of the 3D view. Each Render block has its own camera. |
-| **Table** | A table filled from the project, with a column picker. Sources: **Projectors**, **Pairs**, **Notes**, **Settings**. A long table continues on new pages with its header repeated. |
+| **Table** | A table filled from the project, with a column picker. Sources: **Projectors**, **Pairs**, **Notes**, **Settings**, **Measurements**. A long table continues on new pages with its header repeated. |
 | **Metrics** | A photometry box with layouts **Strip**, **Grid** and **Table**, and an optional lux scale. |
 | **Shape** | A rectangle or ellipse. |
 | **Line** | A line: solid, dashed or dotted. |
@@ -75,11 +75,27 @@ Drag SVG and picture files onto the Report tab. Model files are refused there.
 In Properties, a Render block has:
 
 - **View mode**: **Shaded**, **Lux**, **Overlap** or **Pixel**.
-- **Source**: a camera (the 3D view or a saved camera) or a projector. Press the update button to store the 3D view's current camera for this picture.
-- **Light**, **Fit** (**Fill** or **Fit**), **Lighting**, **Textures** (**As 3D view**, **On**, **Off**), **Texture strength**, **Test patterns**, **Legend** and **Background**.
-- Overlay options: **Cones**, **Iso-lux lines**, **Iso-lux labels**, **Centre lux** and **Blend values**, with label size, colour and outline.
+- **Source**: **Current 3D view**, a saved camera or a projector. With **Current 3D view**, press **Update view** to store the 3D view's current camera for this picture.
+- **Light** (only for a projector source: **This projector only** or **All projectors**), **Fit** (**Fill** or **Fit**), **Lighting**, **Textures** (**As 3D view**, **On**, **Off**), **Texture strength** (Lux, Overlap and Pixel views), **Test patterns** (Shaded view), **Legend** and **Background**.
+- Overlay options: **Cones**, **Iso-lux lines**, **Iso-lux labels**, **Centre lux** and **Blend values**, with **Label size**, **Label colour** and **Label outline**.
+- Measurement options: **Measurements**, **Image size tags** and **Edge lengths**, and a **Measurements** list. See "Measurements in the report" below.
 
 Every number in the report equals the matching number in the app panels.
+
+### Measurements in the report
+
+![A report picture with dimension lines drawn](images/report-measure-overlay.png)
+
+The dimension lines and notes you drew with the [Measure tools](Measure-Tools.md) can appear on report pictures and in a table.
+
+- **On a picture.** The Render block's Properties has three switches: **Measurements** (the dimension lines, notes and labels; on for new pictures), **Image size tags** (each projector's image width x height at its aim distance; off for new pictures) and **Edge lengths** (the four image edges with their lengths; off for new pictures). Each dimension keeps its own style from the Measure tool. The picture's **Label outline** applies to its labels; **Label colour** and **Label size** do not.
+- **Which ones show.** A picture draws the measurements whose **Show in** matches it (**All**, or the picture's camera) and which exist in the report's variation. A picture from the current 3D view or a projector shows only those set to **All**.
+- **Hide one on one picture.** Under the picture options, the **Measurements** list has a checkbox for every measurement the picture could show. Untick one to hide it on this picture only. It stays in the project, on other pictures and in the table. You can also click a dimension in the selected picture and press **Hide <name> on this picture**.
+- **Check flag.** A measurement with an amber **check** flag (after a model reload) is drawn amber and dashed with a "check" badge in the Report tab. The printed copy draws it normally. **Check** lists it as a warning.
+
+![The Measurements table block](images/report-measurements-table.png)
+
+- **As a table.** Insert a **Table** block and set **Source** to **Measurements**. The columns are fixed: **Name**, **Value**, **Axis**, **Δx**, **Δy**, **Δz**, **From**, **To**, **Note**, **Check**. One row per visible distance measurement that exists in the report's variation, in the order of the Measure sidebar list. Annotations are not rows. Hiding a measurement on a picture does not remove it from the table.
 
 ### Moving and arranging
 
@@ -113,6 +129,13 @@ Select a picture or Render block. In **Picture**, press **Crop on page** (or dou
 
 Built-in templates: **Dark lab**, **White lab** and **Lab sheet**. Lab sheet is white paper with dark ink, IBM Plex Mono throughout, one orange accent and a measuring-sheet frame.
 
+### The BETA mark
+
+While LUMAMATTERS is in beta, a small **BETA** pill appears on report pages after the product name. It shows in the Report tab, in the page thumbnails and in **Print / Save as PDF**. It is drawn when the page is shown and is not stored in your layout or templates.
+
+- The pill follows a piece of text that is exactly `LUMAMATTERS`, as in the built-in templates' wordmark. It takes that text's font and colour.
+- A page without that exact text gets no pill. Text such as `LUMAMATTERS rocks`, or the word split into parts by formatting, also gets none.
+
 ## Check
 
 ![The Check list](images/report-check-menu.png)
@@ -120,6 +143,7 @@ Built-in templates: **Dark lab**, **White lab** and **Lab sheet**. Lab sheet is 
 **Check** counts the problems in your report and lists them. Click an entry to jump to its block. It finds, for example:
 
 - text that does not fit its frame, even at 6 pt;
+- measurements that carry a **check** flag and may be shown on a picture or listed in a Measurements table (a warning; they still print);
 - blocks that reach beyond the page edge;
 - missing picture files and Render blocks that cannot be drawn;
 - a note when the pages are dark: "a screen PDF is recommended; printing on paper uses a lot of ink."
@@ -129,9 +153,9 @@ Built-in templates: **Dark lab**, **White lab** and **Lab sheet**. Lab sheet is 
 1. Press **Print / Save as PDF** (or `Ctrl+P`).
 2. If Check found warnings or errors, a dialog lists them and asks "Print anyway?".
 3. The app waits for the final numbers, loads the fonts and draws every Render block at print size. A progress card with **Cancel** shows meanwhile.
-4. In Chrome's print dialog, choose **Save as PDF**.
+4. In the print dialog, choose **Save as PDF** (owner: check the exact wording of this dialog in the desktop app).
 
-Chrome suggests the file name `<project> – <variation> – <date>`. If you change the project while the report is being prepared, printing stops and asks you to try again.
+The dialog suggests the file name `<project> – <variation> – <date>`. If you change the project while the report is being prepared, printing stops and asks you to try again.
 
 The PDF keeps text selectable (owner: check). Check the result in a PDF viewer before you send it.
 

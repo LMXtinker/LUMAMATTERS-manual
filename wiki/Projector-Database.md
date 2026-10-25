@@ -17,7 +17,7 @@ LUMAMATTERS ships with a built-in, offline database of projector bodies and lens
 - Brand, model and series.
 - Brightness in lumens and the standard it was measured to (ISO 21118 or ANSI, as the maker states it).
 - Native resolution and aspect.
-- Weight and dimensions. The 3D view uses these for the body and its shadow.
+- Weight and dimensions. The 3D view uses these for the body and its shadow. The projector and lens bodies in the 3D view are generic shapes sized from these numbers, not the makers' own 3D models.
 - Light source, contrast and power (info only; the analysis does not use them).
 - A link to the maker's spec sheet.
 
@@ -58,7 +58,11 @@ Compare the numbers you rely on with the maker's spec sheet. The **Spec sheet** 
 
 ## Report wrong data
 
-Note the model, the lens, the field and the value from the maker's sheet. Send it to the app's owner. (owner: check how testers should send this, for example a GitHub issue or an email.) The database is regenerated from source files. Flat exports are never edited by hand.
+Note the model, the lens, the field and the value from the maker's sheet. Then choose **Help > Send feedback…** (see [Menus](Menus.md)) and describe what is wrong. The database is regenerated from source files. Flat exports are never edited by hand.
+
+## Trademarks and data sources
+
+Panasonic, Epson and other product names are trademarks of their owners, used only to identify compatible products. LUMAMATTERS is not affiliated with or endorsed by them. Projector data comes from public spec sheets and may contain errors.
 
 ## See also
 

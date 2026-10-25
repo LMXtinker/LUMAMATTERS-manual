@@ -2,10 +2,10 @@
 
 ## The 3D view is blank, or the app says it cannot run
 
-The app needs WebGL2. Without it, the app shows "LUMAMATTERS cannot run in this browser" and lists what is missing.
+The app needs WebGL2. Without it, the app shows "LUMAMATTERS cannot run in this browser" and lists what is missing. (The message keeps that wording, but it is the desktop app's own web view that cannot start.)
 
 - Update your graphics driver.
-- In the browser build, use current Chrome or Edge. Check that hardware acceleration is on in the browser settings.
+- Make sure Microsoft Edge WebView2 is installed (see [Install](Install.md)).
 - On a laptop with two GPUs, make sure Windows uses the fast GPU for LUMAMATTERS (Windows Settings > System > Display > Graphics). (owner: check)
 - If a project opens but the view stays empty, check that the venue is visible in the [Outliner](Outliner.md). Press `F` with nothing selected: Frame selected then frames everything.
 
@@ -58,7 +58,17 @@ The app uses maker data and a simplified model. See [Physics model and limits](P
 - Nothing snaps to hidden objects. Switch **Surface** snap on in the Measure sidebar (`N`) to hit any visible surface.
 - A measurement with an amber **check** badge sits on geometry that changed in a reload. Check it, then **Mark checked**.
 - **Hide all** in the sidebar hides every measurement in the 3D view. It is not saved with the project.
-- Dimensions are not on report pictures and not in the PDF in this build. See [Measure Tools](Measure-Tools.md).
+- Dimensions can show on report pictures: in the picture block's properties, the **Measurements** switch turns them on and a list lets you hide single ones. A report table can also use **Measurements** as its source. See [Report and PDF](Report-and-PDF.md) and [Measure Tools](Measure-Tools.md).
+
+## How do I report a bug or wrong data?
+
+Choose **Help > Send feedback…** (see [Menus](Menus.md)). Fill in **What happened**, **What did you expect** and **Steps**. The dialog shows the full text it would send (your answers plus a few anonymous system facts such as the app version, Windows version and graphics card). Then:
+
+- **Copy to clipboard** copies the text, and you paste it into your own mail.
+- **Open email** opens your mail program with the text filled in. If the button is greyed out, or the text is too long for an email link, use **Copy to clipboard**. (owner: check that the feedback address is set in the released build)
+- **Include my scene** (optional) with **Save scene file…** saves a copy of the scene to a folder you pick. It holds no model files and no textures, but it can contain names you typed. Attach it to the mail by hand. Screenshots are attached in the mail program too.
+
+The app sends nothing itself. For a wrong projector or lens value, also name the model, the lens, the field and the value from the maker's sheet. See [Projector database](Projector-Database.md).
 
 ## I lost an edit
 
@@ -66,7 +76,7 @@ Open the **History** tab and find an automatic snapshot from before the step. **
 
 ## Where do my files live? Does the app send anything out?
 
-Your files are in the workspace folder you chose. The app has no accounts, no cloud and no telemetry. Its only network use is the **Spec sheet** button, which opens a maker page in your browser.
+Your files are in the workspace folder you chose. The app has no accounts, no cloud and no telemetry. Its only network use is the **Spec sheet** button, which opens a maker page in your default browser. **Help > Send feedback…** sends nothing by itself: it builds a text that you copy or open in your own mail program, and you send it.
 
 ## See also
 

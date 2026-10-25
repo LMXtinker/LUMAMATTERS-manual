@@ -17,7 +17,7 @@ The app creates two folders inside it: `projects` and `library`. It also writes 
 
 ![Start screen with Open workspace button](images/start-screen-no-workspace.png)
 
-The desktop app has its own storage, separate from the browser version. On first start the recent list is empty and you pick the workspace once. Your project files on disk are the same either way.
+The desktop app has its own storage. On first start the recent list is empty and you pick the workspace once. Your project files stay in the workspace folder on disk.
 
 ## The project list
 

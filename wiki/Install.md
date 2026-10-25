@@ -7,15 +7,17 @@ LUMAMATTERS is a Windows desktop app for projection-mapping desk planning. It ru
 - Windows 10 or Windows 11 (64-bit).
 - Microsoft Edge WebView2. Windows 10 and 11 already include it. If it is missing, the installer downloads it once. (owner: check, for a machine that never goes online)
 - A dedicated GPU is strongly recommended. The 3D view uses WebGL2 and draws lux and overlap on the GPU.
-- Disk space: the installer is about 4 MB, the portable exe about 11 MB. Projects take more, because each keeps its own copy of the venue model files.
+- Disk space: the installer is about 4.5 MB, the portable exe about 12 MB. Projects take more, because each keeps its own copy of the venue model files.
 
 ## Install
 
-1. Get `LUMAMATTERS_<version>_x64-setup.exe` from the person who sends you the beta. `<version>` is the version number, for example `0.1.0`.
+1. Get `LUMAMATTERS_<version>_x64-setup.exe` from the download page you were given, or from the person who sends you the beta. `<version>` is the version number. This manual describes version 1.0.2, so the file is `LUMAMATTERS_1.0.2_x64-setup.exe`.
 2. Double-click it and follow the steps. It adds a Start-menu entry.
 3. Start **LUMAMATTERS** from the Start menu.
 
-The portable `lumamatters.exe` needs no install: put it anywhere and double-click it. Both files are the same app.
+The portable `lumamatters.exe` needs no install: put it anywhere and double-click it. Both files are the same app. LUMAMATTERS is a desktop app only. It does not install from a web page and does not run in a browser tab.
+
+The installer puts two text files next to the app: `LICENSE` (the full licence terms) and `THIRD_PARTY_NOTICES.txt` (the licences of the libraries and fonts the app uses). Both land in the folder the app is installed in. The same notices are in the app under **Help > About LUMAMATTERS > Third-party notices**.
 
 ![Windows installer window](images/install-installer.png)
 
@@ -34,6 +36,10 @@ Do this once per file.
 
 ![SmartScreen window with More info](images/install-smartscreen.png)
 
+## Licence
+
+LUMAMATTERS is free to download and use, for private and commercial work, during the beta. You may modify it and use your changes yourself. You may not sell the software, modified versions or access to it, or bundle it into a paid product. The full terms are in `LICENSE`. **Help > About LUMAMATTERS** shows the same summary (see [Menus](Menus.md)).
+
 ## Uninstall
 
 Open **Settings > Apps > Installed apps** in Windows, find **LUMAMATTERS** and choose **Uninstall**.
@@ -42,7 +48,7 @@ Uninstalling does not delete your projects. They live in the workspace folder yo
 
 ## Updating
 
-Install the new `..._x64-setup.exe` over the old one. Your projects are not touched. The app opens project files from older versions and upgrades them. A file saved by a newer app than yours is not overwritten: the app pauses saving and tells you to update that machine.
+Install the new `..._x64-setup.exe` over the old one. **Help > About LUMAMATTERS** shows which version you run, and the page [What's New](Whats-New.md) lists what changed. Your projects are not touched. The app opens project files from older versions and upgrades them. A file saved by a newer app than yours is not overwritten: the app pauses saving and tells you to update that machine.
 
 ## Size of jobs and speed
 
@@ -58,4 +64,4 @@ The app asks Windows to use the high-performance GPU, so a laptop with two graph
 
 LUMAMATTERS is for desk pre-planning and prototyping. No live output, no on-site calibration. Its numbers are a planning aid, see [Physics Model](Physics-Model.md).
 
-See also: [First Start and Workspace](First-Start-and-Workspace.md), [Projects and Snapshots](Projects-and-Snapshots.md), [FAQ](FAQ.md), [Home](Home.md)
+See also: [What's New](Whats-New.md), [First Start and Workspace](First-Start-and-Workspace.md), [Projects and Snapshots](Projects-and-Snapshots.md), [FAQ](FAQ.md), [Home](Home.md)

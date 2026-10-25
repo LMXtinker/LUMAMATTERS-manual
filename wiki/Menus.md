@@ -15,7 +15,7 @@ An entry that cannot be used is greyed out. Hover it to see why. All entries are
 | **New…** | Creates a new project. The app asks first if the open project has unsaved changes. | |
 | **Open…** | Opens a project from the workspace. | `Ctrl+O` |
 | **Open Recent** | Submenu with the last projects opened on this machine. The open one is marked "(open)". Greyed out with "No recent projects." when empty. | |
-| **New window** | Opens another app window. Only in the installed desktop app. | |
+| **New window** | Opens another app window. Also works in a read-only window. | |
 | **Save snapshot** | Takes an unnamed snapshot of the current state at once. | `Ctrl+S` |
 | **Save snapshot with name…** | Asks for a name, then takes a snapshot. | |
 | **Snapshot history** | Opens and focuses the **History** tab. | |
@@ -30,7 +30,7 @@ Notes:
 - **Export** entries need an open project. **Camera images (PNG)…** also needs at least one visible camera that has a pose. It writes one 3840 x 2160 PNG per camera.
 - Every committed edit is saved automatically. A snapshot is an extra restore point. See [Projects and Snapshots](Projects-and-Snapshots.md).
 - More on importing: [Blender Export and Import](Blender-Export-and-Import.md). Test patterns: [Test Patterns](Test-Patterns.md). Report: [Report and PDF](Report-and-PDF.md).
-- **New…** has no shortcut: the browser engine keeps `Ctrl+N` for itself.
+- **New…** has no shortcut: the web engine inside the app keeps `Ctrl+N` for itself.
 
 ## Edit
 
@@ -89,14 +89,86 @@ The **View** button in the 3D view opens the same list.
 
 ![The Help menu](images/menu-help.png)
 
-![The About LUMAMATTERS dialog](images/help-about.png)
-
 | Entry | What it does |
 |---|---|
 | **Tutorial** | Starts the guided tour. Needs an open project. |
 | **View modes…** | Explains the four view modes and shows the planning-aid notice. See [View Modes](View-Modes.md). |
 | **Keyboard shortcuts** | Lists all shortcuts. See [Keyboard Shortcuts](Keyboard-Shortcuts.md). |
 | **Blender export…** | Shows the object-name prefixes and the export checklist for Blender. See [Blender Export and Import](Blender-Export-and-Import.md). |
-| **About LUMAMATTERS** | Shows the version, the workspace folder, and a note that everything stays on this machine. |
+| **Send feedback…** | Opens the feedback dialog, with or without an open project. See [Send feedback](#send-feedback). |
+| **About LUMAMATTERS** | Shows the version, licence, third-party notices and what is new. See [About LUMAMATTERS](#about-lumamatters). |
 
-See also: [Interface Tour](Interface-Tour.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Projects and Snapshots](Projects-and-Snapshots.md), [3D View](3D-View.md), [Measure Tools](Measure-Tools.md)
+Every Help dialog has a **Close** button. `Esc` closes it too.
+
+### Send feedback
+
+![The Send feedback dialog](images/help-send-feedback.png)
+
+Use **Help > Send feedback…** to report a problem or an idea. The app never sends anything itself and makes no network call. You see the full text first. You then copy it, or open your mail program with the text already filled in, and you press Send there.
+
+**Your three answers.** Three text boxes, in your own words:
+
+- **What happened:**
+- **What did you expect:**
+- **Steps:** what you did, step by step.
+
+**Anonymous system lines.** The dialog adds these lines under your answers:
+
+- App version, with "(beta)" while the app is a beta build.
+- Windows version.
+- Number of CPU cores.
+- Memory (RAM). The web engine inside the app reports a rounded value, never above 8 GB. The line says so.
+- Name of the graphics card.
+- Screen size in pixels and the display scaling (pixel ratio).
+- With a project open: the number of projectors and the number of visible triangles in the active variation. With no project open: "Scene: no project open".
+
+A value the system does not report shows as "not shown by the browser".
+
+The text never contains your project name, file paths, your Windows user name, your machine name, or the name of your workspace folder.
+
+**What will be sent (read-only).** This box shows the exact text. It is read-only. It is also exactly what **Copy to clipboard** copies and what **Open email** puts into the mail. Read it before you use either button.
+
+**Include my scene.** Off by default. It can only be ticked while a project is open.
+
+1. Tick **Include my scene**.
+2. Click **Save scene file…**. A folder picker opens. Pick any folder, for example your Desktop.
+3. The app writes one file there, named `lumamatters-feedback-<UTC time>.luma`, for example `lumamatters-feedback-20261024T094120Z.luma`. The dialog shows "Saved <name>. Attach it to your email by hand." The preview text gets one more line with the file name.
+4. Attach that file to the email yourself, in your mail program. The app cannot attach files.
+
+The file holds the scene only: projectors, objects, variations, cameras and measurements, with their settings and positions. It holds no model files, no textures and no file paths. The project name is replaced by "Feedback scene". The report's author lines, picture sources and page layout are left out. Any text that looks like a Windows file path is replaced by `[path removed]`. The file may still contain names you typed (projectors, objects, variations, notes) and the object names from the model files. The dialog says so under the tick box.
+
+**Buttons.**
+
+| Button | What it does |
+|---|---|
+| **Copy to clipboard** | Copies the text from the preview. A line under the buttons says "Copied. Paste it into your mail." |
+| **Open email** | Opens your mail program with a new mail. The subject is `LUMAMATTERS feedback <version>`, for example `LUMAMATTERS feedback 1.0.2`. The body is the preview text. The mail is not sent until you send it. |
+| **Clear** | Empties your three answers, the **Include my scene** tick and the saved-file line. |
+| **Close** | Closes the dialog. |
+
+**Mail link length.** A mail link has a size limit. When the whole link is longer than 8000 characters, **Open email** is greyed out and the dialog says: "Too long for an email link. Use Copy to clipboard and paste into your mail." The text is never cut. The limit counts the encoded link (spaces, line breaks and special characters take three or more characters each), so the text itself can be shorter than 8000 characters. Some mail programs may still cut a long link. The preview shows the full text, and **Copy to clipboard** always works.
+
+**Screenshots.** A mail link cannot carry pictures. The dialog says: "Add screenshots by attaching them in your mail program."
+
+**Your answers are kept.** If you close the dialog (`Esc`, **Close**, or a click outside it), what you typed and the tick stay until you restart the app. Nothing is written to disk. **Clear** empties them at once.
+
+**Anonymity.** Your email address is visible to the developer. Use any address you like.
+
+(owner: check: **Open email** is greyed out while the build has no feedback address. The dialog then shows "No feedback address is set in this build yet. Use Copy to clipboard." The screenshot shows it disabled. Once the address is set, **Open email** works as described above.)
+
+### About LUMAMATTERS
+
+![The About LUMAMATTERS dialog](images/help-about.png)
+
+The dialog shows, top to bottom:
+
+- **LUMAMATTERS version 1.0.2 · Beta.** The version number, with "Beta" while the app is a beta build.
+- The copyright line: "© 2026 LumaLux".
+- **Licence (beta)**, three lines: free to download and use, for private and commercial work, during the beta; you may modify the software and use your changes yourself; you may not sell the software, modified versions or access to it, or bundle it into a paid product. Under them: "Full terms: the LICENSE file in the install folder", and a request to share the download page rather than the installer file. The page address appears as a link once one is set in the app.
+- A warning box: LUMAMATTERS is a planning aid. Lux, throw, occlusion and other numbers are estimates: no warranty, and no liability for rigging, safety or on-site results.
+- **Third-party notices…**, a button. It unfolds a scrollable, read-only list of the licences of the libraries and fonts the app includes. The button then reads **Hide third-party notices**. The same text is in `THIRD_PARTY_NOTICES.txt` in the install folder.
+- **Workspace folder:** the name of your workspace folder, or "none".
+- "Everything stays on this machine; the app works offline."
+- What's new in 1.0.2, 1.0.1 and 1.0 (newest first), and a note that projects saved with v1.0 features can use a newer file format that older builds refuse. The same notes are on [What's new](Whats-New.md).
+
+See also: [Interface Tour](Interface-Tour.md), [What's new](Whats-New.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Projects and Snapshots](Projects-and-Snapshots.md), [3D View](3D-View.md), [Measure Tools](Measure-Tools.md)

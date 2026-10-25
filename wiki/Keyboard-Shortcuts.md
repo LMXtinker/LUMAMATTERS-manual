@@ -11,7 +11,7 @@
 - No key acts while you type in a text field or while a menu, list, popover or dialog is open. Text fields keep their own keys, undo included.
 - Letter and number keys use the physical key position, so they work on other keyboard layouts. `Ctrl+Z` and the file keys use the key's label.
 - On a Mac keyboard, `Cmd` works like `Ctrl` for the file, undo and group/duplicate keys.
-- `Ctrl+Numpad` works in the installed app window. A normal Chrome tab may use it to switch tabs.
+- `Ctrl+Numpad` works in the app window.
 
 ## Anywhere in the window
 
@@ -49,7 +49,7 @@
 | `M` | Measure tool (Distance) |
 | `Shift+M` | Measure tool (Annotate) |
 | `N` | Show or hide the Measure sidebar |
-| `X`, `Y`, `Z` | Measure: lock to the X, Y or Z axis while placing point B (again: unlock) |
+| `X`, `Y`, `Z` | Measure: lock to the X, Y or Z axis while placing point B (again: unlock). Press two axis keys to lock to their plane (`X` then `Y` = XY plane, same as `Shift+Z`). A third key replaces the older of the two. |
 | `Shift+X`, `Shift+Y`, `Shift+Z` | Measure: lock to the YZ, XZ or XY plane (again: unlock) |
 | `Ctrl+G` | Group |
 | `Ctrl+D` | Duplicate |
@@ -71,7 +71,7 @@ Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click
 
 ## Other keys
 
-- `Ctrl+N` is not used: the browser engine keeps it.
+- `Ctrl+N` is not used: the app's web engine keeps it.
 - In the History panel, arrow keys, `Home` and `End` move between snapshot rows.
 
 The measure keys are explained in [Measure Tools](Measure-Tools.md). The lock keys match the key's label, so they follow your keyboard layout (on a German keyboard Z is the key labelled Z).

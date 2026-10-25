@@ -2,9 +2,13 @@
 
 **ANSI lumens.** A standard projector brightness rating. LUMAMATTERS treats every brightness rating as ANSI lumens. See [Physics model and limits](Physics-Model.md).
 
+**Beta.** The state of this release. It is free to use during the beta, and a small BETA mark sits next to the name in the app header and on report pages. **Help > About LUMAMATTERS** shows the licence summary. See [Install](Install.md).
+
 **Blend / overlap.** The area where two projector images cover the same surface. In **Overlap** view the blend zone of a pair is their full overlap. See [View modes](View-Modes.md) and [Analysis](Analysis.md).
 
 **Derate / light output.** A percentage that lowers a projector's lumens for dimming or ageing. Per projector it is the **Light output (%)** field in [Properties](Properties.md).
+
+**Feedback.** **Help > Send feedback…** builds a short report of what went wrong plus anonymous system facts. You copy it or open it in your mail program. See [FAQ](FAQ.md).
 
 **Frustum.** The pyramid of light a projector sends out. Frustum lines in the 3D view show its edges. See [3D view](3D-View.md).
 
