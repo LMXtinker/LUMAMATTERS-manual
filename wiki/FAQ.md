@@ -65,7 +65,7 @@ The app uses maker data and a simplified model. See [Physics model and limits](P
 Choose **Help > Send feedback…** (see [Menus](Menus.md)). Fill in **What happened**, **What did you expect** and **Steps**. The dialog shows the full text it would send (your answers plus a few anonymous system facts such as the app version, Windows version and graphics card). Then:
 
 - **Copy to clipboard** copies the text, and you paste it into your own mail.
-- **Open email** opens your mail program with the text filled in. If the button is greyed out, or the text is too long for an email link, use **Copy to clipboard**. (owner: check that the feedback address is set in the released build)
+- **Open email** opens your mail program with the text filled in. If the button is greyed out because the text is too long for an email link, use **Copy to clipboard**.
 - **Include my scene** (optional) with **Save scene file…** saves a copy of the scene to a folder you pick. It holds no model files and no textures, but it can contain names you typed. Attach it to the mail by hand. Screenshots are attached in the mail program too.
 
 The app sends nothing itself. For a wrong projector or lens value, also name the model, the lens, the field and the value from the maker's sheet. See [Projector database](Projector-Database.md).

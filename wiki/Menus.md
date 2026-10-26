@@ -142,7 +142,7 @@ The file holds the scene only: projectors, objects, variations, cameras and meas
 | Button | What it does |
 |---|---|
 | **Copy to clipboard** | Copies the text from the preview. A line under the buttons says "Copied. Paste it into your mail." |
-| **Open email** | Opens your mail program with a new mail. The subject is `LUMAMATTERS feedback <version>`, for example `LUMAMATTERS feedback 1.0.2`. The body is the preview text. The mail is not sent until you send it. |
+| **Open email** | Opens your mail program with a new mail. The subject is `LUMAMATTERS feedback <version>`, for example `LUMAMATTERS feedback 1.0.3`. The body is the preview text. The mail is not sent until you send it. |
 | **Clear** | Empties your three answers, the **Include my scene** tick and the saved-file line. |
 | **Close** | Closes the dialog. |
 
@@ -154,7 +154,7 @@ The file holds the scene only: projectors, objects, variations, cameras and meas
 
 **Anonymity.** Your email address is visible to the developer. Use any address you like.
 
-(owner: check: **Open email** is greyed out while the build has no feedback address. The dialog then shows "No feedback address is set in this build yet. Use Copy to clipboard." The screenshot shows it disabled. Once the address is set, **Open email** works as described above.)
+**Privacy line.** Under the preview the dialog says: "Your feedback goes only to the developer, by email to lumaluxmapping@gmail.com. It is used only to fix the app and deleted on request." The feedback address is `lumaluxmapping@gmail.com`. **Open email** sends the mail to that address.
 
 ### About LUMAMATTERS
 
@@ -162,13 +162,14 @@ The file holds the scene only: projectors, objects, variations, cameras and meas
 
 The dialog shows, top to bottom:
 
-- **LUMAMATTERS version 1.0.2 · Beta.** The version number, with "Beta" while the app is a beta build.
+- **LUMAMATTERS version 1.0.3 · Beta.** The version number, with "Beta" while the app is a beta build. Under it, while the app is a beta: "Beta software: may contain errors. Back up your projects."
 - The copyright line: "© 2026 LumaLux".
-- **Licence (beta)**, three lines: free to download and use, for private and commercial work, during the beta; you may modify the software and use your changes yourself; you may not sell the software, modified versions or access to it, or bundle it into a paid product. Under them: "Full terms: the LICENSE file in the install folder", and a request to share the download page rather than the installer file. The page address appears as a link once one is set in the app.
-- A warning box: LUMAMATTERS is a planning aid. Lux, throw, occlusion and other numbers are estimates: no warranty, and no liability for rigging, safety or on-site results.
+- **Licence (beta)**, three lines: free to download and use, for private and commercial work, during the beta; you may modify the software and use your changes yourself; you may not sell the software, modified versions or access to it, or bundle it into a paid product. Under them: "Full terms: the LICENSE file in the install folder", and a request to share the download page rather than the installer file. The download page is a link: https://github.com/LMXtinker/LUMAMATTERS-releases/releases. It opens in your browser.
+- A warning box: LUMAMATTERS is a planning aid. Lux, throw, occlusion and other numbers are estimates: "To the extent permitted by law": no warranty, and no liability for rigging, safety or on-site results.
+- A trademark and data line: Panasonic, Epson and other product names are trademarks of their owners, used only to identify compatible products. LUMAMATTERS is not affiliated with or endorsed by them. Projector data comes from public spec sheets and may contain errors. Projector bodies are generic shapes, not maker models.
 - **Third-party notices…**, a button. It unfolds a scrollable, read-only list of the licences of the libraries and fonts the app includes. The button then reads **Hide third-party notices**. The same text is in `THIRD_PARTY_NOTICES.txt` in the install folder.
 - **Workspace folder:** the name of your workspace folder, or "none".
 - "Everything stays on this machine; the app works offline."
-- What's new in 1.0.2, 1.0.1 and 1.0 (newest first), and a note that projects saved with v1.0 features can use a newer file format that older builds refuse. The same notes are on [What's new](Whats-New.md).
+- What's new in 1.0.3, 1.0.2, 1.0.1 and 1.0 (newest first), and a note that projects saved with v1.0 features can use a newer file format that older builds refuse. The same notes are on [What's new](Whats-New.md).
 
 See also: [Interface Tour](Interface-Tour.md), [What's new](Whats-New.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Projects and Snapshots](Projects-and-Snapshots.md), [3D View](3D-View.md), [Measure Tools](Measure-Tools.md)

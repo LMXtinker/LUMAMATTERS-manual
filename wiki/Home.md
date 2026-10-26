@@ -2,7 +2,7 @@
 
 LUMAMATTERS is a desk planner for projection mapping. Load a 3D model of the venue, place projectors from a maker database, and see where the light lands, how bright it is, where images overlap and how big the pixels are. It is a Windows desktop program that runs offline on your own PC. No accounts, no cloud, no telemetry. Your projects are plain files in a folder you choose.
 
-This manual describes version 1.0.2, a free beta. See [What's new](Whats-New.md) for the changes since 1.0.0.
+This manual describes version 1.0.3, a free beta. See [What's new](Whats-New.md) for the changes since 1.0.0.
 
 > **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (lux, pixel size, throw distance, overlap) come from maker data and simplified models and can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
 

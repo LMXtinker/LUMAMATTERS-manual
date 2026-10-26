@@ -1,8 +1,16 @@
 # What's new
 
-Changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.0.2.
+Changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.0.3.
 
 Projects saved with version 1.0 features (people, cameras, report layout, maker throw data) can use a newer file format. Older builds refuse them. Update every machine before you save such a project. See [Several Machines](Several-Machines.md) and [Project Files](Project-Files.md).
+
+## 1.0.3 (2026-10-25): Legal notices
+
+- **Legal notices.** **Help > About** shows a trademark and data line and a beta note. The third-party notices now include licence texts for libraries that ship without one, each with its source. See [About LUMAMATTERS](Menus.md#about-lumamatters).
+- **Installer licence page.** The installer shows the licence before it installs.
+- **Download page.** **Help > About** links to the download page.
+- **Feedback privacy line.** **Help > Send feedback…** says that feedback goes only to the developer, is used only to fix the app and is deleted on request. See [Send feedback](Menus.md#send-feedback).
+- **Liability wording.** The no-warranty note in About and in `LICENSE` now applies "to the extent permitted by law". The licence terms themselves are unchanged.
 
 ## 1.0.2 (2026-10-24): Feedback
 
