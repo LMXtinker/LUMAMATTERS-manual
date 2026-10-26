@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy - LUMAMATTERS</title>
+<meta name="description" content="Privacy notice for LUMAMATTERS (beta)">
+<style>
+  :root { color-scheme: dark; --accent: #ffcc00; --text: #ececec; --dim: #a8a8a8; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { background: #0d0d0d; color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;  }
+  /* the collage of all manual screenshots, dimmed and drifting slowly */
+  .bg { position: fixed; inset: -10%; background: url("assets/collage.jpg") center / cover repeat; filter: saturate(0.7) brightness(0.45); animation: drift 90s linear infinite alternate; }
+  .bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,13,13,0.35) 0%, rgba(13,13,13,0.9) 75%); }
+  @keyframes drift { from { transform: translate(0, 0) scale(1.05); } to { transform: translate(-4%, -3%) scale(1.12); } }
+  @media (prefers-reduced-motion: reduce) { .bg { animation: none; } }
+  main { position: relative; min-height: 100%; display: grid; place-items: center; padding: 16px; }
+  .card { max-width: 34rem; width: 100%; background: rgba(20,20,20,0.82); border: 1px solid rgba(255,204,0,0.35); border-radius: 10px; padding: 28px 28px 22px; backdrop-filter: blur(6px); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  h1 { margin: 0 0 6px; font-size: 2rem; letter-spacing: 0.06em; }
+  p { margin: 0 0 16px; }
+  .lead { color: var(--dim); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+  .primary { background: var(--accent); color: #111; }
+  .secondary { border: 1px solid var(--accent); color: var(--accent); }
+  .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  small { color: var(--dim); display: block; line-height: 1.4; }
+  small a { color: var(--dim); }
+
+  main { display: block; padding: 16px; }
+  .card { max-width: 44rem; margin: 24px auto; }
+  a { color: var(--accent); }
+  address { font-style: normal; margin: 0 0 16px; }
+  footer { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12); color: var(--dim); font-size: 0.9rem; }
+  footer a { color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main>
+  <div class="card">
+    <h1>Privacy notice for LUMAMATTERS (beta)</h1>
+    <p><strong>Who is responsible:</strong> Lucas Dikany, Breitegasse 11, 1070 Wien, Austria, <a href="mailto:lumaluxmapping@gmail.com">lumaluxmapping@gmail.com</a> (see <a href="impressum.html">Impressum</a>).</p>
+    <p><strong>The app:</strong> LUMAMATTERS runs offline on your computer. It sends no data to anyone, has no telemetry and makes no network calls. Your projects stay in the folders you choose.</p>
+    <p><strong>Websites and downloads:</strong> the download / release page (<a href="https://github.com/LMXtinker/LUMAMATTERS-releases">github.com/LMXtinker/LUMAMATTERS-releases</a>), the manual and the web demo (<a href="https://lmxtinker.github.io/LUMAMATTERS-manual/">lmxtinker.github.io/LUMAMATTERS-manual</a>) are hosted on GitHub (GitHub, Inc.). When you open them or download a file, GitHub processes technical data such as your IP address in its server logs. See GitHub's privacy statement: <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement</a>. We receive only anonymous download counts. These pages use no cookies, no analytics and no tracking of their own.</p>
+    <p><strong>Web demo:</strong> the demo stores its sample project in your browser's own storage (Origin Private File System) so your edits survive a reload. This data stays in your browser and is never sent to us. You can delete it with "Reset demo" or by clearing the site data in your browser.</p>
+    <p><strong>Feedback by email:</strong> when you use Help &gt; Send feedback…, your mail program sends us (<a href="mailto:lumaluxmapping@gmail.com">lumaluxmapping@gmail.com</a>, a Google Gmail mailbox) the text you see in the dialog: your description, anonymous system information (app version, Windows version, CPU cores, memory, graphics card, screen size, number of projectors and triangles) and, only if you attach it yourself, a scene file. We also see your email address. We use this only to answer you and to fix the app. Google processes the mails as our email provider. Legal basis: Art. 6(1)(f) GDPR, our legitimate interest in answering you and fixing the software. Before we analyse feedback with software tools, including AI tools, we remove names and email addresses. We delete scene files once the issue is fixed, and feedback mails once they are no longer needed for that issue.</p>
+    <p><strong>Telegram (beta testers):</strong> if you join our private Telegram group, Telegram processes your data under its own terms and privacy policy: <a href="https://telegram.org/privacy">https://telegram.org/privacy</a>. We and the other members see your Telegram name, username (if you have one) and your messages. Your phone number stays hidden if you set "Phone number" to "Nobody" in Telegram's privacy settings; please do so before you join.</p>
+    <p><strong>Your rights:</strong> you can ask for access to, correction, deletion or restriction of your data, object to processing and ask for data portability. Write to <a href="mailto:lumaluxmapping@gmail.com">lumaluxmapping@gmail.com</a>. You can also complain to the Austrian Data Protection Authority (Datenschutzbehörde, <a href="https://www.dsb.gv.at">https://www.dsb.gv.at</a>).</p>
+    <p>Last updated: 2026-10-26.</p>
+    <footer>© 2026 LumaLux · <a href="index.html">Home</a> · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy</a></footer>
+  </div>
+</main>
+</body>
+</html>

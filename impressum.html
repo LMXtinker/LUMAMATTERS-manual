@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Impressum - LUMAMATTERS</title>
+<meta name="description" content="Legal notice (Impressum) for LUMAMATTERS">
+<style>
+  :root { color-scheme: dark; --accent: #ffcc00; --text: #ececec; --dim: #a8a8a8; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body { background: #0d0d0d; color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;  }
+  /* the collage of all manual screenshots, dimmed and drifting slowly */
+  .bg { position: fixed; inset: -10%; background: url("assets/collage.jpg") center / cover repeat; filter: saturate(0.7) brightness(0.45); animation: drift 90s linear infinite alternate; }
+  .bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,13,13,0.35) 0%, rgba(13,13,13,0.9) 75%); }
+  @keyframes drift { from { transform: translate(0, 0) scale(1.05); } to { transform: translate(-4%, -3%) scale(1.12); } }
+  @media (prefers-reduced-motion: reduce) { .bg { animation: none; } }
+  main { position: relative; min-height: 100%; display: grid; place-items: center; padding: 16px; }
+  .card { max-width: 34rem; width: 100%; background: rgba(20,20,20,0.82); border: 1px solid rgba(255,204,0,0.35); border-radius: 10px; padding: 28px 28px 22px; backdrop-filter: blur(6px); box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+  h1 { margin: 0 0 6px; font-size: 2rem; letter-spacing: 0.06em; }
+  p { margin: 0 0 16px; }
+  .lead { color: var(--dim); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; }
+  .primary { background: var(--accent); color: #111; }
+  .secondary { border: 1px solid var(--accent); color: var(--accent); }
+  .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  small { color: var(--dim); display: block; line-height: 1.4; }
+  small a { color: var(--dim); }
+
+  main { display: block; padding: 16px; }
+  .card { max-width: 44rem; margin: 24px auto; }
+  a { color: var(--accent); }
+  address { font-style: normal; margin: 0 0 16px; }
+  footer { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12); color: var(--dim); font-size: 0.9rem; }
+  footer a { color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main>
+  <div class="card">
+    <h1>Impressum / Legal notice</h1>
+    <p>Information according to § 5 ECG (Austrian E-Commerce Act) and disclosure according to § 25 MedienG (Austrian Media Act).</p>
+    <p>Media owner and publisher (Medieninhaber und Herausgeber):</p>
+    <address>Lucas Dikany<br>Breitegasse 11<br>1070 Wien<br>Austria</address>
+    <p>Email: <a href="mailto:lumaluxmapping@gmail.com">lumaluxmapping@gmail.com</a></p>
+    <p>Responsible for content: Lucas Dikany</p>
+    <p>Basic direction (Grundlegende Richtung, § 25 Abs. 4 MedienG): information about the software LUMAMATTERS (user manual, web demo, downloads of the beta).</p>
+    <footer>© 2026 LumaLux · <a href="index.html">Home</a> · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy</a></footer>
+  </div>
+</main>
+</body>
+</html>

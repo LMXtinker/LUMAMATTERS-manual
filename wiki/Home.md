@@ -77,5 +77,5 @@ See also: [Install](Install.md), [Interface Tour](Interface-Tour.md), [FAQ](FAQ.
 
 Panasonic, Epson and other product names are trademarks of their owners, used only to identify compatible products. LUMAMATTERS is not affiliated with or endorsed by them. Projector data comes from public spec sheets and may contain errors.
 
-<!-- owner: add the Impressum (legal notice) and privacy notice links here once they exist -->
+[Download](https://github.com/LMXtinker/LUMAMATTERS-releases/releases) (coming soon: the first beta build is not published yet) · [Impressum](https://lmxtinker.github.io/LUMAMATTERS-manual/impressum.html) · [Privacy](https://lmxtinker.github.io/LUMAMATTERS-manual/privacy.html)
 

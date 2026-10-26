@@ -35,3 +35,10 @@
 - [Project files](Project-Files.md)
 - [FAQ](FAQ.md)
 - [Glossary](Glossary.md)
+
+**Download and legal**
+- [Download (coming soon)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases)
+- [Impressum](https://lmxtinker.github.io/LUMAMATTERS-manual/impressum.html)
+- [Privacy](https://lmxtinker.github.io/LUMAMATTERS-manual/privacy.html)
+
+© 2026 LumaLux

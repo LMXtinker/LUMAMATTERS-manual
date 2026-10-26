@@ -9,7 +9,7 @@
   :root { color-scheme: dark; --accent: #ffcc00; --text: #ececec; --dim: #a8a8a8; }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
-  body { background: #0d0d0d; color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+  body { background: #0d0d0d; color: var(--text); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; overflow-x: hidden; }
   /* the collage of all manual screenshots, dimmed and drifting slowly */
   .bg { position: fixed; inset: -10%; background: url("assets/collage.jpg") center / cover repeat; filter: saturate(0.7) brightness(0.45); animation: drift 90s linear infinite alternate; }
   .bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(13,13,13,0.35) 0%, rgba(13,13,13,0.9) 75%); }
@@ -27,6 +27,10 @@
   .btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
   small { color: var(--dim); display: block; line-height: 1.4; }
   small a { color: var(--dim); }
+  .dl { margin: 0 0 20px; }
+  .dl .btn { font-size: 1.05rem; padding: 12px 22px; margin-bottom: 6px; }
+  footer { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12); color: var(--dim); font-size: 0.9rem; }
+  footer a { color: var(--dim); }
 </style>
 </head>
 <body>
@@ -39,8 +43,13 @@
       <a class="btn primary" href="demo/">Try the demo</a>
       <a class="btn secondary" href="https://github.com/LMXtinker/LUMAMATTERS-manual/wiki">Read the manual</a>
     </div>
+    <div class="dl">
+      <a class="btn primary" href="https://github.com/LMXtinker/LUMAMATTERS-releases/releases">Download</a>
+      <small>Coming soon: the first beta build is not published yet.</small>
+    </div>
     <p>The demo runs in Chrome, Edge or Firefox on a desktop computer. It runs in your browser; nothing is uploaded.</p>
-    <small>Planning aid: numbers can be wrong, no guarantee of correct data. © 2026 LumaLux, free beta, see <a href="demo/LICENSE">LICENSE</a> · <a href="demo/THIRD_PARTY_NOTICES.txt">third-party notices</a>.</small>
+    <small>Planning aid: numbers can be wrong, no guarantee of correct data. Free beta, see <a href="demo/LICENSE">LICENSE</a> · <a href="demo/THIRD_PARTY_NOTICES.txt">third-party notices</a>.</small>
+    <footer>© 2026 LumaLux · <a href="impressum.html">Impressum</a> · <a href="privacy.html">Privacy</a></footer>
   </div>
 </main>
 </body>
