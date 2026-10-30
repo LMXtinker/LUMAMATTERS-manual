@@ -30,6 +30,8 @@ Anything shown in a browser can be extracted, the geometry and the baked values 
 
 ## The dialog
 
+![The Share view-only scene dialog](images/share-dialog.png)
+
 - **Title, Designer, Notes.** The title starts as the project name, the designer as the "Prepared by" of the report. Both can be changed here without touching the project.
 - **Layers.** Tick the layers to export and name them.
 - **Viewpoints.** Tick the saved cameras to export and name them.

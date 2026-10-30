@@ -57,6 +57,8 @@ A switch at the top picks the quantity: **Illuminance**, **Luminance**, **Surfac
 
 "Distance to the nearest projector (m)" with a band bar. The range fits the shown projectors on its own, in steps of 1, 2 or 5 from 0.1 m, at most 10 bands (0 to 10 m when nothing is shown). **Overlay opacity (%)** applies here too.
 
+![The Distance legend with its bands](images/3d-distance-legend.png)
+
 ### Texture strength
 
 With **Textures** on, Photometric, Overlap, Pixel and Distance draw over a greyscale copy of the texture. **Texture strength (%)** sets how much texture detail shows. 0 % is the view without textures. It is a view setting: not saved, not undone. It is disabled ("Textures are off") while **View > Textures** is off. See [Textures](Textures.md).
