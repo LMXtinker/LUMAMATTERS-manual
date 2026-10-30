@@ -55,6 +55,9 @@ The file records its format version. The app picks the lowest version that can h
 | 2.0 | people, app-made cameras, or edited camera settings |
 | 3.0 | a report layout |
 | 4.0 | maker throw data (see [Projector database](Projector-Database.md)) |
+| 5.0 | a reflectance on an object, or a projector image (see [Properties](Properties.md)) |
+
+Settings of the Photometric view (the quantity, scales, the luminance viewpoint, site ambient) do not by themselves make a project 5.0. The first time the app writes a 5.0 project it keeps a copy of the project as it was in the `.recovery` folder, makes an automatic snapshot of the old state when automatic snapshots are on (the History row shows the cause `photometry`) and shows a message. Projects of format 1.0 to 4.0 open as before and are saved in the lowest format that holds their content.
 
 An older app refuses a newer major version and tells you to update. Nothing on disk is overwritten in that case. Update the app on every machine you use.
 

@@ -56,7 +56,7 @@ The **Persp / Ortho** button, **View > Orthographic** or `Numpad 5` switches the
 
 The right-hand button column moves left while the **Measure** sidebar (`N`) is open, so it never sits on top of it. The sidebar is a tab on the right edge of the 3D view; **Measure** also appears there.
 
-## Display toggles (right edge)
+## Viewport fold-out (right edge)
 
 ![The right column: View, Persp, Labels, Tex, Grid, Wire](images/3d-navigation-column.png)
 
@@ -64,12 +64,20 @@ The right-hand button column moves left while the **Measure** sidebar (`N`) is o
 
 ![The Statistics text at the top left of the 3D view](images/3d-statistics.png)
 
-- **Labels**: names of projectors, people and cameras, and camera glyphs.
-- **Tex** (**View > Textures**): textures on surfaces. See [Textures](Textures.md).
-- **Grid**: ground grid.
-- **Wire** (**View > Wireframe**): **Off**, **Feature edges**, **All edges**. The button toggles Off and the last mode. "Building wireframe…" shows while a big model builds.
-- **View > Background**: **Dark**, **Grey**, **Black**, **Night gradient**.
-- **View > Statistics**: text at the top left: the view name (for example `User Perspective`), project and variation name, Objects, Projectors (with how many are in the analysis), Triangles, and the frame rate.
+The **Viewport** tab on the right edge of the 3D view unfolds a panel with the view settings. Only one of **Viewport** and **Measure** is open at a time. These are display settings: they change the picture, not the numbers. The sections:
+
+- **View**: **View** (the viewpoint list and saved cameras), **Persp** / **Ortho**, and **Lock** while you look through a camera.
+- **Overlays**: **Labels** (names of projectors, people and cameras, and camera glyphs), **Tex** (**View > Textures**, see [Textures](Textures.md)) and **Grid** (ground grid).
+- **Grid** (new in 1.1.0): **Cell size (m)**, **Subdivisions (cells per major line)** and **Extent (cells, 0 = auto)**. Auto follows the camera as before. A fixed extent draws a square grid on the file origin that fades out at its edge.
+- **Edges** (new in 1.1.0): **Highlight** puts white lines where the depth or the surface direction jumps, in every view mode. **Texture** adds edges found in the base texture (needs Highlight and Tex). **Edge strength (%)** sets how strong the lines are. **Object edges** (the old **Wire**, **View > Object edges**): **Off**, **Feature edges**, **All edges**; the button toggles Off and the last mode. "Building wireframe…" shows while a big model builds. Edge highlight shows in the 3D view only, not in report pictures.
+- **Surfaces** (new in 1.1.0): **Specular** (a soft sheen on the shaded surfaces), **Perceptual** (colour overlays and tints mix in linear light) and **Grey** (material override: in the Shaded view every object takes the default grey and textures are hidden).
+- **Beams** (new in 1.1.0): **Selected** (lines of every projector, fill on the selected ones), **All** (fill on every beam) or **None**, and **Beam visibility (%)** (0 hides lines and fill). **Images** (**Show projector images**) paints each projector's test pattern over the surfaces in every view mode. The Shaded view always shows it. Its strength is **Pattern** in Lighting.
+- **Background**: **Dark**, **Grey**, **Black**, **Night gradient** and, new in 1.1.0, **Flat colour** and **Gradient** with colour pickers (**Colour**, or **Top colour** and **Bottom colour**). Also in **View > Background**.
+- **Lighting**: see below.
+
+The default surface is now a dark grey with a soft highlight, so coloured overlays stay readable. The grid, the background colours and the other look settings above, and the place of the legend, are kept per machine in the app, not in the project file. They are not undone with Ctrl+Z.
+
+**View > Statistics**: text at the top left: the view name (for example `User Perspective`), project and variation name, Objects, Projectors (with how many are in the analysis), Triangles, and the frame rate.
 
 ## Lighting
 
@@ -78,7 +86,7 @@ The right-hand button column moves left while the **Measure** sidebar (`N`) is o
 The **Lighting** button (or **View > Lighting…**) opens a popover for how the **Shaded** view is lit. It changes the picture, not the numbers.
 
 - Mode: **Headlight** (light from the camera, the default), **Sun** (fixed direction; set **Azimuth** and **Elevation**), **Flat** (no shading).
-- **Scene light (%)** and **Pattern (%)** sliders.
+- **Ambient (%)** (the base light on every surface, default 25 %), **Directional (%)** (the strength of the headlight or sun, renamed from Scene light) and **Pattern (%)** sliders.
 - **Pattern kind**: the test pattern of the project. See [Test Patterns](Test-Patterns.md).
 - **Reset lighting**.
 
@@ -92,11 +100,22 @@ The **Lighting** button (or **View > Lighting…**) opens a popover for how the 
 
 **Select** (`Q`), **Move** (`W`), **Rotate** (`E`), **Scale** (`R`) put a gizmo on the selection. **Measure** (`M`), set apart by a divider, draws dimension lines and notes: see [Measure Tools](Measure-Tools.md). **World** or **Local** sets the gizmo axes. **Origin** or **Box ctr** sets the pivot. With mixed objects the pivot may be forced to the box centre; the view says so. These keys work with the focus in the 3D view or the Outliner.
 
+### Snapping (magnet)
+
+The **magnet** button in the top strip of the 3D view (group **Snapping**, between the pivot buttons and **Light**) switches snapping for the Move, Rotate and Scale gizmos. The small arrow beside it opens **Snap steps**: **Move (m)** (default 0.1), **Rotate (deg)** (default 5) and **Scale (factor)** (default 0.1). Type a value and press Enter.
+
+- Magnet **on**: every gizmo drag snaps. Hold `Ctrl` to move freely.
+- Magnet **off** (the default on a fresh machine): a drag is free. Hold `Ctrl` to snap, as before 1.1.0.
+- **Move** also snaps to the vertices and edges of the venue meshes (the nearest corner, edge end, edge middle or point on a feature edge within 12 pixels of the pointer), then to the step. It never snaps to a projector's own lens.
+- **Rotate** and **Scale** snap to their steps only. Scale never goes below its step.
+- `Esc` during a drag puts the object back. One drag is one undo step.
+- Measure, orbit and placing with a click are not affected. The magnet and the steps are kept per machine, not in the project file.
+
 ## Mode buttons (top right)
 
-![The top strip: Blended, Raw, the four view modes, Lighting and the help button](images/3d-top-strip.png)
+![The top strip: pivot, magnet, Blended, Raw, the view modes and the help button](images/3d-top-strip.png)
 
-**Shaded**, **Lux**, **Overlap**, **Pixel** (`1` to `4`), **Blended** / **Raw**, and **?**. See [View Modes](View-Modes.md).
+**Shaded**, **Photometric**, **Overlap**, **Pixel**, **Distance** (`1` to `5`), **Blended** / **Raw**, and **?**. See [View Modes](View-Modes.md).
 
 The controls are inactive on purpose during a gizmo drag.
 

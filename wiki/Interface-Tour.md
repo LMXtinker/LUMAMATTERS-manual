@@ -44,10 +44,10 @@ Banners can appear under the header: a slow-view warning when 9 to 16 projectors
 The 3D view shows the venue, projectors, people and cameras. Controls sit on top of it:
 
 - **Left edge:** the transform tools (Select, Move, Rotate, Scale), the **Measure** tool below a divider, World or Local space, and the pivot (**Origin** or **Box ctr**, the centre of the bounding box).
-- **Top right:** Light **Blended** or **Raw**, the view-mode buttons **Shaded**, **Lux**, **Overlap**, **Pixel**, **Lighting** and a **?** help button.
-- **Right edge:** **View** (viewpoints and cameras), Perspective or Orthographic, then the toggles **Labels**, **Tex**, **Grid** and **Wire**. A **Lock** button appears while you look through a camera.
-- **Right edge, far side:** the **Measure** tab. It unfolds the Measure sidebar (`N`); the button column moves left of it. See [Measure Tools](Measure-Tools.md).
-- **Bottom left:** the legend of the current view mode.
+- **Top strip:** the pivot (**Origin** or **Box ctr**), the **magnet** (snapping, with its step sizes), Light **Blended** or **Raw**, the view-mode buttons **Shaded**, **Photometric**, **Overlap**, **Pixel**, **Distance** and a **?** help button.
+- **Right edge:** the **Viewport** tab unfolds the view settings: **View** (viewpoints and cameras), Perspective or Orthographic, the overlays **Labels**, **Tex** and **Grid**, the grid settings, **Edges** (edge highlight and object edges), **Surfaces**, **Beams**, **Background** and **Lighting**. A **Lock** button appears while you look through a camera.
+- **Right edge, below Viewport:** the **Measure** tab. It unfolds the Measure sidebar (`N`); only one of the two panels is open at a time. See [Measure Tools](Measure-Tools.md).
+- **Floating legend:** the **Legend** card shows the legend of the current view mode (Photometric, Overlap, Pixel, Distance). It starts at the lower left. Drag it by its grip; double-click the grip to put it back.
 
 Details: [3D View](3D-View.md) and [View Modes](View-Modes.md).
 

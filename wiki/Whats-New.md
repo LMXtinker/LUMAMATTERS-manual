@@ -1,8 +1,32 @@
 # What's new
 
-Changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.0.3.
+Changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.1.0.
 
-Projects saved with version 1.0 features (people, cameras, report layout, maker throw data) can use a newer file format. Older builds refuse them. Update every machine before you save such a project. See [Several Machines](Several-Machines.md) and [Project Files](Project-Files.md).
+Projects saved with version 1.0 and later features (people, cameras, report layout, maker throw data, reflectance, projector images) can use a newer file format. Older builds refuse them. Update every machine before you save such a project. See [Several Machines](Several-Machines.md) and [Project Files](Project-Files.md).
+
+## 1.1.0 (2026-10-30): New look, Photometric view, snapping, Share
+
+**Viewport look**
+- **Dark grey surfaces with a soft highlight.** The Viewport fold-out has new **Surfaces** switches (**Specular**, **Perceptual**, **Grey** material override). Lighting has a new **Ambient (%)**, and "Scene light" is now **Directional (%)**. The colour views draw with an **Overlay opacity** (default 70 %), so the model never disappears. See [3D View](3D-View.md#viewport-fold-out-right-edge).
+- **Beams and projector images.** Filled, fainter beams with **Selected**, **All**, **None** and a **Beam visibility (%)** slider. **Images** (Show projector images) paints each projector's test pattern in every view mode.
+- **Edge highlight.** White lines where depth or surface direction jumps, with a strength slider and an option for texture edges. The old Wire button is now **Object edges** (**View > Object edges**) in the new **Edges** section.
+- **Distance view** (key `5`): distance to the nearest projector, in metres. See [View Modes](View-Modes.md).
+- **Grid and background.** **Cell size**, **Subdivisions** and **Extent** for the grid, and two new backgrounds, **Flat colour** and **Gradient**, with colour pickers. These look settings are kept per machine, not in the project.
+- **Floating legend.** The legend is a card you can drag over the 3D view. Double-click its grip to reset, fold it to keep the colour bar. See [View Modes](View-Modes.md#legends).
+
+**Photometric view**
+- The **Lux** view is now **Photometric** (key `2`; the label only). The legend has a switch: **Illuminance**, **Luminance**, **Surface contrast**, **Ambient contrast**. See [Analysis](Analysis.md#photometric).
+- **Luminance** in cd/m² (L = ρ × E / π) for a viewpoint (current camera or a saved camera). Objects that the viewpoint cannot see are greyed. **Reflectance** per object in Properties > Surface, with typical values (white paint to red brick) and a project default. See [Physics Model](Physics-Model.md).
+- **Surface contrast** (p99 / p1 per object) and **Ambient contrast** with a **Site ambient lx** value, marks at 5:1 and 10:1.
+- **Auto range**, **Smooth / 5 bands / 10 bands**, log or linear. New **Photometry** rows in the Summary, new Targets columns, a probe line, and **Quantity** and **Bands** for report pictures. See [Summary and History](Summary-and-History.md) and [Report and PDF](Report-and-PDF.md).
+- **Projector image.** Properties > Image loads your own picture in place of a projector's test pattern. See [Properties](Properties.md).
+- **Project format 5.0.** A project with a reflectance or a projector image is saved as format 5.0. Older builds refuse it. The first 5.0 save keeps a copy of the old project in `.recovery` and, with automatic snapshots on, makes a snapshot. Update every machine first. See [Project Files](Project-Files.md#project-format-version) and [Several Machines](Several-Machines.md).
+
+**Snapping**
+- A **magnet** button in the top strip of the 3D view, with step sizes for Move, Rotate and Scale. Move also snaps to vertices and edges of the venue. **Behaviour change:** with the magnet on, `Ctrl` means free; with it off, `Ctrl` snaps as before. See [3D View](3D-View.md#snapping-magnet).
+
+**Share**
+- **File > Share view-only scene…** exports a viewer that opens in a web browser without LUMAMATTERS: orbit, saved cameras, layers, Shaded or Photometric (illuminance and luminance) with a colour bar. Output as a folder, a zip or a single file (optional password). The folder needs a web server. Anyone with the files can extract the geometry. See [Share a view-only scene](Share-a-view-only-scene.md).
 
 ## 1.0.3 (2026-10-25): Legal notices
 
@@ -11,6 +35,7 @@ Projects saved with version 1.0 features (people, cameras, report layout, maker 
 - **Download page.** **Help > About** links to the download page.
 - **Feedback privacy line.** **Help > Send feedback…** says that feedback goes only to the developer, is used only to fix the app and is deleted on request. See [Send feedback](Menus.md#send-feedback).
 - **Liability wording.** The no-warranty note in About and in `LICENSE` now applies "to the extent permitted by law". The licence terms themselves are unchanged.
+- **Tutorial part 2.** After the last card of the tour, **You are ready**, the tour offers an optional part 2 of 4 steps: Measure, Variations, the Report and Send feedback. See [Tutorial](First-Start-and-Workspace.md#tutorial).
 
 ## 1.0.2 (2026-10-24): Feedback
 

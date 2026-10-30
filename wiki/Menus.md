@@ -22,6 +22,7 @@ An entry that cannot be used is greyed out. Hover it to see why. All entries are
 | **Save As…** | Asks for a new name, writes the current state into a new project, and opens it. | `Ctrl+Shift+S` |
 | **Import** | Submenu: **glTF / GLB…**, **FBX…**, **OBJ…**. Copies a model file into the project. | |
 | **Export** | Submenu: **Test-pattern PNGs…**, **Camera images (PNG)…**, **Report…**. | |
+| **Share view-only scene…** | Exports the current setup as a page to open in a browser. Needs an open project; also works in a read-only window. See [Share a view-only scene](Share-a-view-only-scene.md). | |
 | **Change workspace…** | Picks another workspace folder. | |
 
 Notes:
@@ -51,21 +52,21 @@ Notes:
 
 ![The View menu](images/menu-view.png)
 
-![The View submenus: Shading, Light and Wireframe](images/menu-view-submenus.png)
+![The View submenus: Shading, Light and Object edges](images/menu-view-submenus.png)
 
 ![The View submenus: Background and Panels](images/menu-view-submenus-2.png)
 
 | Entry | What it does | Shortcut |
 |---|---|---|
-| **Shading** | Submenu: **Shaded**, **Lux**, **Overlap**, **Pixel**. | `1`, `2`, `3`, `4` |
-| **Light** | Submenu: **Blended**, **Raw**. Greyed out unless the Lux view is on ("Lux view only."). | |
+| **Shading** | Submenu: **Shaded**, **Photometric**, **Overlap**, **Pixel**, **Distance**. | `1`, `2`, `3`, `4`, `5` |
+| **Light** | Submenu: **Blended**, **Raw**. Greyed out unless the Photometric view is on ("Photometric view only."). | |
 | **Lighting…** | Opens the Lighting popover of the 3D view (how the Shaded view is lit). Needs an open project. | |
 | **Labels** | Shows or hides the name labels of projectors, people and cameras. | |
 | **Textures** | Shows or hides textures. | |
 | **Grid** | Shows or hides the ground grid. | |
-| **Wireframe** | Submenu: **Off**, **Feature edges**, **All edges**. | |
+| **Object edges** | Submenu: **Off**, **Feature edges**, **All edges** (called Wireframe before 1.1.0). | |
 | **Statistics** | Shows or hides the statistics text in the 3D view. | |
-| **Background** | Submenu: **Dark**, **Grey**, **Black**, **Night gradient**. | |
+| **Background** | Submenu: **Dark**, **Grey**, **Black**, **Night gradient**, **Flat colour**, **Gradient**. | |
 | **Orthographic** | Switches between perspective and orthographic. | `Numpad 5` |
 | **Lock camera to view** | While you look through a camera, orbit, pan and zoom move that camera. Greyed out with a reason when unusable. | |
 | **Frame selected** | Frames the selection (everything when nothing is selected). Needs an open project. | `F` |
@@ -92,7 +93,7 @@ The **View** button in the 3D view opens the same list.
 | Entry | What it does |
 |---|---|
 | **Tutorial** | Starts the guided tour. Needs an open project. |
-| **View modes…** | Explains the four view modes and shows the planning-aid notice. See [View Modes](View-Modes.md). |
+| **View modes…** | Explains the five view modes and shows the planning-aid notice. See [View Modes](View-Modes.md). |
 | **Keyboard shortcuts** | Lists all shortcuts. See [Keyboard Shortcuts](Keyboard-Shortcuts.md). |
 | **Blender export…** | Shows the object-name prefixes and the export checklist for Blender. See [Blender Export and Import](Blender-Export-and-Import.md). |
 | **Send feedback…** | Opens the feedback dialog, with or without an open project. See [Send feedback](#send-feedback). |
@@ -170,6 +171,6 @@ The dialog shows, top to bottom:
 - **Third-party notices…**, a button. It unfolds a scrollable, read-only list of the licences of the libraries and fonts the app includes. The button then reads **Hide third-party notices**. The same text is in `THIRD_PARTY_NOTICES.txt` in the install folder.
 - **Workspace folder:** the name of your workspace folder, or "none".
 - "Everything stays on this machine; the app works offline."
-- What's new in 1.0.3, 1.0.2, 1.0.1 and 1.0 (newest first), and a note that projects saved with v1.0 features can use a newer file format that older builds refuse. The same notes are on [What's new](Whats-New.md).
+- What's new in 1.1.0, 1.0.3, 1.0.2, 1.0.1 and 1.0 (newest first), and a note that projects saved with newer features can use a newer file format that older builds refuse. The same notes are on [What's new](Whats-New.md).
 
 See also: [Interface Tour](Interface-Tour.md), [What's new](Whats-New.md), [Keyboard Shortcuts](Keyboard-Shortcuts.md), [Projects and Snapshots](Projects-and-Snapshots.md), [3D View](3D-View.md), [Measure Tools](Measure-Tools.md)

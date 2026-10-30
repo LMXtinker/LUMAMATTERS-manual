@@ -27,6 +27,7 @@
 - [Textures](Textures.md)
 - [People](People.md)
 - [Report and PDF](Report-and-PDF.md)
+- [Share a view-only scene](Share-a-view-only-scene.md)
 - [Test patterns](Test-Patterns.md)
 
 **Reference**

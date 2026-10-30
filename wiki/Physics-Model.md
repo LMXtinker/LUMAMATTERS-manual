@@ -12,7 +12,13 @@ LUMAMATTERS calculates simple, exact geometry and light. It is made for desk pla
 
 **Lens shift.** Shift limits come from the database, in percent of image size. A shift outside the range is calculated and flagged **Shift out of range**. The shift range is treated as a rectangle, which can be a little generous at the corners (flag **Shift shape approximate**).
 
-**Lux.** Light arriving on a surface, in lux. It comes from the projector's lumens, the distance and the angle between the light and the surface. On a flat wall facing the projector, lux equals lumens divided by image area. At an angle, light spreads over a larger area and lux drops. Light blocked by geometry is removed.
+**Illuminance (lux).** Light arriving on a surface, in lux. It comes from the projector's lumens, the distance and the angle between the light and the surface. On a flat wall facing the projector, lux equals lumens divided by image area. At an angle, light spreads over a larger area and lux drops. Light blocked by geometry is removed.
+
+**Luminance.** How bright a surface looks, in cd/m². L = ρ × E / π, where E is the illuminance (lux) and ρ the reflectance of the surface (0 to 1, set per object in Properties, else the project default, 1.00 at the start). It assumes a perfectly matte (Lambertian) surface, so it does not depend on the angle you look from. It is calculated for one viewpoint (the current camera or a saved camera); a surface the viewpoint cannot see is not counted. Treat it as an estimate.
+
+**Surface contrast.** For one target object: the 99th percentile of the illuminance divided by the 1st percentile (p99 / p1), over its lit samples (with fewer than 100 lit samples: max / min). Because one object has one reflectance, the same ratio holds for luminance. It describes how even the object is lit. One lit sample gives 1:1. 5:1 and 10:1 are rules of thumb, not standards.
+
+**Ambient contrast.** (E + E_amb) / E_amb for each point, with one site ambient value E_amb in lux for every surface. It needs E_amb of at least 0.01 lx. With E_amb of 0 the app shows n/a.
 
 **Pixel size.** The size of one projected pixel on a surface, from native resolution, distance and angle. Angled surfaces stretch pixels. A glancing angle (over 75 degrees from the surface normal by default) is flagged **grazing**.
 
@@ -34,8 +40,8 @@ LUMAMATTERS calculates simple, exact geometry and light. It is made for desk pla
 
 ## What it does not do
 
-- **No surface reflectance.** Lux is light arriving, not how bright a surface looks.
-- **No contrast or black level.** There is no ambient light, no contrast ratio and no "washed-out" prediction. (Ambient light is not a setting in the app.)
+- **Reflectance is one number per object.** No colour, no gloss, no angle dependence. Luminance and the contrast views rest on it. Illuminance (lux) does not include it.
+- **No black level.** The app does not model the projector's own black or its native contrast. Ambient contrast uses one site ambient value for the whole scene, not a model of light in the room.
 - No colour, gamut or gamma modelling. Shaded view colours are not physical.
 - No digital zoom, no keystone correction, no warping.
 - No uniformity or vignetting of real lenses.

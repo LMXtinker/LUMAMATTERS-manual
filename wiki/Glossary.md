@@ -16,7 +16,15 @@
 
 **Lens shift.** Moving the image up, down, left or right by sliding the lens, without moving the projector. The limits come from the [Projector database](Projector-Database.md).
 
-**Lux.** Light arriving on a surface, in lumens per square metre. It is not how bright a surface looks. See [View modes](View-Modes.md).
+**Lux.** Light arriving on a surface, in lumens per square metre (illuminance). It is not how bright a surface looks: for that see **Luminance**. See [View modes](View-Modes.md).
+
+**Luminance.** How bright a surface looks from a viewpoint, in cd/m². L = ρ × E / π, with ρ the reflectance of the surface and E the lux on it. A matte-surface estimate. See [Physics Model](Physics-Model.md).
+
+**Reflectance (ρ).** The share of the light a surface sends back, 0 to 1. Set per object in Properties > Surface. See [Properties](Properties.md).
+
+**Surface contrast.** The ratio p99 / p1 of the light on the lit part of one object. See [Analysis](Analysis.md).
+
+**Ambient contrast.** (projector light + site ambient) / site ambient. See [Analysis](Analysis.md).
 
 **Maker throw data.** The maker's throw-distance formula or table for a lens. See [Projector database](Projector-Database.md).
 

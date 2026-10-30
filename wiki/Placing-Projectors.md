@@ -65,6 +65,7 @@ Below the fields, readouts show **Aim distance**, **Aims at** (which surface), *
 The projection centre is the lens, not the body.
 
 - Use the **Move** (`W`) and **Rotate** (`E`) tools in the 3D view, or type values in **Properties > Transform** (**Position** and **Rotation**). Numbers use Blender's axes (Z up) and metres.
+- **Snapping.** Turn on the **magnet** in the top strip of the 3D view to snap a Move to the corners and edges of the venue and to a step (default 0.1 m), and a Rotate to 5° steps. With the magnet on, hold `Ctrl` to move freely; with it off, `Ctrl` snaps. The step sizes are in the small arrow next to the magnet. A projector never snaps to its own lens. See [3D View](3D-View.md#snapping-magnet).
 - **Aim at point** points selected projectors at a surface point. Use **Edit > Aim at point** or the **Aim at…** button under **Rotation** in Properties. A hint appears: "Click a point to aim n projector(s) at. Esc or right-click cancels." Click once on a surface.
   - Only yaw and pitch change. Roll, mount and portrait orientation are kept.
   - A projector that cannot reach the point (for example the point is at the lens, or straight below with horizontal shift) stays unchanged. A message names it.

@@ -48,10 +48,10 @@ Use **File > Change workspace…** and pick the new folder. If a project is open
 
 On a fresh install, your first new project shows a welcome card with a guided tour. Choose **Start tour** or **Skip tutorial**.
 
-- It has 15 steps and takes about 10 minutes.
+- It has 15 steps and takes about 10 minutes. The last card, **You are ready**, offers an optional part 2 of 4 steps (**Continue with part 2**): Measure, Variations, the Report and Send feedback. **Finish** ends the tour there.
 - It runs in a practice project called **Tutorial**, so your own project stays unchanged. If a project is open, the card can also offer **Use "<name>" instead**.
-- It covers the 3D view, importing a venue, the Outliner, adding and aiming a projector, lens and readouts, the Lux view, overlap and blends, test patterns, the Summary, and saving and snapshots.
-- Skip at any time. Start again with **Help > Tutorial**. If you left midway, the app offers **Resume the tutorial?**.
+- It covers the 3D view, importing a venue, the Outliner, adding and aiming a projector, lens and readouts, the Photometric view, overlap and blends, test patterns, the Summary, and saving and snapshots.
+- Skip at any time. Start again with **Help > Tutorial**. If you left midway, the app offers **Resume the tutorial?** (in part 2: "Resume at part 2, step n").
 
 **Help > Tutorial** needs an open project. Without one, the entry is greyed out with the tooltip "Open a project first."
 

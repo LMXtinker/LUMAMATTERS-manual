@@ -13,7 +13,7 @@ The Report tab is a small page editor. Build A4 landscape pages with text, 3D-vi
 
 Both open and focus the **Report** tab next to the 3D view. With no project open it says "Open a project to set up its report." The report reads the open project as it is now. You do not need to save first. It also works in a read-only window.
 
-The first time, the tab shows the built-in **Dark lab** starter: near-black pages, IBM Plex fonts, a cover, a Lux page, an Overlap page, a Projectors page and a Settings and notes page. Opening the tab writes nothing to your project. Your first edit stores the layout in the project file.
+The first time, the tab shows the built-in **Dark lab** starter: near-black pages, IBM Plex fonts, a cover, a Photometric page, an Overlap page, a Projectors page and a Settings and notes page. Opening the tab writes nothing to your project. Your first edit stores the layout in the project file.
 
 ## The disclaimer
 
@@ -62,7 +62,7 @@ Add blocks with the **Insert** buttons. They go on the current page, or on the m
 | **Text** | Rich text: font, size, bold, italic, underline, lists, alignment, paragraph styles, and **Insert field** for live values. Double-click to edit. |
 | **Render** | A picture of the 3D view. Each Render block has its own camera. |
 | **Table** | A table filled from the project, with a column picker. Sources: **Projectors**, **Pairs**, **Notes**, **Settings**, **Measurements**. A long table continues on new pages with its header repeated. |
-| **Metrics** | A photometry box with layouts **Strip**, **Grid** and **Table**, and an optional lux scale. |
+| **Metrics** | A photometry box with layouts **Strip**, **Grid** and **Table**, and an optional colour scale of the project's quantity (called "Lux scale" for Illuminance). Since 1.1.0 its items also include **Luminance min / avg / max**, **Visible lit area** and **Ambient contrast min / max**. The luminance rows read n/a unless the 3D view's quantity is Luminance. |
 | **Shape** | A rectangle or ellipse. |
 | **Line** | A line: solid, dashed or dotted. |
 | **SVG** | Your own SVG artwork. |
@@ -74,10 +74,11 @@ Drag SVG and picture files onto the Report tab. Model files are refused there.
 
 In Properties, a Render block has:
 
-- **View mode**: **Shaded**, **Lux**, **Overlap** or **Pixel**.
+- **View mode**: **Shaded**, **Photometric**, **Overlap** or **Pixel** (Distance is not offered in reports).
+- **Quantity** and **Bands** (only with the Photometric view): **Illuminance**, **Luminance**, **Surface contrast** or **Ambient contrast**, and **Smooth**, **5 bands** or **10 bands**. Each change is one undo step. The legend strip of the picture follows the quantity. Luminance uses the viewpoint chosen in the Photometric legend.
 - **Source**: **Current 3D view**, a saved camera or a projector. With **Current 3D view**, press **Update view** to store the 3D view's current camera for this picture.
-- **Light** (only for a projector source: **This projector only** or **All projectors**), **Fit** (**Fill** or **Fit**), **Lighting**, **Textures** (**As 3D view**, **On**, **Off**), **Texture strength** (Lux, Overlap and Pixel views), **Test patterns** (Shaded view), **Legend** and **Background**.
-- Overlay options: **Cones**, **Iso-lux lines**, **Iso-lux labels**, **Centre lux** and **Blend values**, with **Label size**, **Label colour** and **Label outline**.
+- **Light** (only for a projector source: **This projector only** or **All projectors**), **Fit** (**Fill** or **Fit**), **Lighting**, **Textures** (**As 3D view**, **On**, **Off**), **Texture strength** (Photometric, Overlap and Pixel views), **Test patterns** (Shaded view), **Legend** and **Background**.
+- Overlay options (the iso-lux lines and labels are greyed out unless the quantity is Illuminance): **Cones**, **Iso-lux lines**, **Iso-lux labels**, **Centre lux** and **Blend values**, with **Label size**, **Label colour** and **Label outline**.
 - Measurement options: **Measurements**, **Image size tags** and **Edge lengths**, and a **Measurements** list. See "Measurements in the report" below.
 
 Every number in the report equals the matching number in the app panels.

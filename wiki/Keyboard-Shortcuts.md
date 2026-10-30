@@ -25,9 +25,10 @@
 | `Ctrl+Shift+Z` or `Ctrl+Y` | Redo |
 | `` ` `` (the key left of `1`) | Switch variation A / B |
 | `1` | Shaded view |
-| `2` | Lux view |
+| `2` | Photometric view |
 | `3` | Overlap view |
 | `4` | Pixel view |
+| `5` | Distance view |
 | `Numpad 1` | Front viewpoint |
 | `Ctrl+Numpad 1` | Back viewpoint |
 | `Numpad 3` | Right viewpoint |
@@ -66,6 +67,7 @@ Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click
 
 - Middle mouse in the 3D view: orbit. Right mouse: pan. Wheel: zoom. See [3D View](3D-View.md).
 - `Alt+click` on a surface: pin the probe.
+- Gizmo drags (Move, Rotate, Scale): `Ctrl` snaps while the **magnet** is off and means free while the magnet is on (see [3D View](3D-View.md#snapping-magnet)).
 - Number fields: drag with the left button; `Shift` fine, `Ctrl` snap; middle button opens the Value Ladder. See [Properties](Properties.md).
 - While a number field is being edited, `Ctrl+S` first commits what you typed.
 

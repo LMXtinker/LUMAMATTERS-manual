@@ -40,6 +40,7 @@ A locked object shows a note, and its fields are disabled.
 
 ![The Test pattern list](images/props-pattern-list.png)
 
+- **Image** (new in 1.1.0): the name of the picture this projector shows, or none, with **Load…** and **Remove**. A loaded picture replaces the test pattern of that projector in the Shaded view, and in the Photometric view, Overlap and Pixel when **Images** (Viewport > Beams) is on. It is stretched to the projector's image (no aspect fit) and shown at up to 1024 pixels. The file is copied into the project (and its snapshots). **Remove** brings the test pattern back. A project with a projector image is saved as project format 5.0. See [Project Files](Project-Files.md#project-format-version).
 - **Body**: the **Flight frame** checkbox and a note on the body model in use. See [Physics Model](Physics-Model.md).
 - **Readouts** (one projector): Aim distance, Aims at, Throw distance (maker), Throw ratio (centre), Image W x H, Centre lux, Pixel, effective lumens, and **flag chips** that explain caveats. Click a chip for its explanation.
 
@@ -54,6 +55,7 @@ Zoom is optical zoom only. Throw and shift come from the projector database. See
 ![Properties of a surface](images/properties-surface.png)
 
 - **Role**: **Target** (should be lit and counted), **Occluder** (blocks light) or **Helper**.
+- **Reflectance** (new in 1.1.0): the reflectance ρ from 0 to 1 that Luminance uses (see [Physics Model](Physics-Model.md)). Type a number or pick a typical value from the list: **white paint** 0.80, **light plaster** 0.45, **sandstone** 0.30, **concrete** 0.25, **granite** 0.22, **red brick** 0.12. **Project default** removes the object's own value, so it follows the **Default ρ** of the Photometric legend (1.00 until you change it). Each choice is one undo step. A project with a reflectance is saved as project format 5.0.
 - **Triangles** and **UVs** (yes / no).
 
 ## Texture (venue meshes)

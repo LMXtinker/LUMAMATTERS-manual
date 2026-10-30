@@ -13,9 +13,10 @@ Summary shows the venue state and the numbers of the active variation. Sections 
 - **Status line** at the top: "Venue loaded.", "No model file imported. Use File > Import.", or a problem (a missing model file) on its own line. A **Hidden:** line counts the hidden projectors and surfaces, which are not in the numbers.
 - **Venue**: the import report of the latest model file (Surfaces, Triangles, Projectors found, Viewpoints found, Ignored, Rejected, warnings). With several files, a list picks which report to show.
 - **Metrics**: Target area, Coverage, Shadowed, Outside all images, Below min lux, Lux min / avg / max, Uniformity (min/avg), Pixel avg / P95, Overlap area, Pairs below min overlap, Projectors, total effective lumens. A badge says `stale` while numbers recompute, or `analysis failed: out of date`. The checkbox **Projector bodies cast shadows** switches body shadows.
-- **Targets**: one row per target surface.
+- **Photometry** (shown while the Photometric view is on): with the quantity Luminance, **Luminance min / avg / max** and **Visible lit area**; always **Ambient contrast min / max**. Without a site ambient it says "Set a site ambient value".
+- **Targets**: one row per target surface. In the Photometric view it adds **ρ**, **Lum. avg** (Luminance quantity), **Surf. CR** (surface contrast; hover for its band) and **Lit**.
 - **Overlaps**: a pair table with the blend zone (in projector pixels) and the overlap per pair; pairs under the warning threshold are marked.
-- **Probe** (pinned at the bottom): hover a surface in the 3D view to read lux, pixel size and distance per projector at that point. `Alt+click` pins it, `Esc` releases it.
+- **Probe** (pinned at the bottom): hover a surface in the 3D view to read lux, pixel size and distance per projector at that point. In the Photometric view it adds a line for the chosen quantity (luminance, ambient contrast or the object's surface contrast). `Alt+click` pins it, `Esc` releases it.
 
 To read the numbers, see [Analysis](Analysis.md).
 

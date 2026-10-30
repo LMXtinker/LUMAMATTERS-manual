@@ -41,7 +41,7 @@ The project uses a newer format than this build understands (see [Project files]
 ## Textures are missing or look grey
 
 - The import report lists missing textures. Use **Locate textures...** to find them.
-- **Lux**, **Overlap** and **Pixel** views draw the texture in greyscale on purpose. Change it with **Texture strength**. See [Textures](Textures.md).
+- **Photometric**, **Overlap**, **Pixel** and **Distance** views draw the texture in greyscale on purpose. Change it with **Texture strength**. See [Textures](Textures.md).
 - Only base-colour textures are shown. Other maps are ignored.
 
 ## The scale looks wrong

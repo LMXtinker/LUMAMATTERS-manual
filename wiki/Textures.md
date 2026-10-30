@@ -7,7 +7,7 @@ The **Shaded** view shows the pictures of your venue model (wood, brick, a paint
 ## What you see
 
 - In **Shaded** view, the venue shows its base-colour textures, with the projector light on top.
-- In **Lux**, **Overlap** and **Pixel** view, the colours are drawn over a grey copy of the texture. The venue keeps its detail and the colours stay readable.
+- In **Photometric**, **Overlap**, **Pixel** and **Distance** view, the colours are drawn over a grey copy of the texture. The venue keeps its detail and the colours stay readable.
 - A **Texture strength (%)** slider in the legend of those three views sets how much texture shows. The default is 50 %. At 0 % the views look as they did before textures existed.
 - The analysis never reads a picture. All numbers are the same with textures on or off.
 
