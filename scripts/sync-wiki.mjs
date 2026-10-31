@@ -1,7 +1,7 @@
 // Generates src/content/docs/ from wiki/ (kept as the single copy, also published to the GitHub Wiki).
 // - title from the first "# " heading (Starlight renders the title itself)
 // - links "Page.md#x" -> "/LUMAMATTERS-manual/page/#x"
-// - Home.md -> splash index page
+// - Home.md -> index page with hero (doc template, so the sidebar shows)
 import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, cpSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -42,7 +42,7 @@ for (const f of readdirSync(src)) {
     fm = [
       'title: LUMAMATTERS',
       'description: "Desk planner for projection mapping: venue in 3D, projectors from maker data, lux, overlap and pixel size."',
-      'template: splash',
+      'template: doc',
       'hero:',
       '  tagline: "A desk planner for projection mapping. Load your venue in 3D, place projectors from maker data, and see lux, overlap and pixel size."',
       '  image:',
