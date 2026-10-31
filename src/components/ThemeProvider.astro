@@ -1,0 +1,10 @@
+---
+// LUMAMATTERS is dark only (app and RGB wordmark have no light version).
+// Forces dark before first paint, ignores a stored light choice. Keeps the global Starlight expects.
+---
+<script is:inline>
+  window.StarlightThemeProvider = (() => {
+    document.documentElement.dataset.theme = 'dark';
+    return { updatePickers() {} };
+  })();
+</script>

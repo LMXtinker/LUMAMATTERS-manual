@@ -45,6 +45,8 @@ for (const f of readdirSync(src)) {
       'template: splash',
       'hero:',
       '  tagline: "A desk planner for projection mapping. Load your venue in 3D, place projectors from maker data, and see lux, overlap and pixel size."',
+      '  image:',
+      `    html: '<img src="${BASE}/brand/wordmark-hero.png" alt="LumaMatters" width="1100" height="188">'`,
       '  actions:',
       '    - text: Try the web demo',
       `      link: ${BASE}/demo/`,

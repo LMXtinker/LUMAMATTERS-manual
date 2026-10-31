@@ -1,0 +1,157 @@
+/* LUMAMATTERS manual look: app palette (--luma-*), RGB UI recipe (board 13b, docs/brand/rgb-ui-13b.css in the app repo),
+   IBM Plex self-hosted (OFL, public/fonts/OFL.txt). Dark only. */
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 300; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexSans-Light.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexSans-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 400; font-style: italic; font-display: swap; src: url('./fonts/IBMPlexSans-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 500; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexSans-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 600; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexSans-SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Sans'; font-weight: 700; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexSans-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-weight: 400; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexMono-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-weight: 400; font-style: italic; font-display: swap; src: url('./fonts/IBMPlexMono-Italic.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-weight: 500; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexMono-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'IBM Plex Mono'; font-weight: 600 700; font-style: normal; font-display: swap; src: url('./fonts/IBMPlexMono-SemiBold.woff2') format('woff2'); }
+
+:root, :root[data-theme='dark'], :root[data-theme='light'] {
+  color-scheme: dark;
+  /* app tokens (src/index.css) */
+  --luma-gap: #101010; --luma-area: #282828; --luma-tabbar: #1b1b1b; --luma-tab-off: #222222; --luma-panel: #333333;
+  --luma-list: #232323; --luma-field: #484848; --luma-menu: #202020; --luma-input: #161616;
+  --luma-text: #e6e6e6; --luma-label: #bdbdbd; --luma-dim: #9a9a9a;
+  --luma-warn: #d9a03f; --luma-danger: #e0605a;
+  /* RGB UI tokens (src/rgb-ui.css) */
+  --luma-rgb-bg: #5a5a5a; --luma-on-bg: #4a4a4a; --luma-on-edge: rgba(230, 230, 230, 0.85);
+  --luma-rgb-cyan: #3fe0ff; --luma-rgb-yellow: #ffd400; --luma-rgb-blue: #3050ff; --luma-rgb-red: #ff2a2a;
+  --luma-lite: #383838; --luma-hover-bg: #3c3c3c; --luma-hover-edge: rgba(255, 255, 255, 0.28); --luma-sep: #3c3c3c;
+  --luma-rgb-shadow: inset 0 0 0 1px #fff, -0.85px -0.75px 0 0 var(--luma-rgb-cyan), 0.85px 0.75px 0 0 var(--luma-rgb-yellow),
+    -1.9px -1.7px 0 0 var(--luma-rgb-blue), 1.9px 1.7px 0 0 var(--luma-rgb-red), 0 0 7px 0 rgba(255, 255, 255, 0.4);
+  --luma-rgb-shadow-sm: inset 0 0 0 1px #fff, -0.5px -0.45px 0 0 var(--luma-rgb-cyan), 0.5px 0.45px 0 0 var(--luma-rgb-yellow),
+    -1px -0.9px 0 0 var(--luma-rgb-blue), 1px 0.9px 0 0 var(--luma-rgb-red);
+
+  --sl-font: 'IBM Plex Sans', system-ui, sans-serif;
+  --sl-font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+
+  /* Starlight grays: 1 lightest text ... 7 darkest */
+  --sl-color-white: #ffffff;
+  --sl-color-gray-1: var(--luma-text);
+  --sl-color-gray-2: var(--luma-label);
+  --sl-color-gray-3: var(--luma-dim);
+  --sl-color-gray-4: #5a5a5a;
+  --sl-color-gray-5: #3c3c3c;
+  --sl-color-gray-6: var(--luma-area);
+  --sl-color-gray-7: var(--luma-tabbar);
+  --sl-color-black: var(--luma-gap);
+  --sl-color-bg: var(--luma-gap);
+  --sl-color-bg-nav: var(--luma-area);
+  --sl-color-bg-sidebar: var(--luma-area);
+  --sl-color-bg-inline-code: var(--luma-field);
+  --sl-color-hairline-light: var(--luma-sep);
+  --sl-color-hairline: var(--luma-gap);
+  --sl-color-hairline-shade: var(--luma-gap);
+  --sl-color-text: var(--luma-text);
+  --sl-color-text-accent: #ffffff;
+  --sl-color-text-invert: #ffffff;
+  --sl-color-bg-accent: var(--luma-rgb-bg);
+  /* the app has no accent colour in its chrome: links are white, emphasis is the RGB split */
+  --sl-color-accent-low: var(--luma-panel);
+  --sl-color-accent: var(--luma-rgb-bg);
+  --sl-color-accent-high: #ffffff;
+  --sl-color-orange-high: var(--luma-warn); --sl-color-orange: #9a6f1c; --sl-color-orange-low: #3a2d12;
+  --sl-color-red-high: var(--luma-danger); --sl-color-red: #a43b36; --sl-color-red-low: #3b1c1b;
+  --sl-color-blue-high: #bdbdbd; --sl-color-blue: #5a5a5a; --sl-color-blue-low: #303030;
+  --sl-color-green-high: #8fd19a; --sl-color-green: #3f7a4a; --sl-color-green-low: #1f2f23;
+  --sl-color-purple-high: #bdbdbd; --sl-color-purple: #5a5a5a; --sl-color-purple-low: #303030;
+  --sl-shadow-sm: none; --sl-shadow-md: none; --sl-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+body { background: var(--luma-gap); }
+:focus-visible { outline: 1px solid #fff; outline-offset: 2px; }
+
+/* header: the app's header bar with the RGB wordmark */
+header.header { background: var(--luma-area); border-bottom: 1px solid var(--luma-gap); }
+.site-title img { height: 28px; width: auto; max-width: none; }
+.social-icons a { border-radius: 4px; transition: background 0.12s, box-shadow 0.12s; }
+.social-icons a:hover { background: var(--luma-hover-bg); box-shadow: inset 0 0 0 1px var(--luma-hover-edge); color: #fff; }
+
+/* sidebar: current page = 13b "rgb" (current selection), hover = calm hover */
+.sidebar-pane { background: var(--luma-area); border-inline-end: 1px solid var(--luma-gap); }
+.sidebar-content a { border-radius: 4px; color: var(--luma-text); transition: background 0.12s, box-shadow 0.12s; }
+.sidebar-content a:hover { background: var(--luma-hover-bg); box-shadow: inset 0 0 0 1px var(--luma-hover-edge); color: #fff; }
+.sidebar-content a[aria-current='page'] {
+  background: var(--luma-rgb-bg) !important; color: #fff !important; font-weight: 500; position: relative; z-index: 1;
+  box-shadow: var(--luma-rgb-shadow-sm);
+}
+.sidebar-content summary { color: var(--luma-label); }
+
+/* table of contents (right) */
+starlight-toc a[aria-current='true'] { color: #fff; }
+mobile-starlight-toc nav { background: var(--luma-area); }
+
+/* content */
+.sl-markdown-content h1, .sl-markdown-content h2, .sl-markdown-content h3 { font-weight: 600; color: #fff; }
+.sl-markdown-content h2 { padding-bottom: 0.3rem; border-bottom: 1px solid var(--luma-sep); }
+.sl-markdown-content a:not(.sl-link-button) { color: #fff; text-decoration-color: var(--luma-rgb-bg); text-underline-offset: 0.18em; }
+.sl-markdown-content a:not(.sl-link-button):hover { text-decoration-color: #fff; }
+.sl-markdown-content img { border-radius: 5px; background: var(--luma-area); }
+.sl-markdown-content :not(pre) > code { background: var(--luma-field); color: var(--luma-text); border-radius: 4px; }
+.sl-markdown-content th { background: var(--luma-panel); color: #fff; font-weight: 500; }
+.sl-markdown-content tr:nth-child(2n) { background: var(--luma-list); }
+.sl-markdown-content th, .sl-markdown-content td { border-color: var(--luma-sep); }
+kbd { background: var(--luma-field); border: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--luma-hover-edge); color: #fff; font-family: var(--sl-font-mono); font-size: 0.85em; padding: 0.05em 0.4em; }
+
+/* code blocks (Expressive Code): app greys */
+.expressive-code {
+  --ec-brdRad: 5px; --ec-brdCol: var(--luma-sep); --ec-codeBg: var(--luma-input);
+  --ec-frm-edBg: var(--luma-input); --ec-frm-trmBg: var(--luma-input);
+  --ec-frm-edTabBarBg: var(--luma-tabbar); --ec-frm-trmTtbBg: var(--luma-tabbar); --ec-frm-edActTabBg: var(--luma-input);
+}
+
+/* asides: grey panels with a calm left edge (warn / danger keep their meaning colour) */
+.starlight-aside { background: var(--luma-panel); border: 0; border-radius: 4px; color: var(--luma-text); box-shadow: inset 3px 0 0 0 var(--luma-rgb-bg); }
+.starlight-aside--caution { box-shadow: inset 3px 0 0 0 var(--luma-warn); }
+.starlight-aside--danger { box-shadow: inset 3px 0 0 0 var(--luma-danger); }
+.starlight-aside__title { color: #fff; font-weight: 600; }
+
+/* buttons: primary = rgb, secondary = lite, minimal = outline */
+.sl-link-button { border-radius: 4px; border: 0; font-weight: 500; transition: background 0.12s, box-shadow 0.12s; }
+.sl-link-button.primary { background: var(--luma-rgb-bg); color: #fff; position: relative; z-index: 1; box-shadow: var(--luma-rgb-shadow); animation: luma-converge 0.17s ease-out; }
+.sl-link-button.primary:hover { background: var(--luma-rgb-bg); color: #fff; }
+.sl-link-button.secondary { background: var(--luma-lite); color: var(--luma-text); }
+.sl-link-button.minimal { background: transparent; color: var(--luma-label); box-shadow: inset 0 0 0 1px var(--luma-rgb-bg); }
+.sl-link-button.secondary:hover, .sl-link-button.minimal:hover { background: var(--luma-hover-bg); box-shadow: inset 0 0 0 1px var(--luma-hover-edge); color: #fff; }
+@keyframes luma-converge {
+  from {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6), -2px -1.8px 0 0 var(--luma-rgb-cyan), 2px 1.8px 0 0 var(--luma-rgb-yellow),
+      -4.4px -4px 0 0 var(--luma-rgb-blue), 4.4px 4px 0 0 var(--luma-rgb-red), 0 0 2px 0 rgba(255, 255, 255, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) { .sl-link-button.primary { animation: none; } }
+
+/* prev / next */
+.pagination-links a { background: var(--luma-area); border: 0; border-radius: 5px; transition: background 0.12s, box-shadow 0.12s; }
+.pagination-links a:hover { background: var(--luma-hover-bg); box-shadow: inset 0 0 0 1px var(--luma-hover-edge); }
+
+/* search: header button + dialog (Pagefind, runs in the browser) */
+site-search button[data-open-modal] { background: var(--luma-input); border: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--luma-sep); color: var(--luma-label); }
+site-search button[data-open-modal]:hover { background: var(--luma-hover-bg); box-shadow: inset 0 0 0 1px var(--luma-hover-edge); color: #fff; }
+dialog { background: var(--luma-menu); border-radius: 6px; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6), inset 0 0 0 1px var(--luma-sep); }
+dialog::backdrop { background: color-mix(in srgb, var(--luma-gap) 70%, transparent); }
+.pagefind-ui {
+  --pagefind-ui-primary: #ffffff; --pagefind-ui-text: var(--luma-text); --pagefind-ui-background: var(--luma-input);
+  --pagefind-ui-border: var(--luma-sep); --pagefind-ui-tag: var(--luma-panel); --pagefind-ui-border-radius: 4px; --pagefind-ui-font: var(--sl-font);
+}
+.pagefind-ui__result-link { color: #fff; }
+.pagefind-ui__result-excerpt mark { background: var(--luma-field); color: #fff; box-shadow: inset 0 -1px 0 0 var(--luma-rgb-cyan); }
+
+/* landing page: the wordmark is the title (the h1 stays for screen readers) */
+[data-has-hero] header.header { background: transparent; border-bottom: 0; }
+[data-has-hero] .hero h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+[data-has-hero] .hero { padding-block: clamp(2rem, 8vh, 5rem); }
+[data-has-hero] .tagline { color: var(--luma-label); }
+footer, .meta { color: var(--luma-dim); }
+/* hero: single centred column, wordmark on top */
+[data-has-hero] .hero { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+[data-has-hero] .hero > .hero-html { order: -1; }
+[data-has-hero] .hero-html img { width: min(100%, 34rem); height: auto; display: block; }
+[data-has-hero] .hero .stack, [data-has-hero] .hero .copy { align-items: center; text-align: center; }
+[data-has-hero] .hero .actions { justify-content: center; }
+.sl-markdown-content blockquote { background: var(--luma-panel); border: 0; border-radius: 4px; box-shadow: inset 3px 0 0 0 var(--luma-rgb-bg); padding: 0.75rem 1rem; }

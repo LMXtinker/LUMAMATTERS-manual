@@ -12,11 +12,19 @@ export default defineConfig({
       description: 'User manual for LUMAMATTERS, a desk planner for projection mapping.',
       // Pagefind search is built in and runs fully in the browser (no external service).
       pagefind: true,
-      // No Google Fonts / CDN: Starlight uses system fonts by default.
+      // No Google Fonts / CDN: IBM Plex is self-hosted (src/styles/fonts, OFL).
       social: [
         { icon: 'github', label: 'Releases', href: 'https://github.com/LMXtinker/LUMAMATTERS-releases/releases' },
       ],
-      customCss: ['./src/styles/custom.css'],
+      logo: { src: './src/assets/wordmark-h28@2x.png', alt: 'LumaMatters', replacesTitle: true },
+      favicon: '/favicon.png',
+      head: [{ tag: 'meta', attrs: { name: 'color-scheme', content: 'dark' } }],
+      // Dark only: the app and the RGB wordmark have no light version.
+      components: {
+        ThemeProvider: './src/components/ThemeProvider.astro',
+        ThemeSelect: './src/components/ThemeSelect.astro',
+      },
+      customCss: ['./src/styles/luma.css'],
       sidebar: [
         { label: 'Home', link: '/' },
         { label: "What's new", slug: 'whats-new' },
