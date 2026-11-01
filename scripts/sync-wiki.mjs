@@ -47,16 +47,7 @@ for (const f of readdirSync(src)) {
       '  tagline: "A desk planner for projection mapping. Load your venue in 3D, place projectors from maker data, and see lux, overlap and pixel size."',
       '  image:',
       `    html: '<img src="${BASE}/brand/wordmark-hero.png" alt="LumaMatters" width="1100" height="188">'`,
-      '  actions:',
-      '    - text: Try the web demo',
-      `      link: ${BASE}/demo/`,
-      '      icon: right-arrow',
-      '    - text: Read the manual',
-      `      link: ${BASE}/install/`,
-      '      variant: secondary',
-      '    - text: Download (coming soon)',
-      '      link: https://github.com/LMXtinker/LUMAMATTERS-releases/releases',
-      '      variant: minimal',
+      // the demo / manual / download buttons live in the top bar (src/components/SocialIcons.astro)
     ];
   } else {
     fm = [`title: ${JSON.stringify(title)}`];

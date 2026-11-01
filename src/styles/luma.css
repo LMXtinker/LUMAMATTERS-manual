@@ -64,6 +64,8 @@
 }
 
 body { background: var(--luma-gap); }
+/* set text colour on the elements, not only by inheritance: a host page (claude.ai Artifact) may style p/li itself */
+body, .sl-markdown-content :is(p, li, td, th, dd, dt, blockquote, figcaption), .hero .tagline { color: var(--sl-color-text); }
 :focus-visible { outline: 1px solid #fff; outline-offset: 2px; }
 
 /* header: the app's header bar with the RGB wordmark */

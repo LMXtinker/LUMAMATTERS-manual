@@ -1,0 +1,19 @@
+---
+// Top bar: the three main actions (demo, manual, download) before Starlight's own social icons.
+// Starlight shows this group in the header on wide screens and in the mobile menu on narrow ones.
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+
+<nav class="luma-top-actions" aria-label="Main actions">
+  <a class="sl-link-button primary" href={`${base}demo/`}>Try the web demo</a>
+  <a class="sl-link-button secondary" href={`${base}install/`}>Read the manual</a>
+  <a class="sl-link-button minimal" href="https://github.com/LMXtinker/LUMAMATTERS-releases/releases">Download (coming soon)</a>
+</nav>
+<Default />
+
+<style>
+  .luma-top-actions { display: flex; align-items: center; gap: 0.5rem; margin-inline-end: 0.75rem; }
+  .luma-top-actions .sl-link-button { padding: 0.3rem 0.75rem; font-size: var(--sl-text-sm); line-height: 1.4; white-space: nowrap; text-decoration: none; }
+</style>
