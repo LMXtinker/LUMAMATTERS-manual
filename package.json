@@ -7,7 +7,8 @@
     "sync": "node scripts/sync-wiki.mjs",
     "dev": "npm run sync && astro dev",
     "build": "npm run sync && astro build && node scripts/copy-static.mjs",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "export:artifact": "node scripts/artifact-export.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "0.42.8",

@@ -5,3 +5,4 @@ src/content/docs/
 .preview-shots/
 .build.log
 .preview.log
+dist-artifact/
