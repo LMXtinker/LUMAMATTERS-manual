@@ -1,9 +1,10 @@
 # Builds the Starlight manual and deploys it to GitHub Pages.
-# Manual trigger only for now. At merge time the owner switches
-# Settings > Pages > Source to "GitHub Actions"; then add `push: branches: [main]` below.
+# Runs on every push to main (Pages Source = "GitHub Actions") and by hand.
 name: Deploy manual site
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
