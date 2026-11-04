@@ -7,10 +7,9 @@
 ![The Keyboard shortcuts dialog](images/help-keyboard-shortcuts.png)
 
 - Keys marked "anywhere" work in the whole project window.
-- Keys marked "panels" work only with the focus in the 3D view or the Outliner.
-- No key acts while you type in a text field or while a menu, list, popover or dialog is open. Text fields keep their own keys, undo included.
-- Letter and number keys use the physical key position, so they work on other keyboard layouts. `Ctrl+Z` and the file keys use the key's label.
-- On a Mac keyboard, `Cmd` works like `Ctrl` for the file, undo and group/duplicate keys.
+- Keys marked "panels" work only when the focus is in the 3D view or the Outliner.
+- No key acts while you type in a text field. No key acts while a menu, list, popover or dialog is open. Text fields keep their own keys, undo included.
+- Letter and number keys use the physical key position. They work on other keyboard layouts. `Ctrl+Z` and the file keys use the label on the key.
 - `Ctrl+Numpad` works in the app window.
 
 ## Anywhere in the window
@@ -50,32 +49,42 @@
 | `M` | Measure tool (Distance) |
 | `Shift+M` | Measure tool (Annotate) |
 | `N` | Show or hide the Measure sidebar |
-| `X`, `Y`, `Z` | Measure: lock to the X, Y or Z axis while placing point B (again: unlock). Press two axis keys to lock to their plane (`X` then `Y` = XY plane, same as `Shift+Z`). A third key replaces the older of the two. |
-| `Shift+X`, `Shift+Y`, `Shift+Z` | Measure: lock to the YZ, XZ or XY plane (again: unlock) |
+| `X`, `Y`, `Z` | Measure: lock to the X, Y or Z axis (press again to unlock) |
+| `Shift+X`, `Shift+Y`, `Shift+Z` | Measure: lock to the YZ, XZ or XY plane (press again to unlock) |
 | `Ctrl+G` | Group |
 | `Ctrl+D` | Duplicate |
-| `P` | Parent (the last selected becomes the parent) |
+| `P` | Parent (the last selected object becomes the parent) |
 | `Shift+P` | Unparent |
 | `Delete` | Delete |
 | `F2` | Rename |
 
+The lock keys work while you place point B of a measurement or drag an end. Two axis keys together lock the plane of both axes: `X` then `Y` gives the XY plane, the same as `Shift+Z`. A third key replaces the older of the two. The lock keys use the label on the key, so they follow your keyboard layout. On a German keyboard, `Z` is the key with the label Z.
+
 ## Esc order
 
-Each `Esc` cancels one thing, in this order: a drag, a rename, a placement click (also point A of a measurement), a dialog, the pinned probe, the Outliner's search field, and last the Measure tool (back to Select).
+Each `Esc` cancels one thing. The order is:
+
+1. A drag.
+2. A rename.
+3. A placement click (this includes point A of a measurement).
+4. A dialog.
+5. The pinned probe.
+6. The search field of the Outliner.
+7. The Measure tool (back to Select).
 
 ## Mouse and number fields
 
-- Middle mouse in the 3D view: orbit. Right mouse: pan. Wheel: zoom. See [3D View](3D-View.md).
+- Middle mouse button in the 3D view: orbit. Right mouse button: pan. Wheel: zoom. See [3D View](3D-View.md).
 - `Alt+click` on a surface: pin the probe.
-- Gizmo drags (Move, Rotate, Scale): `Ctrl` snaps while the **magnet** is off and means free while the magnet is on (see [3D View](3D-View.md#snapping-magnet)).
-- Number fields: drag with the left button; `Shift` fine, `Ctrl` snap; middle button opens the Value Ladder. See [Properties](Properties.md).
-- While a number field is being edited, `Ctrl+S` first commits what you typed.
+- Gizmo drags (Move, Rotate, Scale): with the **Magnet** off, `Ctrl` snaps. With the **Magnet** on, `Ctrl` means free movement. See [3D View](3D-View.md#snapping-magnet). The **Magnet** has no key.
+- Number fields: drag with the left button. `Shift` gives fine steps. `Ctrl` snaps. The middle button opens the Value Ladder. See [Properties](Properties.md).
+- While you edit a number field, `Ctrl+S` first commits what you typed.
 
 ## Other keys
 
-- `Ctrl+N` is not used: the app's web engine keeps it.
-- In the History panel, arrow keys, `Home` and `End` move between snapshot rows.
+- `Ctrl+N` is not used. The web engine inside the app keeps it.
+- In the History panel, the arrow keys, `Home` and `End` move between the snapshot rows.
 
-The measure keys are explained in [Measure Tools](Measure-Tools.md). The lock keys match the key's label, so they follow your keyboard layout (on a German keyboard Z is the key labelled Z).
+The Measure keys are explained in [Measure Tools](Measure-Tools.md).
 
 See also: [Menus](Menus.md), [Measure Tools](Measure-Tools.md), [3D View](3D-View.md), [Outliner](Outliner.md), [Interface Tour](Interface-Tour.md)
