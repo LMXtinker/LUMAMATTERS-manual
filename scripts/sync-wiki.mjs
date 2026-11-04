@@ -1,17 +1,19 @@
 // Generates src/content/docs/ from wiki/ (kept as the single copy, also published to the GitHub Wiki).
 // - title from the first "# " heading (Starlight renders the title itself)
-// - links "Page.md#x" -> "/LUMAMATTERS-manual/page/#x"
-// - Home.md -> index page with hero (doc template, so the sidebar shows)
+// - links "Page.md#x" -> "/LUMAMATTERS-manual/manual/page/#x"
+// - Home.md -> manual/index page with hero (doc template, so the sidebar shows)
 import { readFileSync, writeFileSync, mkdirSync, rmSync, readdirSync, cpSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const src = join(root, 'wiki');
-const out = join(root, 'src', 'content', 'docs');
+// manual pages live under /manual/; the site root is the landing page (public/index.html)
+const out = join(root, 'src', 'content', 'docs', 'manual');
+const docsRoot = join(root, 'src', 'content', 'docs');
 const BASE = '/LUMAMATTERS-manual';
 
-rmSync(out, { recursive: true, force: true });
+rmSync(docsRoot, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(join(src, 'images'), join(out, 'images'), { recursive: true });
 
@@ -25,7 +27,7 @@ const fixImgs = (t, page) =>
   });
 const fixLinks = (t) =>
   t.replace(/\]\(([A-Za-z0-9_-]+)\.md(#[^)]*)?\)/g, (_, p, h = '') =>
-    p === 'Home' ? `](${BASE}/${h})` : `](${BASE}/${slug(p)}/${h.toLowerCase()})`);
+    p === 'Home' ? `](${BASE}/manual/${h})` : `](${BASE}/manual/${slug(p)}/${h.toLowerCase()})`);
 
 for (const f of readdirSync(src)) {
   if (!f.endsWith('.md') || f.startsWith('_')) continue;

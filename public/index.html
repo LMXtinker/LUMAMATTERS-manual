@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LUMAMATTERS</title>
+<meta charset="utf-8">
+<meta name="description" content="Desk planner for projection mapping: venue in 3D, projectors from maker data, lux, overlap and pixel size.">
+<link rel="stylesheet" href="fonts/plex.css">
+<link rel="icon" href="favicon.png">
+<style>
+/* Layout: the app's workbench. Header on top; 3D view area on the left; a dock area on the right (actions, scene readouts, fine print).
+   During the reveal the 3D view is full screen; the dock slides in when the camera has pulled back. Narrow screens: dock under the view.
+   Tokens = the app's --luma-* greys + M4 RGB UI rules (board 13b): rgb = current / primary, on = toggled, lite/outline = the rest. */
+:root{
+  --gap:#101010; --area:#282828; --tabbar:#1b1b1b; --panel:#333333; --list:#232323; --field:#484848;
+  --text:#e6e6e6; --label:#bdbdbd; --dim:#9a9a9a; --track:#303030; --hover:#3c3c3c; --lite:#383838; --edge:#5a5a5a;
+  --sans:'IBM Plex Sans', system-ui, sans-serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
+  --dockw:360px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{margin:0;background:var(--gap);color:var(--text);font:12px/1.45 var(--sans);overflow:hidden;display:flex;flex-direction:column}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+a{color:var(--text)} a:hover{color:#fff}
+
+/* ---- 13b controls ---- */
+.btn{height:22px;padding:0 10px;border:none;border-radius:4px;background:var(--field);color:var(--text);font:12px var(--sans);
+  display:inline-flex;align-items:center;gap:5px;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn svg{width:12px;height:12px;flex-shrink:0}
+.outline{background:transparent;box-shadow:inset 0 0 0 1px var(--edge)}
+.lite{background:var(--lite)}
+.seg{display:inline-flex;background:var(--track);border-radius:5px;padding:2px;gap:2px}
+.seg .btn{background:transparent;color:#cfcfcf}
+.btn{transition:background .12s,box-shadow .12s}
+.btn:not(.rgb):not(.on):hover{background:var(--hover);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.rgb{background:#5a5a5a!important;color:#fff!important;position:relative;z-index:1;
+  box-shadow:inset 0 0 0 1px #fff,-.85px -.75px 0 0 #3fe0ff,.85px .75px 0 0 #ffd400,-1.9px -1.7px 0 0 #3050ff,1.9px 1.7px 0 0 #ff2a2a,0 0 7px 0 rgba(255,255,255,.4);
+  animation:converge .17s ease-out}
+@keyframes converge{from{box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),-2px -1.8px 0 0 #3fe0ff,2px 1.8px 0 0 #ffd400,-4.4px -4px 0 0 #3050ff,4.4px 4px 0 0 #ff2a2a,0 0 2px 0 rgba(255,255,255,0)}}
+.on{background:#4a4a4a!important;color:#fff!important;box-shadow:inset 0 0 0 1px rgba(230,230,230,.85)}
+.btn:focus-visible,summary:focus-visible{outline:1px solid #fff;outline-offset:2px}
+.dim{color:var(--dim)}
+@media (prefers-reduced-motion: reduce){.rgb{animation:none} .wb,.area,.tabbar,.bar,.cap,.legend,.load{transition:none!important}}
+/* dim text on panel / lite greys: #9a9a9a is 4.49:1 on #333 and 4.17:1 on #383838; #a6a6a6 passes 4.5:1 there */
+.dbody .dim,.kv dt,.fine,.fine a,.lite .dim{color:#a6a6a6}
+
+/* ---- header (13b) ---- */
+header{flex:none;min-height:30px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding-block:calc(4px + env(safe-area-inset-top,0px)) 4px;
+  padding-left:max(10px,env(safe-area-inset-left,0px));padding-right:max(10px,env(safe-area-inset-right,0px));background:var(--area)}
+.mark{display:flex;align-items:center;gap:6px;margin-right:auto}
+.mark img{height:18px;width:auto;display:block}
+.pill{font-size:9px;font-weight:600;color:var(--label);border:1px solid var(--edge);border-radius:3px;padding:0 4px;line-height:14px}
+header nav{display:flex;gap:6px;flex-wrap:wrap}
+
+/* ---- workbench ---- */
+.wb{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 0px;grid-template-rows:minmax(0,1fr);gap:0;padding:0;
+  transition:grid-template-columns .7s cubic-bezier(.2,.7,.2,1),gap .7s,padding .7s}
+.wb.docked{grid-template-columns:minmax(0,1fr) var(--dockw);gap:2px;padding:2px}
+.area{background:var(--area);border-radius:0;overflow:hidden;display:flex;flex-direction:column;min-width:0;min-height:0;transition:border-radius .7s}
+.wb.docked .area{border-radius:5px}
+.tabbar{height:0;flex:none;display:flex;align-items:flex-end;gap:2px;padding:0 4px;background:var(--tabbar);overflow:hidden;transition:height .7s}
+.wb.docked .tabbar{height:26px}
+.tab{height:22px;display:flex;align-items:center;gap:8px;padding:0 10px;border-radius:4px 4px 0 0;font-size:12px;background:var(--area);color:var(--text);white-space:nowrap}
+.vp{position:relative;flex:1;min-height:0;background:#000}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+#gl.orbit{cursor:grab} #gl.orbit:active{cursor:grabbing}
+
+/* ---- inside the 3D view ---- */
+.bar{position:absolute;z-index:4;top:8px;left:8px;right:8px;display:flex;gap:6px;flex-wrap:wrap;opacity:0;transition:opacity .5s;pointer-events:none}
+.bar.show{opacity:1;pointer-events:auto}
+.tag{position:absolute;left:0;top:0;z-index:2;pointer-events:none;font:11px system-ui,sans-serif;color:#e6e6e6;
+  background:rgba(16,16,20,.78);border-radius:3px;padding:1px 5px 1px 4px;white-space:nowrap;opacity:0;border-left:3px solid var(--c)}
+.cap{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:10px;background:rgba(40,40,40,.92);border-radius:4px;padding:3px 10px;
+  font-size:12px;color:var(--text);white-space:nowrap;opacity:0;transition:opacity .4s;max-width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis}
+.desc{position:absolute;z-index:3;left:0;right:0;text-align:center;margin:0;font-size:clamp(13px,1.25vw,16px);color:var(--label);opacity:0;pointer-events:none;padding-inline:16px}
+.legend{position:absolute;z-index:3;left:8px;bottom:40px;width:min(320px,calc(100% - 16px));background:rgba(40,40,40,.95);border-radius:6px;padding:8px 10px;
+  opacity:0;transition:opacity .4s;pointer-events:none}
+.legend.show{opacity:1}
+.legend h3{margin:0 0 6px;font-size:12px;font-weight:500;display:flex;justify-content:space-between}
+.legend h3 span{font-weight:400;color:var(--dim)}
+.grad{height:10px;border-radius:2px}
+.ticks{position:relative;height:16px;margin-top:3px;font:11px var(--mono);color:var(--label)}
+.ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.ticks span:first-child{transform:none} .ticks span:last-child{transform:translateX(-100%)}
+.sw{display:flex;gap:12px;flex-wrap:wrap}
+.sw span{display:inline-flex;align-items:center;gap:6px}
+.sw i{width:11px;height:11px;border-radius:2px;display:inline-block}
+.skip{position:absolute;z-index:5;right:10px;bottom:10px}
+.load{position:absolute;z-index:3;left:50%;bottom:44px;transform:translateX(-50%);color:var(--dim);opacity:0;transition:opacity .3s}
+
+/* ---- dock: Properties-style panels ---- */
+.dbody{flex:1;min-height:0;overflow:auto;padding:4px;display:flex;flex-direction:column;gap:4px}
+details.panel{background:var(--panel);border-radius:4px}
+summary{height:24px;display:flex;align-items:center;gap:6px;padding:0 8px;font-size:12px;color:var(--text);cursor:pointer;list-style:none;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▾";color:var(--dim);font-size:10px;width:10px}
+details:not([open]) summary::before{content:"▸"}
+.pbody{padding:2px 10px 10px;display:flex;flex-direction:column;gap:10px;font-size:12px}
+.pbody p{margin:0}
+.lead{font-size:14px;line-height:1.5;color:var(--text);max-width:34em}
+.acts{display:flex;flex-direction:column;gap:6px}
+.acts .btn{height:30px;font-size:13px;justify-content:center}
+.acts .row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.note{color:var(--label)}
+.kv{margin:0;display:grid;grid-template-columns:42% minmax(0,1fr);row-gap:3px;column-gap:8px}
+.kv dt{color:var(--dim);text-align:right}
+.kv dd{margin:0;color:var(--text);font-variant-numeric:tabular-nums}
+.sw2{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:0}
+.fine{font-size:11px;color:var(--dim);line-height:1.45}
+.fine a{color:var(--dim)}
+
+@media (max-width:900px), (max-aspect-ratio:1/1){
+  .wb{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 0px;transition:grid-template-rows .7s,gap .7s,padding .7s}
+  .wb.docked{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,46%)}
+}
+@media (pointer:coarse){ .btn{height:44px;padding:0 14px;font-size:13px} .acts .btn{height:44px} summary{height:44px} }
+</style>
+
+</head>
+<body>
+<h1 class="sr">LUMAMATTERS: a desk planner for projection mapping</h1>
+
+<header>
+  <span class="mark"><img src="brand/wordmark-h18@2x.png" alt="LumaMatters" width="105" height="18"><span class="pill">BETA</span></span>
+  <nav aria-label="Main">
+    <a class="btn outline" href="manual/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 3 Q5.5 2 8 3.5 Q10.5 2 13.5 3 V13 Q10.5 12 8 13.5 Q5.5 12 2.5 13 Z M8 3.5 V13.5" stroke-linejoin="round"/></svg>Manual</a>
+    <a class="btn outline" id="navDemo" href="demo/">Try the demo</a>
+    <a class="btn outline" href="https://github.com/LMXtinker/LUMAMATTERS-releases/releases" target="_blank" rel="noopener">Download <span class="dim">beta soon</span></a>
+  </nav>
+</header>
+
+<div class="wb" id="wb">
+  <section class="area" aria-label="3D view">
+    <div class="tabbar"><div class="tab">3D view</div></div>
+    <div class="vp" id="vp">
+      <canvas id="gl" role="img" aria-label="A projector reveals the LumaMatters logo, then the view pulls back to a room: two projectors side by side light a wall, plinths and the PAYWALLS sculpture, shown as test pattern, lux, overlap and pixel size."></canvas>
+      <div class="bar" id="bar" inert>
+        <div class="seg" role="group" aria-label="Light">
+          <button type="button" class="btn" id="lBlend" aria-pressed="true">Blended</button>
+          <button type="button" class="btn" id="lRaw" aria-pressed="false">Raw</button>
+        </div>
+        <div class="seg" role="group" aria-label="View mode">
+          <button type="button" class="btn" id="vShaded" aria-pressed="true">Shaded</button>
+          <button type="button" class="btn" id="vLux" aria-pressed="false">Lux</button>
+          <button type="button" class="btn" id="vOver" aria-pressed="false">Overlap</button>
+          <button type="button" class="btn" id="vPixel" aria-pressed="false">Pixel</button>
+        </div>
+        <div class="seg" role="group" aria-label="Projected content">
+          <button type="button" class="btn" id="cLogo" aria-pressed="true">Logo</button>
+          <button type="button" class="btn" id="cGrid" aria-pressed="false">Test pattern</button>
+        </div>
+      </div>
+      <div class="tag" id="t0" style="--c:#e6194b">P01</div>
+      <div class="tag" id="t1" style="--c:#3cb44b">P02</div>
+      <div class="tag" id="i0" style="--c:#e6194b">P01</div>
+      <div class="tag" id="i1" style="--c:#3cb44b">P02</div>
+      <p class="desc" id="desc" aria-hidden="true">A desk planner for projection mapping.</p>
+      <div class="cap" id="cap" aria-hidden="true"></div>
+      <div class="load" id="load">Loading the room…</div>
+      <div class="legend" id="luxLegend" aria-hidden="true">
+        <h3>Illuminance preview (log) <span id="luxMode">blended</span></h3>
+        <div class="grad" id="luxBar"></div>
+        <div class="ticks" id="luxTicks"></div>
+      </div>
+      <div class="legend" id="overLegend" aria-hidden="true">
+        <h3>Overlap <span>lit by</span></h3>
+        <div class="sw">
+          <span><i style="background:#3b6fb6"></i>1 projector</span><span><i style="background:#2fbf71"></i>2 projectors</span>
+          <span><i style="background:#101014;box-shadow:inset 0 0 0 1px #5a5a5a"></i>shadow</span>
+        </div>
+      </div>
+      <div class="legend" id="pixLegend" aria-hidden="true">
+        <h3>Pixel size on the surface <span>limit 10 mm</span></h3>
+        <div class="grad" style="background:linear-gradient(90deg,#1f6fd1 0%,#2fbf71 31.2%,#f2d024 62.4%,#e3342f 62.4%,#7a1020 100%)"></div>
+        <div class="ticks"><span style="left:0">1.0 mm</span><span style="left:62.4%">10.0 mm</span><span style="left:100%">40.0 mm</span></div>
+      </div>
+      <button type="button" class="btn lite skip" id="skip">Skip intro</button>
+    </div>
+  </section>
+
+  <aside class="area" id="dock" aria-label="Get LumaMatters" inert>
+    <div class="tabbar"><div class="tab">Get LumaMatters</div></div>
+    <div class="dbody">
+      <details class="panel" open>
+        <summary>Planner</summary>
+        <div class="pbody">
+          <p class="lead">A desk planner for projection mapping. Load your venue in 3D, place projectors from maker data, and see lux, overlap and pixel size.</p>
+          <div class="acts">
+            <a class="btn rgb" href="demo/">Try the demo</a>
+            <div class="row2">
+              <a class="btn lite" href="manual/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 3 Q5.5 2 8 3.5 Q10.5 2 13.5 3 V13 Q10.5 12 8 13.5 Q5.5 12 2.5 13 Z M8 3.5 V13.5" stroke-linejoin="round"/></svg>Manual</a>
+              <a class="btn lite" href="https://github.com/LMXtinker/LUMAMATTERS-releases/releases" target="_blank" rel="noopener">Download <span class="dim">beta soon</span></a>
+            </div>
+          </div>
+          <p class="note">The demo runs in Chrome, Edge or Firefox on a desktop computer. It runs in your browser; nothing is uploaded.</p>
+        </div>
+      </details>
+      <details class="panel" open>
+        <summary>This room</summary>
+        <div class="pbody">
+          <dl class="kv" id="readouts"></dl>
+        </div>
+      </details>
+      <details class="panel">
+        <summary>Fine print</summary>
+        <div class="pbody">
+          <p class="fine">Planning aid: numbers can be wrong, no guarantee of correct data. Free beta, see <a href="demo/LICENSE" target="_blank" rel="noopener">LICENSE</a> and <a href="demo/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener">third-party notices</a>.</p>
+          <p class="fine">© 2026 LumaLux, <a href="impressum.html" target="_blank" rel="noopener">Impressum</a>, <a href="privacy.html" target="_blank" rel="noopener">Privacy</a>.</p>
+        </div>
+      </details>
+    </div>
+  </aside>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/GLTFLoader.js"></script>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+if (!window.THREE || !THREE.GLTFLoader) { $('wb').classList.add('docked'); return; }
+const T = THREE;
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ================= Room: wall, plinths, tower, hung cubes; PAYWALLS model on the centre plinth ================= */
+// Two Panasonic PT-RZ24K side by side (not stacked), ET-D75LE10 lens, parallel aim, edge-blended in the middle.
+const THROW = 14.5, AIM_Y = 3.4, HGT = 3.1, SEP = 3.6;
+const SCENE = {
+  projectors: [
+    { name: 'P01', t: [-SEP, HGT, THROW], aim: [-SEP, AIM_Y, 0], colour: '#e6194b' },
+    { name: 'P02', t: [ SEP, HGT, THROW], aim: [ SEP, AIM_Y, 0], colour: '#3cb44b' }
+  ],
+  model: 'Panasonic PT-RZ24K', lens: 'ET-D75LE10',
+  lumens: 20000, native: [1920, 1200], throwRatio: 1.6, deltaM: 0.087, lensL: 0.275,
+  lux: { min: 150, target: 300, max: 1000 }, maxPixelMm: 10, grazingDeg: 75,
+  sculpture: { scale: 0.02445, pos: [0.3, 1.1515, 1.24] },
+  view: { target: [0.3, 2.6, 4.5], yaw: -0.4, pitch: 0.32, dist: 27 },
+  pattern: 0.48
+};
+const BOXES = [
+  { s: [3.2, 2.4, 1.8], p: [-4.3, 1.2, .9] },
+  { s: [2.2, 4.4, 1.3], p: [4.7, 2.2, .65] },
+  { s: [5.0, 1.15, 2.6], p: [.3, .575, 1.3] },          // centre plinth, carries the sculpture
+  { s: [1.5, 1.5, 1.5], p: [-3.6, 5.3, 1.5], r: [.32, .7, 0] },
+  { s: [1.1, 1.1, 1.1], p: [3.0, 6.1, 1.8], r: [-.25, -.6, .2] },
+  { s: [.7, 3.4, .7], p: [-6.6, 1.7, .9] }
+];
+const W1 = 1 / SCENE.throwRatio, ASP = SCENE.native[0] / SCENE.native[1], H1 = W1 / ASP;
+const I0 = SCENE.lumens / (W1 * H1);
+const VFOV = 2 * Math.atan(H1 / 2) * 180 / Math.PI;
+const LOGO_AIM = [0, AIM_Y, 0];
+const C_ASP = 16 / 9, C_TANH = (SEP + THROW * W1 / 2) / THROW, C_VFOV = 2 * Math.atan(C_TANH / C_ASP) * 180 / Math.PI;   // shared canvas across both images
+const NEAR = .3, FAR = 120;
+
+/* ================= Shot list (s) ================= */
+const TL = {
+  strike: .35, logoIn: [1.2, 2.1],
+  hunt: [[1.2,.16],[2.55,.01,'io'],[3.05,.04,'io'],[3.75,0,'o']],
+  ca:   [[1.2,.11],[2.55,.016,'io'],[3.05,.04,'io'],[3.75,0,'o']],
+  lock: 3.75, desc: [4.5, 6.9],
+  cut: [7.0, 7.6], lights: [7.2, 9.4], pull: [7.3, 11.8], grid: [8.4, 9.6], rig: [8.6, 9.8],
+  dock: 11.8,
+  pat:  [[12.3,0],[13.1,1,'io'],[21.0,1],[21.8,0,'io']],
+  lux:  [[14.6,0],[15.1,1],[17.2,1],[17.6,0]],
+  over: [[17.4,0],[17.9,1],[19.2,1],[19.6,0]],
+  pix:  [[19.4,0],[19.9,1],[21.0,1],[21.4,0]],
+  end: 22.2
+};
+const CAPS = [
+  [8.8, 12.2, 'Two Panasonic PT-RZ24K side by side, ET-D75LE10 lens, 14.5 m throw'],
+  [12.4, 14.5, 'Test pattern: a gradient grid per projector'],
+  [14.7, 17.3, 'Lux, blended: target 300 lx'],
+  [17.5, 19.3, 'Overlap: the blend zone runs through the sculpture'],
+  [19.5, 21.1, 'Pixel size on the surface: limit 10 mm']
+];
+
+const E = { io: p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p+2, 3)/2, o: p => 1 - Math.pow(1-p, 3),
+  q: p => p < .5 ? 8*p*p*p*p : 1 - Math.pow(-2*p+2, 4)/2, s: p => p*p*(3-2*p) };
+const clamp01 = v => v < 0 ? 0 : v > 1 ? 1 : v;
+function kf(t, k) { if (t <= k[0][0]) return k[0][1];
+  for (let i = 1; i < k.length; i++) { const [t1, v1, e] = k[i], [t0, v0] = k[i-1];
+    if (t <= t1) return v0 + (v1 - v0) * E[e || 's'](clamp01((t - t0) / (t1 - t0))); }
+  return k[k.length-1][1]; }
+const ramp = (t, [a, b], e = 's') => E[e](clamp01((t - a) / (b - a)));
+const hash = n => { const s = Math.sin(n * 127.1) * 43758.5453; return s - Math.floor(s); };
+function strike(s) { if (s < 0) return 0;
+  for (const [b, v] of [[.06,1],[.17,.06],[.25,.95],[.33,.12]]) if (s < b) return v;
+  return s < .85 ? (.35 + .65 * E.o((s - .33) / .52)) * (.93 + .07 * Math.sin(s * 95)) : 1; }
+
+/* ================= Renderer ================= */
+const canvas = $('gl'), vp = $('vp');
+let R;
+try { R = new T.WebGLRenderer({ canvas, antialias: true }); } catch (e) { $('wb').classList.add('docked'); return; }
+const PR_MAX = Math.min(devicePixelRatio || 1, 2);
+let pr = PR_MAX;
+R.setPixelRatio(pr);
+R.outputEncoding = T.sRGBEncoding;   // body models only; custom shaders write sRGB like the app
+R.autoClear = false;
+const quadGeo = new T.PlaneGeometry(2, 2), ortho = new T.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const VQ = `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`;
+const quad = mat => { const s = new T.Scene(), m = new T.Mesh(quadGeo, mat); m.frustumCulled = false; s.add(m); return s; };
+const lin = hex => new T.Color(hex).convertSRGBToLinear();
+
+/* ================= Wordmark: the accepted G5b file; its R, G and B channels are the three light layers ================= */
+const TW = 2048, TH = Math.round(2048 / C_ASP);
+function wordmarkTex(img) {
+  const c = document.createElement('canvas'); c.width = TW; c.height = TH;
+  const x = c.getContext('2d'); x.fillStyle = '#000'; x.fillRect(0, 0, TW, TH);
+  const w = TW * .92, h = w * img.height / img.width;
+  x.drawImage(img, (TW - w) / 2, (TH - h) / 2, w, h);
+  const t = new T.CanvasTexture(c);
+  t.generateMipmaps = true; t.minFilter = T.LinearMipmapLinearFilter; t.anisotropy = 4;
+  return t;
+}
+
+/* ================= Content: what both projectors share ================= */
+const contentMat = new T.ShaderMaterial({
+  uniforms: { tW: { value: null }, uT: { value: 0 }, uFocus: { value: .16 }, uCA: { value: 0 }, uGlitch: { value: 0 },
+    uFlash: { value: 0 }, uLamp: { value: 0 }, uLogo: { value: 0 }, uAsp: { value: C_ASP } },
+  vertexShader: VQ,
+  fragmentShader: `
+  precision highp float;
+  uniform sampler2D tW; uniform float uT, uFocus, uCA, uGlitch, uFlash, uLamp, uLogo, uAsp;
+  varying vec2 vUv;
+  float h21(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+  float pick(vec4 v, int c){ return c == 0 ? v.r : (c == 1 ? v.g : v.b); }
+  float layer(vec2 uv, int c, float bias){ return pick(texture2D(tW, uv, bias), c); }
+  float blurred(vec2 uv, int c, float r){
+    if (r < 0.0005) return layer(uv, c, 0.0);
+    float bias = clamp(log2(max(r * ${TH}.0, 1.0) / 2.5), 0.0, 7.0), acc = 0.0;
+    for (int i = 0; i < 16; i++){
+      float fi = float(i) + 0.5, a = fi * 2.39996323, rr = sqrt(fi / 16.0) * r;
+      acc += layer(uv + vec2(cos(a) / uAsp, sin(a)) * rr, c, bias);
+    }
+    return acc / 16.0;
+  }
+  void main(){
+    vec2 uv = vUv, d = uv - 0.5;
+    float row = floor(uv.y * 42.0), tk = floor(uT * 24.0);
+    float tear = step(1.0 - uGlitch * 0.6, h21(vec2(row, tk)));
+    vec3 col = vec3(0.0), tint = vec3(0.55, 0.78, 1.0);
+    for (int c = 0; c < 3; c++){
+      float fc = float(c) - 1.0;
+      vec2 off = vec2(-0.35 / uAsp, 1.0) * (-fc) * uCA + d * (-fc) * uCA * 0.5;
+      off.x += tear * (h21(vec2(row + float(c) * 7.0, tk)) - 0.5) * 0.14 * uGlitch;
+      off.y += tear * (h21(vec2(tk, float(c) + 3.0)) - 0.5) * 0.025 * uGlitch;
+      vec2 u = uv + off;
+      float m = blurred(u, c, uFocus * (1.0 + 0.45 * fc));
+      float glow = layer(u, c, 6.5) * 1.1 + layer(u, c, 4.5) * 0.45;
+      float v = (m + glow * (0.12 + uFlash * 1.8)) * uLogo;
+      vec2 q = (d + off * 0.6) * vec2(uAsp, 1.0);
+      float flare = exp(-length(q) * 22.0) * 2.2 + exp(-length(q) * 5.0) * 0.22 + exp(-abs(q.y) * 120.0) * exp(-abs(q.x) * 1.1) * 1.6;
+      v += flare * uLamp * pick(vec4(tint, 0.0), c);
+      if (c == 0) col.r = v; else if (c == 1) col.g = v; else col.b = v;
+    }
+    gl_FragColor = vec4(col, 1.0);
+  }`
+});
+const contentScene = quad(contentMat);
+const contentRT = new T.WebGLRenderTarget(TW, TH, { depthBuffer: false, generateMipmaps: true, minFilter: T.LinearMipmapLinearFilter, magFilter: T.LinearFilter });
+
+/* Reveal finishing (lens): bloom from mips, lateral CA, vignette, grain. Only on the flat reveal. */
+const lensMat = new T.ShaderMaterial({
+  uniforms: { tC: { value: contentRT.texture }, uA: { value: 1 }, uAspS: { value: 1 }, uAspC: { value: C_ASP }, uPush: { value: 1 },
+    uCA: { value: .004 }, uT: { value: 0 }, uGlitch: { value: 0 }, uRes: { value: new T.Vector2(1, 1) } },
+  vertexShader: VQ, transparent: true, depthTest: false, depthWrite: false,
+  fragmentShader: `
+  uniform sampler2D tC; uniform float uA, uAspS, uAspC, uPush, uCA, uT, uGlitch; uniform vec2 uRes; varying vec2 vUv;
+  float h21(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+  vec3 f(vec2 uv, float b){
+    vec2 sc = uAspS > uAspC ? vec2(uAspS / uAspC, 1.0) : vec2(1.0, uAspC / uAspS);
+    vec2 cu = (uv - 0.5) * sc / uPush + 0.5; vec2 ib = step(vec2(0.0), cu) * step(cu, vec2(1.0));
+    return texture2D(tC, cu, b).rgb * ib.x * ib.y;
+  }
+  void main(){
+    vec2 uv = vUv, d = uv - 0.5;
+    float row = floor(uv.y * 64.0), tk = floor(uT * 24.0);
+    uv.x += step(1.0 - uGlitch * 0.5, h21(vec2(row, tk))) * (h21(vec2(tk, row)) - 0.5) * 0.05 * uGlitch;
+    float k = uCA * (0.25 + dot(d, d) * 4.0);
+    vec3 col = vec3(f(uv - d * k, 0.0).r, f(uv, 0.0).g, f(uv + d * k, 0.0).b);
+    col += f(uv, 3.5) * 0.16 + f(uv, 5.5) * 0.24 + f(uv, 7.5) * 0.2;
+    float v = length(d * vec2(uAspS, 1.0) / max(uAspS, 1.0));
+    col *= mix(1.0, smoothstep(0.95, 0.2, v), 0.5);
+    col += (h21(uv * uRes + fract(uT * 7.13) * 97.0) - 0.5) * 0.035;
+    gl_FragColor = vec4(max(col, 0.0), uA);
+  }`
+});
+const lensScene = quad(lensMat);
+
+/* ================= Gradient-grid test pattern per projector ================= */
+const enc = x => Math.round(255 * (x <= .0031308 ? 12.92 * x : 1.055 * Math.pow(x, 1 / 2.4) - .055));
+function gradientGrid(name, colour) {
+  // render/surface-material/pattern-glsl.ts kind 1 (gradient grid): integer cell edges, white 1 px cell lines, label "0.u 0.v" top-left of each cell,
+  // "1.0" edge labels, 1 px border + orientation square + 3 px crosshair in the projector colour, name label box at nh/10. Glyphs: 10 px font x scale.
+  const nw = 1920, nh = 1200, c = document.createElement('canvas'); c.width = nw; c.height = nh;
+  const x = c.getContext('2d'), B = enc(.35);
+  const sc = Math.max(1, Math.min(Math.floor((nh + 160) / 320), Math.floor(nw / 10 / 48))), gh = 10 * sc;
+  const xe = k => Math.floor((k * nw + 9) / 10), ye = k => Math.floor((k * nh + 9) / 10);
+  x.textBaseline = 'top'; x.font = `${gh}px ui-monospace, monospace`;
+  for (let ci = 0; ci < 10; ci++) for (let rt = 0; rt < 10; rt++) {
+    const rj = 9 - rt, u = enc((ci + .5) / 10), v = enc((rj + .5) / 10);
+    const x0 = xe(ci), x1 = xe(ci + 1), y0 = ye(rt), y1 = ye(rt + 1);
+    x.fillStyle = `rgb(${u},${v},${B})`; x.fillRect(x0, y0, x1 - x0, y1 - y0);
+    const luma = (.2126 * u + .7152 * v + .0722 * B) / 255;
+    x.fillStyle = luma > .5 ? '#000' : '#fff';
+    x.fillText(`0.${ci} 0.${rj}`, x0 + 1 + sc, y0 + 1 + sc);
+    if (rt === 0) x.fillText('1.0', x1 - sc - x.measureText('1.0').width, y0 + 1 + sc + gh + sc);
+    if (ci === 9) x.fillText('1.0', nw - 1 - sc - x.measureText('1.0').width, y1 - sc - gh);
+  }
+  x.fillStyle = '#fff';
+  for (let k = 1; k < 10; k++) { x.fillRect(xe(k), 0, 1, nh); x.fillRect(0, ye(k), nw, 1); }
+  x.fillStyle = colour;
+  x.fillRect(0, 0, nw, 1); x.fillRect(0, nh - 1, nw, 1); x.fillRect(0, 0, 1, nh); x.fillRect(nw - 1, 0, 1, nh);
+  const L = Math.max(3, Math.floor(5 * nh / 100)), Lc = Math.floor(10 * nh / 100), cu = nw / 2, cv = nh / 2;
+  x.fillRect(0, 0, L, L);
+  x.fillRect(cu - Lc / 2, cv - 1, Lc, 3); x.fillRect(cu - 1, cv - Lc / 2, 3, Lc);
+  const lsc = Math.max(1, Math.floor((nh + 200) / 400)), pad = 2 * lsc;
+  x.font = `${10 * lsc}px ui-monospace, monospace`;
+  const bw = name.length * 6 * lsc - lsc + 2 * pad, bh = 10 * lsc + 2 * pad, bx = Math.floor((nw - bw) / 2), by = Math.floor(nh / 10);
+  x.fillStyle = '#000'; x.fillRect(bx, by, bw, bh);
+  x.fillStyle = colour; x.fillText(name, bx + pad, by + pad);
+  const t = new T.CanvasTexture(c); t.anisotropy = 4;
+  return t;
+}
+
+/* ================= Projectors ================= */
+const PJ = SCENE.projectors.map((p, k) => {
+  const cam = new T.PerspectiveCamera(VFOV, ASP, NEAR, FAR);
+  cam.position.set(...p.t); cam.lookAt(...p.aim); cam.updateMatrixWorld(); cam.updateProjectionMatrix();
+  const rt = new T.WebGLRenderTarget(1536, 960);
+  rt.depthTexture = new T.DepthTexture(1536, 960); rt.depthTexture.type = T.UnsignedIntType;
+  return { ...p, k, cam, rt, M: new T.Matrix4().multiplyMatrices(cam.projectionMatrix, cam.matrixWorldInverse),
+    C: new T.Vector3(...p.t), pat: gradientGrid(p.name, p.colour), col: new T.Color(p.colour) };
+});
+const ccam = new T.PerspectiveCamera(C_VFOV, C_ASP, NEAR, FAR);
+ccam.position.set(0, HGT, THROW); ccam.lookAt(...LOGO_AIM); ccam.updateMatrixWorld(); ccam.updateProjectionMatrix();
+const MC = new T.Matrix4().multiplyMatrices(ccam.projectionMatrix, ccam.matrixWorldInverse);
+
+/* ================= Surfaces: Shaded / Lux / Overlap / Pixel. Dark grey + feature edges, like the planner. ================= */
+const SU = {
+  tContent: { value: contentRT.texture }, mC: { value: MC },
+  uPat: { value: 0 }, uLux: { value: 0 }, uOver: { value: 0 }, uPix: { value: 0 }, uRaw: { value: 0 }, uLines: { value: 0 },
+  uSceneLight: { value: 0 }, uShare: { value: Math.min(1, 2 * SCENE.pattern) }, uI0: { value: I0 },
+  uNear: { value: NEAR }, uFar: { value: FAR }, uDom: { value: new T.Vector3() }, uStops: { value: new T.Vector3() },
+  uPixMax: { value: SCENE.maxPixelMm }, uPxW: { value: W1 / SCENE.native[0] }, uPxH: { value: H1 / SCENE.native[1] }, uGraze: { value: Math.cos(SCENE.grazingDeg * Math.PI / 180) },
+  uDpr: { value: 1 }
+};
+PJ.forEach((p, k) => {
+  SU['m' + k] = { value: p.M }; SU['c' + k] = { value: p.C }; SU['d' + k] = { value: p.rt.depthTexture };
+  SU['p' + k] = { value: p.pat }; SU['k' + k] = { value: new T.Vector3(p.col.r, p.col.g, p.col.b) };
+  SU['r' + k] = { value: new T.Matrix3().setFromMatrix4(p.cam.matrixWorld) };   // columns: image right, image up, backward (core/optics/frame.ts)
+  // core/blend: ramp only on the edge that borders the overlap zone, width = the full pair overlap (unoccluded images); [left, right, top, bottom] in uv
+  const ov = Math.max(0, (THROW * W1 - 2 * SEP) / (THROW * W1));
+  SU['f' + k] = { value: new T.Vector4(k === 1 ? ov : 0, k === 0 ? ov : 0, 0, 0) };
+});
+const lx = SCENE.lux, lo = Math.log(Math.max(lx.min / 10, 1e-3)), hi = Math.log(lx.max * 2);
+SU.uDom.value.set(lo, hi, 0);
+SU.uStops.value.set(...[lx.min, lx.target, lx.max].map(v => (Math.log(v) - lo) / (hi - lo)));
+const surfMat = new T.ShaderMaterial({
+  uniforms: SU, side: T.DoubleSide, extensions: { derivatives: true }, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1,
+  vertexShader: `varying vec3 vW; varying vec3 vN;
+    void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; vN = normalize(mat3(modelMatrix) * normal);
+    gl_Position = projectionMatrix * viewMatrix * w; }`,
+  fragmentShader: `
+  precision highp float;
+  uniform sampler2D tContent, d0, d1, p0, p1;
+  uniform mat4 mC, m0, m1; uniform vec3 c0, c1, k0, k1, uDom, uStops; uniform mat3 r0, r1; uniform vec4 f0, f1;
+  uniform float uPat, uLux, uOver, uPix, uRaw, uLines, uSceneLight, uShare, uI0, uNear, uFar, uPixMax, uPxW, uPxH, uGraze, uDpr;
+  varying vec3 vW; varying vec3 vN;
+  vec3 dec(vec3 c){ return mix(c / 12.92, pow((c + 0.055) / 1.055, vec3(2.4)), step(0.04045, c)); }
+  vec3 encs(vec3 c){ c = clamp(c, 0.0, 1.0); return mix(c * 12.92, 1.055 * pow(c, vec3(1.0 / 2.4)) - 0.055, step(0.0031308, c)); }
+  float lin(float d){ float z = d * 2.0 - 1.0; return 2.0 * uNear * uFar / (uFar + uNear - z * (uFar - uNear)); }
+  float inside(vec2 u){ return step(0.0, u.x) * step(u.x, 1.0) * step(0.0, u.y) * step(u.y, 1.0); }
+  void pj(mat4 M, sampler2D D, out vec2 uv, out float ins, out float vis, out float t){
+    vec4 c = M * vec4(vW, 1.0); t = c.w;
+    if (c.w <= 0.0){ uv = vec2(-1.0); ins = 0.0; vis = 0.0; return; }
+    uv = c.xy / c.w * 0.5 + 0.5; ins = inside(uv);
+    vis = ins * step(t - 0.03 - 0.002 * t, lin(texture2D(D, uv).r));
+  }
+  vec3 hx(float r, float g, float b){ return vec3(r, g, b) / 255.0; }
+  vec3 heat(float e){
+    if (e <= 0.0) return hx(38.0, 38.0, 43.0);
+    float p = clamp((log(e) - uDom.x) / (uDom.y - uDom.x), 0.0, 1.0);
+    vec3 s0 = hx(11.0, 29.0, 81.0), s1 = hx(31.0, 111.0, 209.0), s2 = hx(47.0, 191.0, 113.0), s3 = hx(242.0, 208.0, 36.0), s4 = hx(227.0, 52.0, 47.0);
+    if (p < uStops.x) return mix(s0, s1, p / uStops.x);
+    if (p < uStops.y) return mix(s1, s2, (p - uStops.x) / (uStops.y - uStops.x));
+    if (p < uStops.z) return mix(s2, s3, (p - uStops.y) / (uStops.z - uStops.y));
+    return mix(s3, s4, (p - uStops.z) / (1.0 - uStops.z));
+  }
+  // core/colormap/pixel.ts: log ramp over [max/10, max*4], threshold at ln10/ln40; unlit = LUX_UNLIT
+  vec3 pixCol(float mm){
+    if (!(mm > 0.0)) return hx(38.0, 38.0, 43.0);
+    float lo = uPixMax / 10.0, hi = uPixMax * 4.0, pm = log(10.0) / log(40.0);
+    float p = clamp(log(mm / lo) / log(hi / lo), 0.0, 1.0);
+    if (mm <= uPixMax){ float t = p / pm;
+      return t <= 0.5 ? mix(hx(31.0, 111.0, 209.0), hx(47.0, 191.0, 113.0), t * 2.0) : mix(hx(47.0, 191.0, 113.0), hx(242.0, 208.0, 36.0), t * 2.0 - 1.0); }
+    return mix(hx(227.0, 52.0, 47.0), hx(122.0, 16.0, 32.0), (p - pm) / (1.0 - pm));
+  }
+  // render/surface-material/glsl.ts pixelWorstMm: worst-axis pixel size (mm) from the footprint Jacobian
+  float pixelWorstMm(mat3 Rm, vec3 n, vec3 C, float t, float h){
+    vec3 q = (vW - C) * Rm;   // = transpose(Rm) * (vW - C), GLSL ES 1.00 safe
+    vec3 dir = Rm * vec3(q.x / t, q.y / t, -1.0);
+    float k = t * t / h;
+    vec3 ju = (t * Rm[0] + dir * (dot(n, Rm[0]) * k)) * uPxW;
+    vec3 jv = -(t * Rm[1] + dir * (dot(n, Rm[1]) * k)) * uPxH;
+    return 1000.0 * sqrt(max(dot(ju, ju), dot(jv, jv)));
+  }
+  float blendMask(vec2 u, vec4 f){
+    float m = 1.0; u.y = 1.0 - u.y;   // v measured from the image top
+    if (f.x > 0.0) m *= clamp(u.x / f.x, 0.0, 1.0);
+    if (f.y > 0.0) m *= clamp((1.0 - u.x) / f.y, 0.0, 1.0);
+    if (f.z > 0.0) m *= clamp(u.y / f.z, 0.0, 1.0);
+    if (f.w > 0.0) m *= clamp((1.0 - u.y) / f.w, 0.0, 1.0);
+    return m;
+  }
+  int stripeBand(vec2 fc){ ivec2 pix = ivec2(floor(fc / uDpr)); return (pix.x + pix.y) / 4; }
+  float border(vec2 u, float ins){ float e = min(min(u.x, 1.0 - u.x), min(u.y, 1.0 - u.y)); return ins * (1.0 - step(1.5 * uDpr * fwidth(e), e)); }
+  void main(){
+    vec3 n = normalize(vN);
+    vec3 ng = normalize(cross(dFdx(vW), dFdy(vW)));        // geometric normal facing the eye (the app's ng)
+    if (dot(ng, cameraPosition - vW) < 0.0) ng = -ng;
+    float lam = 0.35 + 0.65 * abs(dot(n, normalize(cameraPosition - vW)));
+    vec3 shadedLin = vec3(0.05) * lam * uSceneLight;
+
+    vec2 u0, u1; float i0, i1, v0, v1, t0, t1;
+    pj(m0, d0, u0, i0, v0, t0); pj(m1, d1, u1, i1, v1, t1);
+    // cover (core PR §7.1): in the image AND the viewed side faces the projector (h > 0 with the eye-facing geometric normal)
+    float hh0 = dot(ng, c0 - vW), hh1 = dot(ng, c1 - vW);
+    float cv0 = i0 * step(1e-6 * max(t0, 1e-3), hh0), cv1 = i1 * step(1e-6 * max(t1, 1e-3), hh1);
+    float l0 = cv0 * step(0.5, v0), l1 = cv1 * step(0.5, v1);      // lit = covering and not shadowed
+    float anyLit = max(l0, l1);
+
+    vec4 cc = mC * vec4(vW, 1.0); vec2 cu = cc.xy / cc.w * 0.5 + 0.5;
+    vec3 logoLin = dec(clamp(texture2D(tContent, cu).rgb, 0.0, 1.0)) * inside(cu) * step(0.0, cc.w);
+    vec3 g0 = dec(texture2D(p0, u0).rgb) * l0, g1 = dec(texture2D(p1, u1).rgb) * l1;
+    vec3 mx = max(g0, g1);
+    vec3 gridLin = min(mx + 0.2 * (g0 + g1 - mx), vec3(1.0));
+    vec3 k = clamp(vec3(uPat * 1.75) - vec3(0.0, 0.25, 0.5) - (1.0 - clamp(vW.y / 7.0, 0.0, 1.0)) * 0.5, 0.0, 1.0);
+    k = k * k * (3.0 - 2.0 * k);
+    vec3 patLin = mix(logoLin, gridLin, k);
+    float logoMask = clamp(max(logoLin.r, max(logoLin.g, logoLin.b)) * 2.0, 0.0, 1.0);
+    vec3 pm = mix(vec3(logoMask), vec3(1.0), k) * anyLit * uShare;
+    vec3 shaded = encs(mix(shadedLin, patLin, pm));
+
+    // lux (core/photometry point.ts, glsl.ts): E_k = I0 h / t^3; Raw = sum vis E_k; Blended w_k = mask_k / sum(mask) over covering projectors (1 / nCover if 0)
+    float e0 = cv0 * uI0 * hh0 / (t0 * t0 * t0), e1 = cv1 * uI0 * hh1 / (t1 * t1 * t1);
+    float mk0 = cv0 * blendMask(u0, f0), mk1 = cv1 * blendMask(u1, f1);
+    float sm = mk0 + mk1, nCover = cv0 + cv1;
+    float w0 = sm > 0.0 ? mk0 / sm : (nCover > 0.0 ? cv0 / nCover : 0.0);
+    float w1 = sm > 0.0 ? mk1 / sm : (nCover > 0.0 ? cv1 / nCover : 0.0);
+    float Eb = w0 * v0 * e0 + w1 * v1 * e1;
+    float Er = cv0 * v0 * e0 + cv1 * v1 * e1;
+    vec3 luxCol = heat(mix(Eb, Er, uRaw));
+
+    // overlap (core/colormap/overlap.ts): lit-count colour tinted 0.35 toward the lit projectors' mean colour; outside = unlit, shadowed = #101014;
+    // every covering-but-blocked projector adds 4 px diagonal stripes in its own colour
+    float nLit = l0 + l1;
+    vec3 oc = (cv0 + cv1) < 0.5 ? hx(38.0, 38.0, 43.0) : nLit < 0.5 ? hx(16.0, 16.0, 20.0)
+            : mix(nLit < 1.5 ? hx(59.0, 111.0, 182.0) : hx(47.0, 191.0, 113.0), (k0 * l0 + k1 * l1) / nLit, 0.35);
+    float b0 = cv0 * (1.0 - l0), b1 = cv1 * (1.0 - l1), nB = b0 + b1;
+    if (nB > 0.5){
+      int band = stripeBand(gl_FragCoord.xy), ph = band - (band / int(2.0 * nB)) * int(2.0 * nB);
+      if (ph == 0) oc = b0 > 0.5 ? k0 : k1; else if (ph == 2) oc = k1;
+    }
+
+    // pixel (core/colormap/pixel.ts): worst-axis size of the WORST lit projector; hatch where the smallest cos over the lit ones < cos(grazing): even bands x 0.35
+    float px = 0.0, cosMin = 1.0;
+    if (l0 > 0.5){ px = max(px, pixelWorstMm(r0, ng, c0, t0, hh0)); cosMin = min(cosMin, hh0 / length(c0 - vW)); }
+    if (l1 > 0.5){ px = max(px, pixelWorstMm(r1, ng, c1, t1, hh1)); cosMin = min(cosMin, hh1 / length(c1 - vW)); }
+    vec3 pc = pixCol(nLit > 0.5 ? px : 0.0);
+    if (nLit > 0.5 && cosMin < uGraze){ int bd = stripeBand(gl_FragCoord.xy); if (bd - (bd / 2) * 2 == 0) pc *= 0.35; }
+
+    vec3 col = mix(shaded, luxCol, uLux);
+    col = mix(col, oc, uOver);
+    col = mix(col, pc, uPix);
+    col = mix(col, k0, border(u0, cv0) * uLines);
+    col = mix(col, k1, border(u1, cv1) * uLines);
+    gl_FragColor = vec4(col, 1.0);
+  }`
+});
+
+/* ================= World grid ================= */
+const gridMat = new T.ShaderMaterial({
+  uniforms: { uFade: { value: 0 }, uEnd: { value: 90 } }, transparent: true, depthWrite: false, extensions: { derivatives: true },
+  vertexShader: `varying vec3 vW; void main(){ vec4 w = modelMatrix * vec4(position, 1.0); vW = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+  fragmentShader: `uniform float uFade, uEnd; varying vec3 vW;
+    float ln(vec2 p, float s){ vec2 q = p / s; vec2 g = abs(fract(q - 0.5) - 0.5) / fwidth(q); float l = 1.0 - min(min(g.x, g.y), 1.0);
+      float dens = max(fwidth(q).x, fwidth(q).y); return l * (1.0 - smoothstep(0.25, 0.5, dens)); }
+    void main(){
+      vec2 p = vW.xz;
+      vec4 c = vec4(0.0);
+      c = mix(c, vec4(59.0, 59.0, 68.0, 255.0) / 255.0 * vec4(1, 1, 1, 0.55), ln(p, 1.0));
+      c = mix(c, vec4(85.0, 85.0, 95.0, 255.0) / 255.0 * vec4(1, 1, 1, 0.8), ln(p, 10.0));
+      c = mix(c, vec4(168.0, 64.0, 74.0, 255.0) / 255.0, 1.0 - min(abs(p.y) / fwidth(p.y), 1.0));
+      c = mix(c, vec4(95.0, 154.0, 71.0, 255.0) / 255.0, 1.0 - min(abs(p.x) / fwidth(p.x), 1.0));
+      c.a *= (1.0 - smoothstep(0.25 * uEnd, uEnd, length(vW.xz - cameraPosition.xz))) * uFade;
+      gl_FragColor = c;
+    }`
+});
+
+/* ================= Scene ================= */
+const scene = new T.Scene();
+const hemi = new T.HemisphereLight(0xffffff, 0x3a3a44, 1.6); scene.add(hemi);
+const sun = new T.DirectionalLight(0xffffff, 1.8); sun.position.set(3, 6, 4); scene.add(sun);
+const solids = new T.Group(); scene.add(solids);
+const rigGroup = new T.Group(); scene.add(rigGroup);
+const venueMeshes = [], lineMats = [];
+const edgeMat = new T.LineBasicMaterial({ color: lin('#8c8c94'), transparent: true, opacity: 0 });   // feature edges, grey
+function solid(geo, pos, rot, edges = true) {
+  const m = new T.Mesh(geo, surfMat); m.position.set(...pos); if (rot) m.rotation.set(...rot);
+  if (edges) m.add(new T.LineSegments(new T.EdgesGeometry(geo, 30), edgeMat));
+  solids.add(m); venueMeshes.push(m); return m;
+}
+solid(new T.PlaneGeometry(17, 9.5), [0, 4.75, 0]);
+solid(new T.PlaneGeometry(60, 60), [0, 0, 0], [-Math.PI / 2, 0, 0], false);
+for (const b of BOXES) solid(new T.BoxGeometry(...b.s), b.p, b.r);
+const grid = new T.Mesh(new T.PlaneGeometry(400, 400), gridMat); grid.rotation.x = -Math.PI / 2; grid.position.y = .003; grid.renderOrder = 2; scene.add(grid);
+
+function placeBody(p, chassis, lens) {
+  // core/resolve/body.ts, floor mount: M = P · T(0,0,z) · Ry(180°); zLens = -Δ + L, zBody = zLens + d/2
+  const L = SCENE.lensL, zLens = -SCENE.deltaM + L, zBody = zLens + .57 / 2;
+  const g = new T.Group(); g.position.copy(p.C); g.quaternion.copy(p.cam.quaternion);
+  const b = chassis.clone(true); b.position.z = zBody; b.rotation.y = Math.PI;
+  const l = lens.clone(true); l.position.z = zLens; l.rotation.y = Math.PI;
+  g.add(b, l); rigGroup.add(g);
+  return g;
+}
+function frustumLines(p) {
+  // solid frustum in the projector colour: rays to the image corners and the image outline on the wall plane
+  const corners = [[-1,-1],[1,-1],[1,1],[-1,1]].map(([x, y]) => {
+    const dir = new T.Vector3(x, y, .5).unproject(p.cam).sub(p.C).normalize();
+    return p.C.clone().add(dir.multiplyScalar(-p.C.z / dir.z));
+  });
+  const pts = []; corners.forEach((c, i) => pts.push(p.C, c, c, corners[(i + 1) % 4]));
+  const mat = new T.LineBasicMaterial({ color: lin(p.colour), transparent: true, opacity: 0 });
+  rigGroup.add(new T.LineSegments(new T.BufferGeometry().setFromPoints(pts), mat)); lineMats.push(mat);
+  p.imgW = corners[0].distanceTo(corners[1]); p.imgH = corners[1].distanceTo(corners[2]);
+  return new T.Vector3(...p.aim);
+}
+
+let ready = false;
+const loader = new T.GLTFLoader();
+const b64 = s => { const bin = atob(s), u = new Uint8Array(bin.length); for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return u.buffer; };
+const parse = key => new Promise((res, rej) => { try { loader.parse(b64(window.LM_MODELS[key]), '', g => res(g.scene), rej); } catch (e) { rej(e); } });
+new Promise((res, rej) => { const s = document.createElement('script'); s.src = 'models.js'; s.onload = res; s.onerror = rej; document.head.appendChild(s); })
+.then(() => Promise.all([parse('venue'), parse('body'), parse('lens')])).then(([sculpt, body, lens]) => {
+  sculpt.scale.setScalar(SCENE.sculpture.scale); sculpt.position.set(...SCENE.sculpture.pos);
+  sculpt.traverse(o => { if (o.isMesh) { o.material = surfMat; venueMeshes.push(o); o.add(new T.LineSegments(new T.EdgesGeometry(o.geometry, 30), edgeMat)); } });
+  solids.add(sculpt); scene.updateMatrixWorld(true);
+  body.traverse(o => { if (o.isMesh) { const m = o.material;
+    if (/Chassis_Black/.test(m.name)) m.color.set(0x45454b).convertSRGBToLinear();
+    m.metalness = Math.min(m.metalness, .3); } });
+  lens.traverse(o => { if (o.isMesh) o.material.metalness = Math.min(o.material.metalness, .3); });
+  rigGroup.visible = false; grid.visible = false; edgeMat.visible = false;
+  scene.overrideMaterial = new T.MeshBasicMaterial({ side: T.DoubleSide });
+  for (const p of PJ) { R.setRenderTarget(p.rt); R.clear(); R.render(scene, p.cam); }
+  scene.overrideMaterial = null; R.setRenderTarget(null); rigGroup.visible = true; grid.visible = true; edgeMat.visible = true;
+  PJ.forEach(p => { p.body = placeBody(p, body, lens); p.centre = frustumLines(p); });
+  readouts();
+  ready = true;
+}).catch(err => { $('load').textContent = 'The room did not load. The links still work.'; $('load').style.opacity = 1; console.error(err); });
+
+function readouts() {
+  const p = PJ[0], f = (v, d = 1) => v.toLocaleString('en', { minimumFractionDigits: d, maximumFractionDigits: d });
+  const overlap = p.imgW - 2 * SEP;
+  const rows = [
+    ['Projectors', PJ.map(q => `<span class="sw2" style="background:${q.colour}"></span>${q.name}`).join('&ensp;')],
+    ['Model', SCENE.model], ['Lens', `${SCENE.lens}, TR ${f(SCENE.throwRatio, 2)}`],
+    ['Throw', `${f(THROW)} m`], ['Image each', `${f(p.imgW, 2)} × ${f(p.imgH, 2)} m`],
+    ['Blend zone', `${f(overlap, 2)} m (${Math.round(overlap / p.imgW * 100)} %)`],
+    ['Image centre', `${Math.round(I0 * THROW / Math.pow(Math.hypot(THROW, HGT - AIM_Y), 3))} lx`],
+    ['Pixel', `${f(p.imgW / SCENE.native[0] * 1000)} mm`]
+  ];
+  $('readouts').innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+}
+
+/* ================= Camera ================= */
+const cam = new T.PerspectiveCamera(45, 1, .1, 400);
+const V = { tgt: new T.Vector3(...SCENE.view.target) };
+const R0 = SCENE.view.dist, YAW0 = SCENE.view.yaw, PITCH0 = SCENE.view.pitch;
+const startTgt = new T.Vector3(...LOGO_AIM);
+let sa = 1, vw = 1, vh = 1, startFov = 30, endR = R0, userYaw = 0, userPitch = 0, userZoom = 1, uy = 0, up = 0, uz = 1;
+const sph = (yaw, pitch, r) => new T.Vector3(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch)).multiplyScalar(r).add(V.tgt);
+const bez = (a, b, c, d, t) => { const s = 1 - t; return a.clone().multiplyScalar(s*s*s).add(b.clone().multiplyScalar(3*s*s*t)).add(c.clone().multiplyScalar(3*s*t*t)).add(d.clone().multiplyScalar(t*t*t)); };
+
+function resize() {
+  vw = Math.max(1, vp.clientWidth); vh = Math.max(1, vp.clientHeight); sa = vw / vh;
+  R.setSize(vw, vh, false);
+  SU.uDpr.value = R.getPixelRatio();
+  cam.aspect = sa;
+  lensMat.uniforms.uAspS.value = sa;
+  lensMat.uniforms.uRes.value.set(vw * R.getPixelRatio(), vh * R.getPixelRatio());
+  startFov = sa >= C_ASP ? C_VFOV : 2 * Math.atan(Math.tan(C_VFOV * Math.PI / 360) * C_ASP / sa) * 180 / Math.PI;
+  endR = R0 * Math.max(1, Math.pow(1.4 / sa, .7));
+}
+
+/* ================= Labels ================= */
+// style writes only when the value changes (cuts layout/paint work every frame)
+function css(el, prop, val) { const c = el._css || (el._css = {}); if (c[prop] !== val) { c[prop] = val; el.style[prop] = val; } }
+const _pv = new T.Vector3();
+function place(el, v, op) {
+  const p = _pv.copy(v).project(cam);
+  const on = op > .01 && p.z < 1 && Math.abs(p.x) < 1.2 && Math.abs(p.y) < 1.2;
+  css(el, 'opacity', String(on ? Math.round(op * 100) / 100 : 0));
+  if (on) css(el, 'transform', `translate(${((p.x + 1) / 2 * vw).toFixed(1)}px, ${((1 - p.y) / 2 * vh).toFixed(1)}px) translate(-50%, -150%)`);
+}
+
+/* ================= Top bar state (follows the sequence, then the visitor) ================= */
+let t = 0, last = performance.now();
+const user = { view: 'shaded', content: 'logo', light: 'blend' };
+const nowN = { lux: 0, over: 0, pix: 0, pat: 0, raw: 0 };
+const GROUPS = { view: [['vShaded','shaded'],['vLux','lux'],['vOver','over'],['vPixel','pixel']], content: [['cLogo','logo'],['cGrid','grid']], light: [['lBlend','blend'],['lRaw','raw']] };
+const STYLE = { view: 'rgb', content: 'on', light: 'on' };   // 13b: view mode = rgb, Blended/Raw = on
+const shown = { view: '', content: '', light: '' };
+function light(group, value) {
+  if (shown[group] === value) return;
+  shown[group] = value;
+  for (const [id, k] of GROUPS[group]) { const b = $(id); b.classList.toggle(STYLE[group], k === value); b.setAttribute('aria-pressed', String(k === value)); }
+}
+function pick(group, value) { user[group] = value; if (t < TL.end) { t = TL.end; for (const k in nowN) nowN[k] = 0; } }
+for (const g in GROUPS) for (const [id, k] of GROUPS[g]) $(id).onclick = () => pick(g, k);
+$('skip').onclick = () => { t = Math.max(t, TL.dock); };
+window.lmRender = to => { window.lmStill = true; t = to; last = performance.now(); frame(last); };
+
+let drag = null;
+canvas.addEventListener('pointerdown', e => { if (t < TL.pull[1]) return; drag = { x: e.clientX, y: e.clientY }; canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener('pointermove', e => { if (!drag) return;
+  userYaw -= (e.clientX - drag.x) * .005; userPitch = Math.max(-PITCH0 + .03, Math.min(1.1 - PITCH0, userPitch + (e.clientY - drag.y) * .004));
+  drag = { x: e.clientX, y: e.clientY }; });
+canvas.addEventListener('pointerup', () => { drag = null; }); canvas.addEventListener('pointercancel', () => { drag = null; });
+canvas.addEventListener('wheel', e => { if (t < TL.pull[1]) return; e.preventDefault(); userZoom = Math.max(.4, Math.min(1.8, userZoom * Math.exp(e.deltaY * .001))); }, { passive: false });
+
+(function legend() {
+  const S = SU.uStops.value, dom = [Math.exp(lo), lx.min, lx.target, lx.max, Math.exp(hi)], pos = [0, S.x, S.y, S.z, 1];
+  $('luxBar').style.background = `linear-gradient(90deg,#0b1d51 0%,#1f6fd1 ${S.x*100}%,#2fbf71 ${S.y*100}%,#f2d024 ${S.z*100}%,#e3342f 100%)`;
+  $('luxTicks').innerHTML = dom.map((v, i) => (i === 4 && pos[4] - pos[3] < .17) ? '' : `<span style="left:${pos[i] * 100}%">${Math.round(v)} lx</span>`).join('');
+})();
+
+/* ================= Frame ================= */
+let lastCap = '', contentAt = -1, wasDocked = null, wasOrbit = null, running = false;
+const BG0 = new T.Color(0x000000), BG1 = new T.Color(0x101014), bgNow = new T.Color();
+const _P1 = new T.Vector3(), _P2 = new T.Vector3(), _tg = new T.Vector3(), D_P1 = new T.Vector3(0, .4, 4.5), D_P2 = new T.Vector3(2.5, .2, 2.5);
+const TAG_UP = new T.Vector3(0, .6, 0), tagAt = [];
+// adaptive resolution: if frames are slow for a while, step the pixel ratio down (2 -> 1.5 -> 1); never up during a visit
+let slowN = 0, fastN = 0;
+function adapt(ms) {
+  if (ms > 26) { slowN++; fastN = 0; } else { fastN++; if (fastN > 30) slowN = 0; }
+  if (slowN > 40 && pr > 1) { pr = pr > 1.5 ? 1.5 : 1; slowN = 0; R.setPixelRatio(pr); vw = -1; }
+}
+function frame(now) {
+  running = false;
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  if (!reduce) t += dt; else t = Math.max(t, TL.end + 1);
+  if (t > TL.cut[0] - .05 && !ready) t = TL.cut[0] - .05;
+  css($('load'), 'opacity', !ready && t > TL.cut[0] - 1 ? '1' : '0');
+  if (vp.clientWidth !== vw || vp.clientHeight !== vh) resize();   // follows the dock sliding in
+
+  // ---- reveal ----
+  const C = contentMat.uniforms, sL = t - TL.lock, lockOn = sL >= 0;
+  let glitch = lockOn && sL < .38 ? (1 - sL / .38) * (.55 + .45 * hash(Math.floor(sL * 30))) : 0;
+  if (t > 5.95 && t < 6.03) glitch = Math.max(glitch, .3);
+  C.uT.value = t; C.uFocus.value = kf(t, TL.hunt);
+  C.uCA.value = kf(t, TL.ca) + (lockOn ? .05 * Math.exp(-sL * 4.2) * Math.cos(sL * 13) : 0);
+  C.uGlitch.value = glitch; C.uFlash.value = lockOn ? Math.exp(-sL * 6.5) : 0;
+  C.uLamp.value = strike(t - TL.strike) * (1 - ramp(t, [1.3, 2.4])) + (lockOn ? Math.exp(-sL * 3.2) * 1.15 : 0);
+  C.uLogo.value = ramp(t, TL.logoIn, 'o');
+  // the projected image is static after ~6.1 s (focus 0, flash/lamp/ring decayed, last glitch at 6.03 s):
+  // render it (and its mips) only while it changes; the room keeps sampling the last result
+  if (t < 6.1 || contentAt < 6.1) { R.setRenderTarget(contentRT); R.render(contentScene, ortho); R.setRenderTarget(null); contentAt = t; }
+
+  const dis = ramp(t, TL.cut), lights = ramp(t, TL.lights);
+  R.setClearColor(bgNow.copy(BG0).lerp(BG1, lights), 1); R.clear();
+
+  // ---- room ----
+  if (dis > 0 && ready) {
+    const k = ramp(t, TL.pull, 'q');
+    if (k < 1) {
+      const P0 = ccam.position, P3 = sph(YAW0, PITCH0, endR);
+      const P1 = _P1.copy(P0).add(D_P1), P2 = _P2.copy(P3).add(D_P2);
+      cam.position.copy(bez(P0, P1, P2, P3, k));
+      cam.lookAt(_tg.copy(startTgt).lerp(V.tgt, E.io(k)));
+      cam.fov = startFov + (45 - startFov) * E.io(k);
+    } else {
+      uy += (userYaw - uy) * Math.min(1, dt * 6); up += (userPitch - up) * Math.min(1, dt * 6); uz += (userZoom - uz) * Math.min(1, dt * 6);
+      const drift = reduce ? 0 : .1 * Math.sin((t - TL.pull[1]) * .09);
+      cam.position.copy(sph(YAW0 + drift + uy, PITCH0 + up, endR * uz)); cam.lookAt(V.tgt); cam.fov = 45;
+    }
+    cam.updateProjectionMatrix();
+
+    const after = t >= TL.end, a = Math.min(1, dt * 3);
+    if (after) {
+      nowN.lux += ((user.view === 'lux' ? 1 : 0) - nowN.lux) * a; nowN.over += ((user.view === 'over' ? 1 : 0) - nowN.over) * a;
+      nowN.pix += ((user.view === 'pixel' ? 1 : 0) - nowN.pix) * a; nowN.pat += ((user.content === 'grid' ? 1 : 0) - nowN.pat) * a;
+      nowN.raw += ((user.light === 'raw' ? 1 : 0) - nowN.raw) * a;
+    }
+    SU.uPat.value = after ? nowN.pat : kf(t, TL.pat);
+    SU.uLux.value = after ? nowN.lux : kf(t, TL.lux);
+    SU.uOver.value = after ? nowN.over : kf(t, TL.over);
+    SU.uPix.value = after ? nowN.pix : kf(t, TL.pix);
+    SU.uRaw.value = after ? nowN.raw : 0;
+    SU.uSceneLight.value = lights; edgeMat.opacity = .55 * lights;
+    const rig = ramp(t, TL.rig);
+    SU.uLines.value = rig;
+    gridMat.uniforms.uFade.value = ramp(t, TL.grid);
+    lineMats.forEach(m => { m.opacity = rig; });
+    hemi.intensity = 1.6 * lights; sun.intensity = 1.8 * lights;
+    PJ.forEach(p => { p.body.visible = cam.position.distanceTo(p.C) > 1.4; });
+    R.render(scene, cam);
+
+    PJ.forEach((p, i) => { place($('t' + i), tagAt[i] || (tagAt[i] = p.C.clone().add(TAG_UP)), rig); place($('i' + i), p.centre, rig); });
+    $('luxLegend').classList.toggle('show', SU.uLux.value > .5);
+    const lm = SU.uRaw.value > .5 ? 'raw' : 'blended'; if ($('luxMode').textContent !== lm) $('luxMode').textContent = lm;
+    $('overLegend').classList.toggle('show', SU.uOver.value > .5);
+    $('pixLegend').classList.toggle('show', SU.uPix.value > .5);
+    light('view', SU.uPix.value > .5 ? 'pixel' : SU.uOver.value > .5 ? 'over' : SU.uLux.value > .5 ? 'lux' : 'shaded');
+    light('content', SU.uPat.value > .5 ? 'grid' : 'logo');
+    light('light', SU.uRaw.value > .5 ? 'raw' : 'blend');
+  }
+
+  // ---- flat reveal through the lens ----
+  const push = kf(t, [[1.2, 1.08], [7.0, 1.0, 'o']]);
+  if (dis < 1) {
+    const L = lensMat.uniforms;
+    L.uPush.value = push; L.uA.value = 1 - dis; L.uT.value = t;
+    L.uCA.value = .005 + (lockOn ? .03 * Math.exp(-sL * 6) : 0);
+    L.uGlitch.value = glitch * .6;
+    R.render(lensScene, ortho);
+  }
+
+  // ---- page chrome ----
+  const fh = (sa > C_ASP ? vh : vw / C_ASP) * push;
+  const dOp = ramp(t, [TL.desc[0], TL.desc[0] + .5]) * (1 - ramp(t, [TL.desc[1], TL.desc[1] + .3]));
+  css($('desc'), 'opacity', String(Math.round(dOp * 100) / 100)); if (dOp > 0) css($('desc'), 'top', Math.round(vh / 2 + fh * .19) + 'px');
+  const cap = CAPS.find(([a, b]) => t >= a && t < b), ct = cap ? cap[2] : '';
+  if (ct !== lastCap) { if (ct) $('cap').textContent = ct; lastCap = ct; }
+  css($('cap'), 'opacity', ct ? '1' : '0');
+  const docked = t >= TL.dock;
+  if (docked !== wasDocked) {
+    wasDocked = docked;
+    $('wb').classList.toggle('docked', docked);
+    $('bar').classList.toggle('show', docked);
+    $('bar').inert = !docked; $('dock').inert = !docked;   // hidden controls stay out of the tab order and screen readers
+    $('navDemo').classList.toggle('rgb', !docked);      // one primary on screen: header until the dock arrives
+    $('navDemo').classList.toggle('outline', docked);
+    const skipFocused = document.activeElement === $('skip');
+    $('skip').hidden = docked;
+    if (docked && skipFocused) $('dock').querySelector('.rgb').focus();
+  }
+  const orbit = t >= TL.pull[1];
+  if (orbit !== wasOrbit) { wasOrbit = orbit; canvas.classList.toggle('orbit', orbit); }
+  if (!window.lmStill) {
+    adapt(performance.now() - now);
+    schedule();
+  }
+}
+// after the sequence, with reduced motion (no drift) nothing moves unless the visitor acts: stop the loop until input
+function idle() {
+  if (!reduce || t < TL.end || drag || !ready) return false;
+  const eps = 1e-4, still = (a, b) => Math.abs(a - b) < eps;
+  return still(uy, userYaw) && still(up, userPitch) && still(uz, userZoom)
+    && still(nowN.lux, user.view === 'lux' ? 1 : 0) && still(nowN.over, user.view === 'over' ? 1 : 0) && still(nowN.pix, user.view === 'pixel' ? 1 : 0)
+    && still(nowN.pat, user.content === 'grid' ? 1 : 0) && still(nowN.raw, user.light === 'raw' ? 1 : 0) && vp.clientWidth === vw && vp.clientHeight === vh;
+}
+function schedule() { if (running || document.hidden || idle()) return; running = true; requestAnimationFrame(frame); }
+function wake() { if (!running) last = performance.now(); schedule(); }
+document.addEventListener('visibilitychange', () => { if (!document.hidden) wake(); });
+for (const ev of ['pointerdown', 'pointermove', 'wheel', 'click', 'keydown']) addEventListener(ev, wake, { passive: true });
+addEventListener('resize', wake);
+
+const img = new Image();
+img.onload = () => {
+  contentMat.uniforms.tW.value = wordmarkTex(img);
+  resize();
+  last = performance.now(); schedule();
+};
+img.onerror = () => { $('wb').classList.add('docked'); };
+img.src = 'brand/wordmark-on-black.png';
+})();
+</script>
+
+</body>
+</html>
