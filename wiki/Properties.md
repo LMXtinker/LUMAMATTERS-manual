@@ -1,14 +1,14 @@
 # Properties
 
-Properties shows the settings of the selection, at the bottom right. With nothing selected it says "Select an object in the 3D view or the Outliner."
+Properties shows the settings of the selection, at the bottom right. With nothing selected, it says "Select an object in the 3D view or the Outliner."
 
 ![Properties of a selected projector](images/properties-projector.png)
 
 ## Top of the panel
 
-A heading shows the type icon, the name and `type · file` (or "created in the app"). With several objects selected it shows "N objects". Badges below repeat the Outliner's (why a projector is not analysed, hidden, orphan, not in file).
+A heading shows the type icon, the name and `type · file` (or "created in the app"). With several objects selected, it shows "N objects". Badges below the heading repeat the badges of the Outliner. They show why a projector is not analysed, and they show hidden, orphan and not-in-file objects.
 
-Sections fold and unfold. Only sections that every selected object has are shown. A field that differs between objects shows a dash.
+Sections fold and unfold. The panel shows only the sections that every selected object has. A field that differs between the objects shows a dash.
 
 A locked object shows a note, and its fields are disabled.
 
@@ -16,23 +16,38 @@ A locked object shows a note, and its fields are disabled.
 
 ![The Value Ladder open on a number field](images/value-ladder.png)
 
-- **Click** a field and type. `Enter` or leaving the field commits. `Esc` drops the typed text.
-- **Drag left or right** with the left mouse button to change the value. Right is up. Hold `Shift` for a tenth of the step, `Ctrl` to snap.
-- **Middle mouse button: Value Ladder** (like TouchDesigner). Press the middle button on a field. A column of steps appears: 100, 10, 1, 0.1, 0.01 (integer fields: 100, 10, 1). Move up or down to pick a step, then move sideways to change the value by that step. After a little sideways movement, the step stays fixed. Release to commit. `Esc` cancels.
-- On the label of a multi-value row (Position, Shift), the ladder changes all components together.
+- **Click** a field and type. Press `Enter` or leave the field to commit. Press `Esc` to drop the typed text.
+- **Drag left or right** with the left mouse button to change the value. Right is up. Hold `Shift` for a tenth of the step. Hold `Ctrl` to snap.
+- **Middle mouse button: Value Ladder** (as in TouchDesigner). Press the middle button on a field. A column of steps appears: 100, 10, 1, 0.1, 0.01. Integer fields show 100, 10, 1. Move up or down to pick a step. Then move sideways to change the value by that step. After a short sideways move, the step stays fixed. Release the button to commit. Press `Esc` to cancel.
+- On the label of a row with several values (Position, Shift), the ladder changes all values together.
 - One drag is one undo step. The 3D view follows live while you drag.
 - A drag stops at the allowed range of the field.
-- With several objects selected, dragging a transform field applies the same change to each.
+- With several objects selected, a drag in a transform field applies the same change to each object.
 
 ## Transform (all objects)
 
 ![Properties of a null: only the Transform section](images/properties-null.png)
 
-**Name**, **Parent**, **Position**, **Rotation** (with **Yaw / Pitch / Roll** and a Blender Euler row), **Scale**. A **World** group shows world position and angles. Values are in metres and degrees. Axes follow Blender's convention. For projectors, **Aim at…** aims at a surface point you click.
+The fields are **Name**, **Parent**, **Position**, **Rotation** (with **Yaw / Pitch / Roll** and a Blender Euler row) and **Scale**. A node with a parent also shows its world position and angles. They are in a **World** sub-section, which is folded at first. Values are in metres and degrees. The axes follow the convention of Blender. For projectors, **Aim at…** aims the projector at a surface point that you click.
 
 ## Projector
 
-- **Lens**: **Colour**, **Test pattern**, **Model** (with **Change model…**), **Lens** (for interchangeable lenses; unusable lenses carry the reason), a **Spec sheet** button, **Throw ratio** (the maker's number), **Wanted width (m)** with **Fit** (sets the zoom so the image has that width at the aim distance), **Lens range**, **Shift H (%)**, **Shift V (%)**, **Mount** (**Floor** or **Ceiling**), **Light output (%)** and **Look through**. With two or more projectors, a **Copy** row opens **Copy specs**: tick what to copy and choose "Same TR" or "Same image width" for the zoom.
+The **Lens** section holds most projector settings. These are the rows, from top to bottom:
+
+- **Colour**: a 16-colour palette for the projector.
+- **Test pattern**: the pattern that the projector draws.
+- **Image**: see below.
+- **Model**, with **Change model…**.
+- **Copy**: with two or more projectors selected, **Copy specs…** opens the **Copy specs** popover. Tick what to copy. For the zoom, choose "Same TR" or "Same image width".
+- **Spec sheet**: a button that opens the maker's spec sheet.
+- **Lens**: for interchangeable lenses. A lens that you cannot use shows the reason.
+- **Throw ratio**: the maker's number. It sets the zoom.
+- **Wanted width (m)** with **Fit**: **Fit** sets the zoom so that the image has that width at the aim distance.
+- **Lens range**: the smallest and largest throw ratio of the lens.
+- **Shift H (%)** and **Shift V (%)**: lens shift.
+- **Mount**: **Floor** or **Ceiling**.
+- **Light output (%)**: see below.
+- **Look through**: shows the scene from the lens of the projector.
 
 ![Model and Lens rows of a projector](images/props-projector-model-lens.png)
 
@@ -40,50 +55,82 @@ A locked object shows a note, and its fields are disabled.
 
 ![The Test pattern list](images/props-pattern-list.png)
 
-- **Image** (new in 1.1.0): the name of the picture this projector shows, or none, with **Load…** and **Remove**. A loaded picture replaces the test pattern of that projector in the Shaded view, and in the Photometric view, Overlap and Pixel when **Images** (Viewport > Beams) is on. It is stretched to the projector's image (no aspect fit) and shown at up to 1024 pixels. The file is copied into the project (and its snapshots). **Remove** brings the test pattern back. A project with a projector image is saved as project format 5.0. See [Project Files](Project-Files.md#project-format-version).
-- **Body**: the **Flight frame** checkbox and a note on the body model in use. See [Physics Model](Physics-Model.md).
-- **Readouts** (one projector): Aim distance, Aims at, Throw distance (maker), Throw ratio (centre), Image W x H, Centre lux, Pixel, effective lumens, and **flag chips** that explain caveats. Click a chip for its explanation.
+Zoom is optical zoom only. Throw and lens shift come from the projector database. Zoom and lens shift need projectors with the same model and lens. See [Projector Database](Projector-Database.md) and [Placing Projectors](Placing-Projectors.md).
+
+### Image (new in 1.1.0)
+
+The **Image** row shows the name of the picture that this projector shows, or `none`. With several different pictures selected, it shows `Mixed`.
+
+1. Click **Load…** and choose a picture file.
+2. The app copies the file into the project and its snapshots.
+3. Click **Remove** to bring the test pattern back.
+
+The picture replaces the test pattern of that projector. The Shaded view always shows it. The other views show it when **Images** is on (**Viewport** fold-out, **Beams** section). The app stretches the picture to the projector image, with no aspect fit. It shows the picture at up to 1024 pixels. A project with a projector image is saved as project format 5.0. See [Project Files](Project-Files.md#project-format-version).
+
+### Light output (%)
+
+**Light output (%)** dims one projector. It lowers the rated lumens of that projector. The range is 1 to 100, and the default is 100. At 50, the analysis uses half of the rated lumens. The field changes the analysis numbers. There is no project-wide dimming field.
+
+### Body
+
+The **Body** section has the **Flight frame** checkbox and a note on the body model in use. See [Physics Model](Physics-Model.md).
+
+### Readouts
+
+The **Readouts** section appears when you select one projector. Its rows are:
+
+- **Aim distance**
+- **Aims at**
+- **Throw distance (maker)**
+- **Throw ratio (centre)**
+- **Image W × H**
+- **Centre**: the illuminance at the image centre, in lx
+- **Pixel**: the pixel size
+- **Φ_eff**: the effective lumens
+
+Under the rows are **flag chips** that explain caveats. Click a chip to read its explanation.
 
 ![The Readouts section](images/props-projector-readouts.png)
 
 ![The Readouts section with the notes open](images/props-readouts-notes.png)
 
-Zoom is optical zoom only. Throw and shift come from the projector database. See [Projector Database](Projector-Database.md) and [Placing Projectors](Placing-Projectors.md).
-
 ## Surface (venue meshes)
 
 ![Properties of a surface](images/properties-surface.png)
 
-- **Role**: **Target** (should be lit and counted), **Occluder** (blocks light) or **Helper**.
-- **Reflectance** (new in 1.1.0): the reflectance ρ from 0 to 1 that Luminance uses (see [Physics Model](Physics-Model.md)). Type a number or pick a typical value from the list: **white paint** 0.80, **light plaster** 0.45, **sandstone** 0.30, **concrete** 0.25, **granite** 0.22, **red brick** 0.12. **Project default** removes the object's own value, so it follows the **Default ρ** of the Photometric legend (1.00 until you change it). Each choice is one undo step. A project with a reflectance is saved as project format 5.0.
-- **Triangles** and **UVs** (yes / no).
+- **Role**: **Target** (the surface should be lit and counted), **Occluder** (it blocks light) or **Helper** (light passes through it).
+- **Reflectance** (new in 1.1.0): the reflectance ρ of the surface, from 0 to 1. The Photometric view uses it for Luminance. See [Physics Model](Physics-Model.md). Type a number, or pick a typical value from the list.
+- **Triangles**: the number of triangles.
+- **UVs**: yes or no.
+
+The list of **Reflectance** has these values: **white paint** 0.80, **light plaster** 0.45, **sandstone** 0.30, **concrete** 0.25, **granite** 0.22 and **red brick** 0.12. The entry **Project default** removes the own value of the object. The object then follows the **Default ρ** of the Photometric legend, which is 1.00 until you change it. Each choice is one undo step. A project with a reflectance is saved as project format 5.0.
 
 ## Texture (venue meshes)
 
 ![The Texture section with Load and Clear](images/props-surface-texture.png)
 
-**Source**, **Size**, and **Load…** to put a picture on the selected surfaces. **Clear** returns to the model file's texture. Select the model's root row to list its own textures. See [Textures](Textures.md).
+The section shows **Source** and **Size**. Click **Load…** to put a picture on the selected surfaces. Click **Clear** to return to the texture of the model file. Select the root row of a model to list the textures of that model. See [Textures](Textures.md).
 
 ## Person
 
-**Height (m)** and **Blocks light**. See [People](People.md).
+The fields are **Height (m)** and **Blocks light**. See [People](People.md).
 
 ## Camera
 
 ![Properties of a camera](images/properties-camera.png)
 
-**Projection** (**Perspective** or **Orthographic**), **Field of view** (or **Ortho height**), **Position** and **Target**, **Look through** and **Update from view** (stores the current 3D view in this camera).
+The fields are **Projection** (**Perspective** or **Orthographic**), **Field of view** (or **Ortho height**), **Position** and **Target**. Two buttons are **Look through** and **Update from view**. **Update from view** stores the current 3D view in this camera.
 
 ## Measurement
 
 ![Properties of a selected measurement](images/measure-properties.png)
 
-With only measurements selected, Properties shows **Name**, the ends **A** and **B**, **Value**, **Axis**, **Show in**, **Text** and the full **Style**. With objects and measurements selected, the object sections stay and a note counts the measurements. See [Measure Tools](Measure-Tools.md).
+With only measurements selected, Properties shows **Name**, the ends **A** and **B**, **Value**, **Axis**, **Show in**, **Text** and the full **Style**. With objects and measurements selected, the sections of the objects stay. A note counts the measurements. See [Measure Tools](Measure-Tools.md).
 
 ## File
 
 ![The File section](images/props-projector-file.png)
 
-For objects that come from a model file: **File**, **Key** and **Reset to file** when the placement differs from the file.
+This section is for objects that come from a model file. It shows **File** and **Key**. It shows **Reset to file** when the placement differs from the file.
 
 See also: [Measure Tools](Measure-Tools.md), [Outliner](Outliner.md), [Placing Projectors](Placing-Projectors.md), [Textures](Textures.md), [Summary and History](Summary-and-History.md)

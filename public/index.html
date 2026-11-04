@@ -4,7 +4,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>LUMAMATTERS</title>
 <meta charset="utf-8">
-<meta name="description" content="Desk planner for projection mapping: venue in 3D, projectors from maker data, lux, overlap and pixel size.">
+<meta name="description" content="Desk planner for projection mapping. Place projectors from maker data in your 3D venue. Run photometric analysis and check overlap and pixel size.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LUMAMATTERS">
+<meta property="og:title" content="LUMAMATTERS: desk planner for projection mapping">
+<meta property="og:description" content="Desk planner for projection mapping. Place projectors from maker data in your 3D venue. Run photometric analysis and check overlap and pixel size.">
+<meta property="og:url" content="https://lmxtinker.github.io/LUMAMATTERS-manual/">
+<meta property="og:image" content="https://lmxtinker.github.io/LUMAMATTERS-manual/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LUMAMATTERS 3D view: two projectors light a wall, shown in the Photometric view.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="fonts/plex.css">
 <link rel="icon" href="favicon.png">
 <style>
@@ -136,7 +146,7 @@ details:not([open]) summary::before{content:"▸"}
   <section class="area" aria-label="3D view">
     <div class="tabbar"><div class="tab">3D view</div></div>
     <div class="vp" id="vp">
-      <canvas id="gl" role="img" aria-label="A projector reveals the LumaMatters logo, then the view pulls back to a room: two projectors side by side light a wall, plinths and the PAYWALLS sculpture, shown as test pattern, lux, overlap and pixel size."></canvas>
+      <canvas id="gl" role="img" aria-label="A projector reveals the LumaMatters logo, then the view pulls back to a room: two projectors side by side light a wall, plinths and the PAYWALLS sculpture, shown as test pattern, illuminance, overlap and pixel size."></canvas>
       <div class="bar" id="bar" inert>
         <div class="seg" role="group" aria-label="Light">
           <button type="button" class="btn" id="lBlend" aria-pressed="true">Blended</button>
@@ -144,7 +154,7 @@ details:not([open]) summary::before{content:"▸"}
         </div>
         <div class="seg" role="group" aria-label="View mode">
           <button type="button" class="btn" id="vShaded" aria-pressed="true">Shaded</button>
-          <button type="button" class="btn" id="vLux" aria-pressed="false">Lux</button>
+          <button type="button" class="btn" id="vLux" aria-pressed="false">Photometric</button>
           <button type="button" class="btn" id="vOver" aria-pressed="false">Overlap</button>
           <button type="button" class="btn" id="vPixel" aria-pressed="false">Pixel</button>
         </div>
@@ -187,7 +197,7 @@ details:not([open]) summary::before{content:"▸"}
       <details class="panel" open>
         <summary>Planner</summary>
         <div class="pbody">
-          <p class="lead">A desk planner for projection mapping. Load your venue in 3D, place projectors from maker data, and see lux, overlap and pixel size.</p>
+          <p class="lead">A desk planner for projection mapping. Load your venue in 3D and place projectors from maker data. Run photometric analysis and check overlap and pixel size.</p>
           <div class="acts">
             <a class="btn rgb" href="demo/">Try the demo</a>
             <div class="row2">
@@ -272,7 +282,7 @@ const TL = {
 const CAPS = [
   [8.8, 12.2, 'Two Panasonic PT-RZ24K side by side, ET-D75LE10 lens, 14.5 m throw'],
   [12.4, 14.5, 'Test pattern: a gradient grid per projector'],
-  [14.7, 17.3, 'Lux, blended: target 300 lx'],
+  [14.7, 17.3, 'Photometric, blended: target 300 lx'],
   [17.5, 19.3, 'Overlap: the blend zone runs through the sculpture'],
   [19.5, 21.1, 'Pixel size on the surface: limit 10 mm']
 ];
