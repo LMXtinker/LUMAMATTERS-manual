@@ -19,7 +19,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'LUMAMATTERS Manual',
-      description: 'User manual for LUMAMATTERS, a desk planner for projection mapping.',
+      description: 'User manual for LUMAMATTERS, a desk planner for projection mapping. Place projectors from maker data in your 3D venue. See illuminance, luminance, contrast, overlap and pixel size.',
       // Pagefind search is built in and runs fully in the browser (no external service).
       pagefind: true,
       // No Google Fonts / CDN: IBM Plex is self-hosted (src/styles/fonts, OFL).
@@ -28,7 +28,13 @@ export default defineConfig({
       ],
       logo: { src: './src/assets/wordmark-h28@2x.png', alt: 'LumaMatters', replacesTitle: true },
       favicon: '/favicon.png',
-      head: [{ tag: 'meta', attrs: { name: 'color-scheme', content: 'dark' } }],
+      head: [
+        { tag: 'meta', attrs: { name: 'color-scheme', content: 'dark' } },
+        { tag: 'meta', attrs: { property: 'og:image', content: 'https://lmxtinker.github.io/LUMAMATTERS-manual/assets/og-image.png' } },
+        { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+        { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+        { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+      ],
       // Dark only: the app and the RGB wordmark have no light version.
       components: {
         ThemeProvider: './src/components/ThemeProvider.astro',
