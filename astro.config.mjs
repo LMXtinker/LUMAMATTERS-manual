@@ -1,11 +1,21 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import { readdirSync } from 'node:fs';
+
+// Manual pages moved from /<page>/ to /manual/<page>/ (landing page took the root): old URLs redirect.
+const redirects = Object.fromEntries(
+  readdirSync('./wiki')
+    .filter((f) => f.endsWith('.md') && !f.startsWith('_') && f !== 'Home.md')
+    .map((f) => f.slice(0, -3).toLowerCase())
+    .map((s) => [`/${s}/`, `/LUMAMATTERS-manual/manual/${s}/`]),
+);
 
 // Pages are generated from wiki/ by scripts/sync-wiki.mjs (wiki/ stays the single copy).
 export default defineConfig({
   site: 'https://lmxtinker.github.io',
   base: '/LUMAMATTERS-manual',
   trailingSlash: 'always',
+  redirects,
   integrations: [
     starlight({
       title: 'LUMAMATTERS Manual',
@@ -27,23 +37,23 @@ export default defineConfig({
       },
       customCss: ['./src/styles/luma.css'],
       sidebar: [
-        { label: 'Home', link: '/' },
-        { label: "What's new", slug: 'whats-new' },
+        { label: 'Home', link: '/manual/' },
+        { label: "What's new", slug: 'manual/whats-new' },
         {
           label: 'Getting started',
-          items: ['install', 'first-start-and-workspace', 'projects-and-snapshots', 'several-machines'],
+          items: ['manual/install', 'manual/first-start-and-workspace', 'manual/projects-and-snapshots', 'manual/several-machines'],
         },
         {
           label: 'Interface',
-          items: ['interface-tour', 'menus', 'outliner', 'properties', 'summary-and-history', '3d-view', 'view-modes', 'keyboard-shortcuts'],
+          items: ['manual/interface-tour', 'manual/menus', 'manual/outliner', 'manual/properties', 'manual/summary-and-history', 'manual/3d-view', 'manual/view-modes', 'manual/keyboard-shortcuts'],
         },
         {
           label: 'Workflow',
-          items: ['blender-export-and-import', 'placing-projectors', 'analysis', 'setups-and-compare', 'measure-tools', 'textures', 'people', 'report-and-pdf', 'share-a-view-only-scene', 'test-patterns'],
+          items: ['manual/blender-export-and-import', 'manual/placing-projectors', 'manual/analysis', 'manual/setups-and-compare', 'manual/measure-tools', 'manual/textures', 'manual/people', 'manual/report-and-pdf', 'manual/share-a-view-only-scene', 'manual/test-patterns'],
         },
         {
           label: 'Reference',
-          items: ['projector-database', 'physics-model', 'project-files', 'faq', 'glossary'],
+          items: ['manual/projector-database', 'manual/physics-model', 'manual/project-files', 'manual/faq', 'manual/glossary'],
         },
         {
           label: 'Download and legal',
