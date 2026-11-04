@@ -19,7 +19,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'LUMAMATTERS Manual',
-      description: 'User manual for LUMAMATTERS, a desk planner for projection mapping. Place projectors from maker data in your 3D venue. See illuminance, luminance, contrast, overlap and pixel size.',
+      description: 'User manual for LUMAMATTERS, a desk planner for projection mapping. Place projectors from maker data in your 3D venue. Run photometric analysis and check overlap and pixel size.',
       // Pagefind search is built in and runs fully in the browser (no external service).
       pagefind: true,
       // No Google Fonts / CDN: IBM Plex is self-hosted (src/styles/fonts, OFL).
