@@ -38,7 +38,7 @@
 - [Glossary](Glossary.md)
 
 **Download and legal**
-- [Download (coming soon)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases)
+- [Download (beta)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases)
 - [Impressum](https://lmxtinker.github.io/LUMAMATTERS-manual/impressum.html)
 - [Privacy](https://lmxtinker.github.io/LUMAMATTERS-manual/privacy.html)
 

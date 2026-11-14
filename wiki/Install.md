@@ -12,7 +12,7 @@ LUMAMATTERS is a Windows desktop app for projection-mapping desk planning. It ru
 ## Install
 
 1. Get `LUMAMATTERS_<version>_x64-setup.exe`. `<version>` is the version number. This manual describes version 1.1.0, so the file is `LUMAMATTERS_1.1.0_x64-setup.exe`.
-2. Download the file from the releases page, https://github.com/LMXtinker/LUMAMATTERS-releases/releases. The first beta build is not published there yet: coming soon. You can also get the file from the person who sends you the beta.
+2. Download the file from the releases page, https://github.com/LMXtinker/LUMAMATTERS-releases/releases, or get it from the person who sent you the beta.
 3. Double-click the file and follow the steps. The installer shows the licence before it installs. It adds a Start-menu entry.
 4. Start **LUMAMATTERS** from the Start menu.
 
