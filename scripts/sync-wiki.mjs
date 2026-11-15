@@ -11,7 +11,7 @@ const src = join(root, 'wiki');
 // manual pages live at the site root; the landing page moved to LMXtinker/LUMAMATTERS-releases
 const out = join(root, 'src', 'content', 'docs');
 const docsRoot = out;
-const BASE = '/LUMAMATTERS-manual';
+const BASE = '/manual';
 
 rmSync(docsRoot, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });

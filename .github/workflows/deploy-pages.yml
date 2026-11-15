@@ -1,6 +1,6 @@
 # Builds the Starlight manual and deploys it to GitHub Pages.
 # Runs on every push to main (Pages Source = "GitHub Actions") and by hand.
-name: Deploy manual site
+name: Deploy redirect stubs
 
 on:
   push:

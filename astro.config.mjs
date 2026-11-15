@@ -1,22 +1,11 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { readdirSync } from 'node:fs';
-
-// Manual pages moved back from /manual/<page>/ to /<page>/: keep /manual/* redirecting so older app links keep working.
-const redirects = Object.fromEntries([
-  ['/manual/', '/LUMAMATTERS-manual/'],
-  ...readdirSync('./wiki')
-    .filter((f) => f.endsWith('.md') && !f.startsWith('_') && f !== 'Home.md')
-    .map((f) => f.slice(0, -3).toLowerCase())
-    .map((s) => [`/manual/${s}/`, `/LUMAMATTERS-manual/${s}/`]),
-]);
 
 // Pages are generated from wiki/ by scripts/sync-wiki.mjs (wiki/ stays the single copy).
 export default defineConfig({
-  site: 'https://lmxtinker.github.io',
-  base: '/LUMAMATTERS-manual',
+  site: 'https://lumamatters.lumalux.at',
+  base: '/manual',
   trailingSlash: 'always',
-  redirects,
   integrations: [
     starlight({
       title: 'LUMAMATTERS Manual',
@@ -25,13 +14,13 @@ export default defineConfig({
       pagefind: true,
       // No Google Fonts / CDN: IBM Plex is self-hosted (src/styles/fonts, OFL).
       social: [
-        { icon: 'github', label: 'Releases', href: 'https://github.com/LMXtinker/LUMAMATTERS-releases/releases' },
+        { icon: 'github', label: 'Wiki', href: 'https://github.com/LMXtinker/LUMAMATTERS-manual/wiki' },
       ],
       logo: { src: './src/assets/wordmark-h28@2x.png', alt: 'LumaMatters', replacesTitle: true },
       favicon: '/favicon.png',
       head: [
         { tag: 'meta', attrs: { name: 'color-scheme', content: 'dark' } },
-        { tag: 'meta', attrs: { property: 'og:image', content: 'https://lmxtinker.github.io/LUMAMATTERS-manual/assets/og-image.png' } },
+        { tag: 'meta', attrs: { property: 'og:image', content: 'https://lumamatters.lumalux.at/manual/assets/og-image.png' } },
         { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
         { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
         { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
@@ -65,11 +54,11 @@ export default defineConfig({
         {
           label: 'Download and legal',
           items: [
-            { label: 'Overview', link: 'https://lmxtinker.github.io/LUMAMATTERS-releases/' },
-            { label: 'Download (beta)', link: 'https://github.com/LMXtinker/LUMAMATTERS-releases/releases' },
+            { label: 'Overview', link: '/', attrs: { target: '_self' } },
+            { label: 'Download (beta)', link: '/download', attrs: { target: '_self' } },
             { label: 'Web demo', link: '/demo/', attrs: { target: '_self' } },
-            { label: 'Impressum', link: 'https://lmxtinker.github.io/LUMAMATTERS-releases/impressum.html' },
-            { label: 'Privacy', link: 'https://lmxtinker.github.io/LUMAMATTERS-releases/privacy.html' },
+            { label: 'Impressum', link: '/impressum.html', attrs: { target: '_self' } },
+            { label: 'Privacy', link: '/privacy.html', attrs: { target: '_self' } },
           ],
         },
       ],
