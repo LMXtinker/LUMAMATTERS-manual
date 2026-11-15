@@ -38,8 +38,8 @@
 - [Glossary](Glossary.md)
 
 **Download and legal**
-- [Download (beta)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases)
-- [Impressum](https://lmxtinker.github.io/LUMAMATTERS-releases/impressum.html)
-- [Privacy](https://lmxtinker.github.io/LUMAMATTERS-releases/privacy.html)
+- [Download (beta)](https://lumamatters.lumalux.at/download)
+- [Impressum](https://lumamatters.lumalux.at/impressum.html)
+- [Privacy](https://lumamatters.lumalux.at/privacy.html)
 
 © 2026 LumaLux

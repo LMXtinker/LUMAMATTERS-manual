@@ -12,7 +12,7 @@ LUMAMATTERS is a Windows desktop app for projection-mapping desk planning. It ru
 ## Install
 
 1. Get `LUMAMATTERS_<version>_x64-setup.exe`. `<version>` is the version number. This manual describes version 1.1.0, so the file is `LUMAMATTERS_1.1.0_x64-setup.exe`.
-2. Download the file from the releases page, https://github.com/LMXtinker/LUMAMATTERS-releases/releases, or get it from the person who sent you the beta.
+2. Download the file from the download page, https://lumamatters.lumalux.at/download. The page asks for the password from your invite mail. Or get the file from the person who sent you the beta.
 3. Double-click the file and follow the steps. The installer shows the licence before it installs. It adds a Start-menu entry.
 4. Start **LUMAMATTERS** from the Start menu.
 
@@ -44,7 +44,7 @@ Do this once for each file.
 
 ## Licence
 
-LUMAMATTERS is free to download and use during the beta. LUMAMATTERS will always stay free in one form or another, with all features available. You can use it for private and commercial work. You may modify it and use your changes yourself. You may not sell the software, modified versions or access to it. You may not bundle it into a paid product. The full terms are in `LICENSE`. **Help > About LUMAMATTERS** shows the same summary (see [Menus](Menus.md)).
+LUMAMATTERS is free to download and use during the beta. After the beta it stays free forever for every person and company with less than EUR 100,000 gross revenue a year, with all features available. You can use it for private and commercial work. You may modify it and use your changes yourself. You may not sell the software, modified versions or access to it. You may not bundle it into a paid product. The full terms are in `LICENSE`. **Help > About LUMAMATTERS** shows the same summary (see [Menus](Menus.md)).
 
 ## Uninstall
 

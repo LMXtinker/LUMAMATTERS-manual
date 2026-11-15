@@ -65,7 +65,7 @@ Some features need a newer file format: people, cameras, report layout, maker th
 
 ## 1.0.1 (2026-10-24): Licensing update, first beta build
 
-- **Licence.** A `LICENSE` file is installed next to the app. The beta is free to use, also for commercial work. LUMAMATTERS will always stay free in one form or another, with all features available. You may modify it for yourself. You may not sell it. See [Install](Install.md).
+- **Licence.** A `LICENSE` file is installed next to the app. The beta is free to use, also for commercial work. After the beta it stays free forever for every person and company with less than EUR 100,000 gross revenue a year, with all features available. You may modify it for yourself. You may not sell it. See [Install](Install.md).
 - **Help > About.** It shows the version with "Beta", the copyright line and a short licence summary. It also shows a note that the numbers are a planning aid, with no warranty for rigging, safety or on-site results. It shows the third-party notices too. See [About LUMAMATTERS](Menus.md#about-lumamatters).
 - **Third-party notices.** The file `THIRD_PARTY_NOTICES.txt` lists the licences of the libraries, Rust crates and fonts in the app. The installer puts it next to the app. See [Install](Install.md).
 - **BETA mark.** A small BETA mark is next to the LUMAMATTERS name in the top bar. It is also on every report page, on screen and in Print / Save as PDF. See [Interface Tour](Interface-Tour.md#the-header-bar) and [Report and PDF](Report-and-PDF.md).

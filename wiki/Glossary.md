@@ -8,7 +8,7 @@
 
 **Auto range.** A legend button. It sets Min and Max from the 1st and 99th percentile of the lit target surfaces. See [View Modes](View-Modes.md#legends).
 
-**Beta.** The state of this release. It is free to use during the beta. LUMAMATTERS will always stay free in one form or another, with all features available. A small BETA mark sits next to the name in the app header and on report pages. **Help > About LUMAMATTERS** shows the licence summary. See [Install](Install.md).
+**Beta.** The state of this release. It is free to use during the beta. After the beta it stays free forever for every person and company with less than EUR 100,000 gross revenue a year, with all features available. A small BETA mark sits next to the name in the app header and on report pages. **Help > About LUMAMATTERS** shows the licence summary. See [Install](Install.md).
 
 **Blend / overlap.** The area where two projector images cover the same surface. In the **Overlap** view, the blend zone of a pair is their full overlap. See [View modes](View-Modes.md) and [Analysis](Analysis.md).
 

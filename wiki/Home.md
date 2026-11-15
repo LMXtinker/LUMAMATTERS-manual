@@ -2,7 +2,7 @@
 
 LUMAMATTERS is a desk planner for projection mapping. Load a 3D model of the venue and place projectors from a maker database. Then see where the light lands, how bright it is, where images overlap and how big the pixels are. It is a Windows desktop program that runs offline on your own PC. It has no accounts, no cloud and no telemetry. Your projects are plain files in a folder you choose.
 
-This manual describes version 1.1.0, a free beta. LUMAMATTERS will always stay free in one form or another, with all features available. See [What's new](Whats-New.md) for the changes since 1.0.0.
+This manual describes version 1.1.0, a free beta. After the beta it stays free forever for every person and company with less than EUR 100,000 gross revenue a year, with all features available. See [What's new](Whats-New.md) for the changes since 1.0.0.
 
 > **Planning aid.** LUMAMATTERS is a planning aid. Its numbers (illuminance, pixel size, throw distance, overlap) come from maker data and simplified models. They can be wrong. No guarantee of correct data is given. Check critical values against the maker's spec sheets and on site.
 
@@ -85,8 +85,8 @@ See also: [Install](Install.md), [Interface Tour](Interface-Tour.md), [FAQ](FAQ.
 
 ---
 
-© 2026 LumaLux. Free to use during the beta. LUMAMATTERS will always stay free in one form or another, with all features available. See [Install](Install.md#licence) for the licence summary.
+© 2026 LumaLux. Free to use during the beta. After the beta it stays free forever for every person and company with less than EUR 100,000 gross revenue a year, with all features available. See [Install](Install.md#licence) for the licence summary.
 
 Panasonic, Epson, Barco and other product names are trademarks of their owners. They are used only to identify compatible products. LUMAMATTERS is not affiliated with them and not endorsed by them. Projector data comes from public spec sheets and may contain errors.
 
-[Download (beta)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases) · [Overview](https://lmxtinker.github.io/LUMAMATTERS-releases/) · [Impressum](https://lmxtinker.github.io/LUMAMATTERS-releases/impressum.html) · [Privacy](https://lmxtinker.github.io/LUMAMATTERS-releases/privacy.html)
+[Download (beta)](https://lumamatters.lumalux.at/download) · [Overview](https://lumamatters.lumalux.at/) · [Impressum](https://lumamatters.lumalux.at/impressum.html) · [Privacy](https://lumamatters.lumalux.at/privacy.html)
