@@ -17,7 +17,7 @@ This manual is for projection-mapping, LED and AV people who plan shows at the d
 - A Windows desktop app (installer or portable exe). Once installed, it needs no browser, no server and no network.
 - A planner for 1 to 8 projectors at full speed. Up to 16 projectors work, with a slow-performance warning.
 - A 3D view of your venue model, up to about 500,000 triangles. The model comes from Blender or from any tool that exports glTF / GLB, FBX or OBJ.
-- Throw, lens shift and a lens finder, based on Panasonic and Epson spec data.
+- Throw, lens shift and a lens finder, based on Panasonic, Epson and Barco spec data.
 - Five view modes:
   - **Shaded**: the venue with test patterns, overlaps and body shadows.
   - **Photometric**: light on each surface. Choose a quantity: Illuminance, Luminance, Surface contrast or Ambient contrast. Luminance and contrast use a Reflectance per object and a Site ambient value.
@@ -87,6 +87,6 @@ See also: [Install](Install.md), [Interface Tour](Interface-Tour.md), [FAQ](FAQ.
 
 © 2026 LumaLux. Free to use during the beta. LUMAMATTERS will always stay free in one form or another, with all features available. See [Install](Install.md#licence) for the licence summary.
 
-Panasonic, Epson and other product names are trademarks of their owners. They are used only to identify compatible products. LUMAMATTERS is not affiliated with them and not endorsed by them. Projector data comes from public spec sheets and may contain errors.
+Panasonic, Epson, Barco and other product names are trademarks of their owners. They are used only to identify compatible products. LUMAMATTERS is not affiliated with them and not endorsed by them. Projector data comes from public spec sheets and may contain errors.
 
-[Download (beta)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases) · [Overview](https://lmxtinker.github.io/LUMAMATTERS-releases/) · [Impressum](https://lmxtinker.github.io/LUMAMATTERS-manual/impressum.html) · [Privacy](https://lmxtinker.github.io/LUMAMATTERS-manual/privacy.html)
+[Download (beta)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases) · [Overview](https://lmxtinker.github.io/LUMAMATTERS-releases/) · [Impressum](https://lmxtinker.github.io/LUMAMATTERS-releases/impressum.html) · [Privacy](https://lmxtinker.github.io/LUMAMATTERS-releases/privacy.html)

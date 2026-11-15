@@ -39,7 +39,7 @@
 
 **Download and legal**
 - [Download (beta)](https://github.com/LMXtinker/LUMAMATTERS-releases/releases)
-- [Impressum](https://lmxtinker.github.io/LUMAMATTERS-manual/impressum.html)
-- [Privacy](https://lmxtinker.github.io/LUMAMATTERS-manual/privacy.html)
+- [Impressum](https://lmxtinker.github.io/LUMAMATTERS-releases/impressum.html)
+- [Privacy](https://lmxtinker.github.io/LUMAMATTERS-releases/privacy.html)
 
 © 2026 LumaLux

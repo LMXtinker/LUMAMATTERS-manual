@@ -175,7 +175,7 @@ The dialog shows these items, from top to bottom:
 
   Under the three lines: "Full terms: the LICENSE file in the install folder". The dialog also asks you to share the download page, not the installer file. The download page is a link: https://github.com/LMXtinker/LUMAMATTERS-releases/releases. It opens in your web browser.
 - A warning box. LUMAMATTERS is a planning aid. Illuminance, throw, occlusion and other numbers are estimates. The box says "To the extent permitted by law" that there is no warranty. It also says there is no liability for rigging, safety or on-site results.
-- A trademark and data line. Panasonic, Epson and other product names are trademarks of their owners. The app uses them only to identify compatible products. LUMAMATTERS is not affiliated with these companies and they do not endorse it. Projector data comes from public spec sheets and can contain errors. Projector bodies are generic shapes, not maker models.
+- A trademark and data line. Panasonic, Epson, Barco and other product names are trademarks of their owners. The app uses them only to identify compatible products. LUMAMATTERS is not affiliated with these companies and they do not endorse it. Projector data comes from public spec sheets and can contain errors. Projector bodies are generic shapes, not maker models.
 - **Third-party notices…**, a button. It opens a scrollable, read-only list of the licences of the libraries and fonts that the app includes. The button then reads **Hide third-party notices**. The same text is in `THIRD_PARTY_NOTICES.txt` in the install folder.
 - **Workspace folder:** the name of your workspace folder, or "none".
 - "Everything stays on this machine; the app works offline."

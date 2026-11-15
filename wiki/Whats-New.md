@@ -1,8 +1,21 @@
 # What's new
 
-This page lists the changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.1.0.
+This page lists the changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.2.0.
 
 Some features need a newer file format: people, cameras, report layout, maker throw data, reflectance and projector images. Older builds refuse a project in a newer format. Update every machine before you save such a project. See [Several Machines](Several-Machines.md) and [Project Files](Project-Files.md).
+
+## 1.2.0 (2026-11-14): Barco Integration
+
+- **Barco projectors and 3D bodies.** 30 Barco models (F70, F80, G50, G62, G100, I65, I600 and UDM, 6,000–20,000 ANSI lm) with 128 lens fits, 30 projector bodies with flight frames and 70 lens models.
+- **Unchecked lens data warning.** Projectors using lenses with unverified numbers, ceiling-mount-only shift data or no maker throw distances show an amber **lens data** chip in the Outliner and a **Lens data unchecked** box in Properties > Lens.
+- **Epson lens shift basis.** 41 more Epson models verified (46 of 47 Epson models verified); EB-PQ2000 `ELPLW05` horizontal shift limit updated from 16 % to 6 %.
+- **Includes 1.1.1 fixes.** Beams keep their opacity after leaving projector look-through, app texts use "illuminance" and "variation"/"rig", and the report projector table column head is "Centre lx".
+
+## 1.1.1 (2026-11-04): Fixes
+
+- Beams keep their opacity after you leave a projector look-through.
+- App texts say "illuminance" in place of "lux", and "variation" or "rig" in place of "setup".
+- Report: the projector table column head is "Centre lx".
 
 ## 1.1.0 (2026-11-04): New look, Photometric view, snapping, Share
 

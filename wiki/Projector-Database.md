@@ -6,10 +6,10 @@ LUMAMATTERS ships with a built-in projector database. It lists projector bodies 
 
 ## What is in it
 
-- **Makers:** Panasonic and Epson.
-- **Projector bodies:** 110 models (63 Panasonic and 47 Epson). Counted in the seed file of the app, `src/data/projectors/seed.json`.
-- **Lenses:** 132 different lens part numbers. Counted in the same seed file.
-- **Lens types:** 100 of the 110 bodies take interchangeable lenses. The other 10 have a fixed lens.
+- **Makers:** Panasonic, Epson and Barco.
+- **Projector bodies:** 140 models (63 Panasonic, 47 Epson and 30 Barco). Counted in the seed file of the app, `src/data/projectors/seed.json`.
+- **Lenses:** 202 different lens part numbers. Counted in the same seed file.
+- **Lens types:** 130 of the 140 bodies take interchangeable lenses. The other 10 have a fixed lens.
 
 A later update of the database can change these numbers.
 
@@ -31,19 +31,19 @@ Click a column header to sort the table. The app keeps your filters until you cl
 ## What is stored per body
 
 - Brand, model and series.
-- Brightness in lumens, and the standard it was measured to (ISO 21118 or ANSI, as the maker states it).
+- Brightness in lumens, and the standard it was measured to (ISO 21118 or ANSI, as the maker states it). Most Barco sheets print ANSI lumens. The Barco I65 and I600 sheets print only ISO lumens, so the app stores the ISO value. These two series can look a little brighter than the other Barco series. The Barco F70 sheets print lumens with no standard. The app stores that value as printed.
 - Native resolution and aspect.
-- Weight and dimensions. The 3D view uses them for the body and its shadow. The projector bodies and lens bodies in the 3D view are generic shapes. They are sized from these numbers. They are not the 3D models of the makers.
+- Weight and dimensions. The 3D view uses them for the body and its shadow. The projector bodies and lens bodies in the 3D view are generic shapes. They are sized from these numbers. They are not the 3D models of the makers. Barco projectors and lenses have these generic shapes too.
 - Light source, contrast and power. These fields are for information only. The analysis does not use them.
 - A link to the spec sheet of the maker.
 
 ## What is stored per lens
 
 - The throw ratio range, from wide to tele (the zoom range).
-- The lens shift limits: up, down, left and right, in percent.
+- The lens shift limits: up, down, left and right, in percent. Barco states lens shift as a share of half the image. The app shows the Barco numbers as printed and converts them for its own calculation.
 - The bodies that the lens fits.
 - The data source: the title and the URL of the maker document, and a verification note for each field.
-- For many lenses: the throw-distance formula or table of the maker. The app uses it to turn the throw numbers of the maker into the exact distance from the projection centre.
+- For many Panasonic and Epson lenses: the throw-distance formula or table of the maker. The app uses it to turn the throw numbers of the maker into the exact distance from the projection centre. Barco prints no such formula in the spec sheets that were read. For Barco lenses, the app uses the nominal throw ratio.
 
 The app models optical zoom only. It does not model digital zoom or keystone correction.
 
@@ -58,7 +58,7 @@ The app saves such a project in **project format 4.0**. Older versions of the ap
 In **Properties**, the **Spec sheet** button is under the **Lens** choice. It opens the maker page or PDF for that lens. If there is no lens sheet, it opens the sheet of the projector. If there is no sheet at all, the button is greyed out. The note below it gives the reason.
 
 - Only `https` links open.
-- In the Windows desktop app, the link opens in your default browser. Only a fixed list of maker sites is allowed: the download hosts of Panasonic and Epson, and projektoren-datenbank.com. The app refuses every other host and shows a message.
+- In the Windows desktop app, the link opens in your default browser. Only a fixed list of maker sites is allowed: the download hosts of Panasonic, Epson and Barco, and projektoren-datenbank.com. The app refuses every other host and shows a message.
 - The app never downloads the PDF itself.
 - The button works also when the project is locked or read-only.
 
@@ -69,6 +69,7 @@ The database was filled from maker documents. Each field was verified one by one
 - Some fields are marked as partly verified or unverified in the data. A few records are analogies from sibling models.
 - Makers print their own tolerance. Panasonic states that the throw distances in its tables can be off by about 5 %.
 - The lens shift percentages follow the wording of the maker. The maker does not always state the exact reference.
+- Barco data has less checked throw data than Panasonic and Epson data. Check Barco throw distances with the Barco lens calculator.
 
 Compare the numbers that you rely on with the spec sheet of the maker. The **Spec sheet** button is one click away.
 
@@ -82,7 +83,7 @@ The app regenerates the database from source files. Nobody edits the flat export
 
 ## Trademarks and data sources
 
-Panasonic, Epson and other product names are trademarks of their owners. LUMAMATTERS uses them only to identify compatible products. LUMAMATTERS is not affiliated with these companies and they do not endorse it. The projector data comes from public spec sheets and can contain errors.
+Panasonic, Epson, Barco and other product names are trademarks of their owners. LUMAMATTERS uses them only to identify compatible products. LUMAMATTERS is not affiliated with these companies and they do not endorse it. The projector data comes from public spec sheets and can contain errors.
 
 ## See also
 

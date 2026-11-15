@@ -24,7 +24,7 @@ In the dialog:
 
 New projectors get the names `P01`, `P02` and so on. The zoom starts at the middle of the lens throw range. The lens shift starts at 0. The mount is **Floor**. **Light output (%)** starts at 100.
 
-Projector data comes from maker spec sheets (Panasonic and Epson). See [Projector Database](Projector-Database.md).
+Projector data comes from maker spec sheets (Panasonic, Epson and Barco). See [Projector Database](Projector-Database.md).
 
 ### How many projectors
 
@@ -127,6 +127,7 @@ A projector image makes the project format version 5.0. The app stretches the pi
 ![Frustum lines from each projector to the venue](images/3d-frustum-lines.png)
 
 - Projector bodies are generic 3D models. Their size comes from the maker's dimensions. The lens position is a generic guess at the centre. The projection centre and the lens numbers still come from the projector database.
+- Barco projectors have generic 3D models too: a body, a flight frame and lens models, made the same way as for Panasonic and Epson. They are not the 3D models of Barco. Barco prints no throw formula, so the app puts the lens front at the projection centre.
 - In the **Body** section, **Flight frame** shows or hides the flight-frame model on the projector body.
 - In **Summary > Metrics**, the checkbox **Projector bodies cast shadows** is the one global switch for body shadows. If the projection centre is inside the body of another projector while body shadows are on, that projector lights nothing. The app shows the reason.
 - Each projector draws a frustum in the 3D view. The lines run from the lens to a rectangle at the farthest surface the projector hits. A thin outline marks the nearest surface. People and projector bodies that block light cut the lines. With no surface hit, the lines end at the aim distance (dashed) or at 5 m.
