@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
+// impressum.html and privacy.html are redirect pages: the single copy of the legal pages lives on LUMAMATTERS-releases.
 for (const f of ['demo', 'assets', 'privacy.html', 'impressum.html', '.nojekyll']) {
   if (!existsSync(join(root, f))) continue;
   cpSync(join(root, f), join(dist, f), { recursive: true });
