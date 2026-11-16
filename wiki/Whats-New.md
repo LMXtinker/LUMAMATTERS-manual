@@ -1,8 +1,19 @@
 # What's new
 
-This page lists the changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.2.0.
+This page lists the changes by version, newest first. The same notes are in the app under **Help > About LUMAMATTERS** (see [Menus](Menus.md#about-lumamatters)). This manual describes version 1.2.1.
 
 Some features need a newer file format: people, cameras, report layout, maker throw data, reflectance and projector images. Older builds refuse a project in a newer format. Update every machine before you save such a project. See [Several Machines](Several-Machines.md) and [Project Files](Project-Files.md).
+
+## 1.2.1 (2026-11-16): Fixes and polish
+
+- **Lens in the Outliner.** A projector row shows the part number of its lens after the name, in muted text. Hover it for the lens name and the throw range. A model with a fixed lens shows none.
+- **Same grey in the analysis views.** The Photometric, Overlap, Pixel and Distance views now draw the surfaces that have no coverage in the same dimmed grey as the Shaded view. They were brighter before. With **Soft light** on, the Shaded view can be a little darker, because the analysis views ignore Soft light.
+- **Lens part number in the report.** The report Lens column and the lens data chip show "part number · name", for example "ET-D3LES20 · Standard zoom lens (4K+)", the same form as the lens picker and the Outliner.
+- **New app icon.**
+- **New links.** The download page and the manual are now at lumamatters.lumalux.at.
+- **Licence.** Free during the beta. After the beta it stays free for every person and every company under EUR 100,000 gross revenue a year.
+- **Fixes.** A rare problem when opening a project is fixed. Report pictures are drawn only while the Report tab is shown.
+- **Smaller flight frame for Epson EB-L1300 to EB-L1755.** The frame of these 15 models is now 710 x 630 mm, which is closer to the real size.
 
 ## 1.2.0 (2026-11-14): Barco Integration
 

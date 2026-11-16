@@ -11,6 +11,7 @@ Each row has a type icon, a name and a short second text.
 - **Mesh** (a venue surface): the second text is its role, **Target**, **Occluder** or **Helper**.
 - **Empty** and **null**: objects with a transform only. They group things and move them.
 - **Projector**: the second text is the maker and model, or `unassigned`. The icon takes the colour of the projector.
+  The part number of the lens shows in muted text after the name. The tooltip gives the lens name and the throw range. A model with a fixed lens shows none.
 - **Camera** (a saved camera).
 - **Person**: the second text is the height, for example `1.75 m`.
 - **Measurements**: a group after the other rows, when the project has measurements. It has one row for each measurement or note. See [Measure Tools](Measure-Tools.md).
