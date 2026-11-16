@@ -1,4 +1,4 @@
-# Builds the Starlight manual and deploys it to GitHub Pages.
+# Deploys redirect stubs to GitHub Pages: the manual, demo and legal pages moved to https://lumamatters.lumalux.at/.
 # Runs on every push to main (Pages Source = "GitHub Actions") and by hand.
 name: Deploy redirect stubs
 
@@ -26,10 +26,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - run: npm run sync
+      - run: node scripts/make-redirects.mjs redirects-dist
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: redirects-dist
 
   deploy:
     needs: build
